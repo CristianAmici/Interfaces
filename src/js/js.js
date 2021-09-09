@@ -80,19 +80,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 let r;
                 let b;
                 let g;
+                var imagenAux = new Image();
+                imagen.src = "src/images/messirve.jpg";
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                let imageData2= ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;
                                 r =getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
-                                g = getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
-                                b = getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
-                                imageData.data[index + 0] = r/9;
-                                imageData.data[index + 1] = g/9;
-                                imageData.data[index + 2] = b/9;
+                                g = getGreen(imageData, x, y)+getGreen(imageData, x+1, y)+getGreen(imageData, x-1, y)+getGreen(imageData, x+1, y-1)+getGreen(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getGreen(imageData, x+1, y+1)+getGreen(imageData, x, y-1)+getGreen(imageData, x, y+1);
+                                b = getBlue(imageData, x, y)+getBlue(imageData, x+1, y)+getBlue(imageData, x-1, y)+getBlue(imageData, x+1, y-1)+getBlue(imageData, x-1, y+1)+getBlue(imageData, x-1, y-1)+getBlue(imageData, x+1, y+1)+getBlue(imageData, x, y-1)+getBlue(imageData, x, y+1);
+                                imageData2.data[index + 0] = r/9;
+                                imageData2.data[index + 1] = g/9;
+                                imageData2.data[index + 2] = b/9;
                         }
                 }
-                ctx.putImageData(imageData, 0, 0);
+                ctx.putImageData(imageData2, 0, 0);
         });
 
         //Obtiene la cantidad de rojo del pixel
