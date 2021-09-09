@@ -69,7 +69,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
                                 b = getBlue(imageData, x, y);
                                 imageData.data[index + 0] = Math.trunc(0.4 * r + 0.8 * g + 0.2 * b);
                                 imageData.data[index + 1] = Math.trunc(0.35 * r + 0.7 * g + 0.175 * b);
-                                imageData.data[index + 2] = Math.trunc(0.25 * r + 0.5 * g + 0.125 * b);;
+                                imageData.data[index + 2] = Math.trunc(0.25 * r + 0.5 * g + 0.125 * b);
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
+        let buttonblur = document.getElementById("blur");
+        buttonblur.addEventListener("click", function aplicarFiltroblur(){
+            loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r =getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
+                                g = getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
+                                b = getRed(imageData, x, y)+getRed(imageData, x+1, y)+getRed(imageData, x-1, y)+getRed(imageData, x+1, y-1)+getRed(imageData, x-1, y+1)+getRed(imageData, x-1, y-1)+getRed(imageData, x+1, y+1)+getRed(imageData, x, y-1)+getRed(imageData, x, y+1);
+                                imageData.data[index + 0] = r/9;
+                                imageData.data[index + 1] = g/9;
+                                imageData.data[index + 2] = b/9;
                         }
                 }
                 ctx.putImageData(imageData, 0, 0);
