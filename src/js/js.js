@@ -34,8 +34,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
+        let buttonNegative = document.getElementById("negativo");
+        buttonNegative.addEventListener("click", function aplicarFiltroNegativo(){
+            loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                g = getGreen(imageData, x, y);
+                                b = getBlue(imageData, x, y);
+                                imageData.data[index + 0] = 255 - r;
+                                imageData.data[index + 1] = 255 - g;
+                                imageData.data[index + 2] = 255 - b;
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
         let buttonsepia = document.getElementById("sepia");
         buttonsepia.addEventListener("click", function aplicarFiltroSepia(){
+            loadImage();
                 let r;
                 let b;
                 let g;
