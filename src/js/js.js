@@ -97,7 +97,41 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData2, 0, 0);
         });
-
+        let buttonBinarizacion = document.getElementById("binarizacion");
+        buttonBinarizacion.addEventListener("click", function aplicarFiltroBinarizacion(){
+                loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                if(r>125){
+                                        r=255;
+                                }else{
+                                        r=0;
+                                }
+                                g = getGreen(imageData, x, y);
+                                if(g>125){
+                                        g=255;
+                                }else{
+                                        g=0;
+                                }
+                                b = getBlue(imageData, x, y);
+                                if(b>125){
+                                        b=255;
+                                }else{
+                                        b=0;
+                                }
+                                imageData.data[index + 0] = r;
+                                imageData.data[index + 1] = g;
+                                imageData.data[index + 2] = b;
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
         //Obtiene la cantidad de rojo del pixel
         function getRed(imageData, x, y) {
                 let index = (x + y * imageData.width) * 4;
