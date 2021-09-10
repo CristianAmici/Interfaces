@@ -108,22 +108,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;
                                 r = getRed(imageData, x, y);
-                                if(r>125){
-                                        r=255;
-                                }else{
-                                        r=0;
-                                }
                                 g = getGreen(imageData, x, y);
-                                if(g>125){
+                                b = getBlue(imageData, x, y);
+                                if((r+g+b)>320){
+                                        r=255;
+                                        b=255;
                                         g=255;
                                 }else{
-                                        g=0;
-                                }
-                                b = getBlue(imageData, x, y);
-                                if(b>125){
-                                        b=255;
-                                }else{
+                                        r=0;
                                         b=0;
+                                        g=0;
                                 }
                                 imageData.data[index + 0] = r;
                                 imageData.data[index + 1] = g;
