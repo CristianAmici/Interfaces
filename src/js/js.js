@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         //FALTA CARGAR LA IMAGEN Y DESCARGARLA
 
-        document.getElementById("image").addEventListener("click", showImage);
+       /*  document.getElementById("image").addEventListener("click", showImage);
        
         function showImage(){
                 var imageData = ctx.createImageData(c.height, c.width);
@@ -76,15 +76,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 var imagen = new Image();
                 imagen.src = buttonimage;
                 imagen.onload = loadImage() 
-        }        
+        }  */       
              
         ///////////////////// FILTROS
        
+        
+        var imageData = ctx.createImageData(c.height, c.width);
+        let imageScaledWidth = c.width;
+        let imageScaledHeight = c.height;
+        var imagen = new Image();
+        imagen.src = "src/images/messirve.jpg";
+        imagen.onload = loadImage()
         let buttonOriginal= document.getElementById("original").addEventListener("click", loadImage);
         function loadImage() {
                 ctx.drawImage(imagen, 0, 0);
         }
-
         let buttongris = document.getElementById("gris");
         buttongris.addEventListener("click", function aplicarFiltroGrises(){
                 let r;
@@ -105,28 +111,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-
-        let buttonbrillo = document.getElementById("brillo");
-        buttonbrillo.addEventListener("click", function aplicarFiltroBrillo(){
-                loadImage();
-                let r;
-                let b;
-                let g;
-                let imageData = ctx.getImageData(0, 0, c.width, c.height);
-                for (let y = 0; y < imageData.height; y++) {
-                        for (let x = 0; x < imageData.width; x++) {
-                                let index = (x + y * imageData.width) * 4;
-                                r = getRed(imageData, x, y);
-                                g = getGreen(imageData, x, y);
-                                b = getBlue(imageData, x, y);
-                                imageData.data[index + 0] = r+20;
-                                imageData.data[index + 1] = g+20;
-                                imageData.data[index + 2] = b+20;
-                        }
-                }
-                ctx.putImageData(imageData, 0, 0);
-        });
-
         let buttonNegative = document.getElementById("negativo");
         buttonNegative.addEventListener("click", function aplicarFiltroNegativo(){
             loadImage();
@@ -147,7 +131,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-
         let buttonsepia = document.getElementById("sepia");
         buttonsepia.addEventListener("click", function aplicarFiltroSepia(){
             loadImage();
@@ -168,15 +151,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-
         let buttonblur = document.getElementById("blur");
         buttonblur.addEventListener("click", function aplicarFiltroblur(){
-                loadImage();
+            loadImage();
                 let r;
                 let b;
                 let g;
                 var imagenAux = new Image();
-                //imagen.src = "src/images/messirve.jpg";
+                imagen.src = "src/images/messirve.jpg";
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let imageData2= ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
@@ -192,7 +174,35 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData2, 0, 0);
         });
-
+        let buttonBinarizacion = document.getElementById("binarizacion");
+        buttonBinarizacion.addEventListener("click", function aplicarFiltroBinarizacion(){
+                loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                g = getGreen(imageData, x, y);
+                                b = getBlue(imageData, x, y);
+                                if((r+g+b)>320){
+                                        r=255;
+                                        b=255;
+                                        g=255;
+                                }else{
+                                        r=0;
+                                        b=0;
+                                        g=0;
+                                }
+                                imageData.data[index + 0] = r;
+                                imageData.data[index + 1] = g;
+                                imageData.data[index + 2] = b;
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
         //Obtiene la cantidad de rojo del pixel
         function getRed(imageData, x, y) {
                 let index = (x + y * imageData.width) * 4;
