@@ -1,19 +1,90 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", ()=>{
+        
+        let c = document.getElementById("MyCanvas");
+        let ctx = c.getContext("2d");
 
-        var c = document.getElementById("MyCanvas");
-        var ctx = c.getContext("2d");
+        //Lienzo en blanco
+        ctx.beginPath();
+        ctx.rect(0, 0, c.width, c.height);
+        ctx.fillStyle = "rgba(255,255,255,1)";
+        ctx.fill(); 
 
-        var imageData = ctx.createImageData(c.height, c.width);
-        let imageScaledWidth = c.width;
-        let imageScaledHeight = c.height;
-        var imagen = new Image();
-        imagen.src = "src/images/messirve.jpg";
-        imagen.onload = loadImage()
+        let coordenada1;
+        let coordenada2;
+        let paint = false;
+        let lapiz = false; 
+        let color;
+
+        document.getElementById("lapiz").addEventListener("click", ()=>{
+                lapiz=true;
+                letsDraw();
+        });
+        document.getElementById("goma").addEventListener("click", ()=>{
+                lapiz = false;
+                color = '#FFFFFF';
+                letsDraw();
+        });
+        //Pintar con lapiz o goma es lo mismo, lo unico que en borrado siempre va a ser blanco con lo
+        //que se pinta
+        function letsDraw(){
+                c.addEventListener("mousedown", function(evt) {
+                        coordenada1 = oMousePos(c, evt);
+                        paint = true;
+                        c.addEventListener("mousemove", function(evt) {
+                                draw(c,evt)
+                        });
+                });
+                c.addEventListener("mouseup",()=>{
+                        paint = false ;
+                });
+                
+                function draw(c,evt){
+                        
+                        if(paint){
+                                coordenada2 =  oMousePos(c, evt);
+                                ctx.beginPath();
+                                ctx.lineWidth = 7; // ANCHO
+                                if(lapiz){
+                                        color = document.getElementById("favcolor").value;
+                                }
+                                ctx.strokeStyle = color; //COLOR
+                                ctx.moveTo(coordenada1.x,coordenada1.y);
+                                ctx.lineTo(coordenada2.x,coordenada2.y);
+                                ctx.stroke();
+                                coordenada1 = coordenada2
+                        }
+                } 
+                //toma las cordeeanadas     
+                function oMousePos(c, evt) {
+                        return { //objeto
+                          x: Math.round(evt.clientX),
+                          y: Math.round(evt.clientY) 
+                        }
+                }
+        }
+
+
+        //FALTA CARGAR LA IMAGEN Y DESCARGARLA
+
+        document.getElementById("image").addEventListener("click", showImage);
+       
+        function showImage(){
+                var imageData = ctx.createImageData(c.height, c.width);
+                let buttonimage = document.getElementById("imagen").files[0];
+                console.log(buttonimage);
+                var imagen = new Image();
+                imagen.src = buttonimage;
+                imagen.onload = loadImage() 
+        }        
+             
+        ///////////////////// FILTROS
+       
         let buttonOriginal= document.getElementById("original").addEventListener("click", loadImage);
         function loadImage() {
                 ctx.drawImage(imagen, 0, 0);
         }
+
         let buttongris = document.getElementById("gris");
         buttongris.addEventListener("click", function aplicarFiltroGrises(){
                 let r;
@@ -34,6 +105,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
+
+        let buttonbrillo = document.getElementById("brillo");
+        buttonbrillo.addEventListener("click", function aplicarFiltroBrillo(){
+                loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                g = getGreen(imageData, x, y);
+                                b = getBlue(imageData, x, y);
+                                imageData.data[index + 0] = r+20;
+                                imageData.data[index + 1] = g+20;
+                                imageData.data[index + 2] = b+20;
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
+
         let buttonNegative = document.getElementById("negativo");
         buttonNegative.addEventListener("click", function aplicarFiltroNegativo(){
             loadImage();
@@ -54,6 +147,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
+
         let buttonsepia = document.getElementById("sepia");
         buttonsepia.addEventListener("click", function aplicarFiltroSepia(){
             loadImage();
@@ -74,14 +168,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
+
         let buttonblur = document.getElementById("blur");
         buttonblur.addEventListener("click", function aplicarFiltroblur(){
-            loadImage();
+                loadImage();
                 let r;
                 let b;
                 let g;
                 var imagenAux = new Image();
-                imagen.src = "src/images/messirve.jpg";
+                //imagen.src = "src/images/messirve.jpg";
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let imageData2= ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
