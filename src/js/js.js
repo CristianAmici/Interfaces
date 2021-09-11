@@ -67,16 +67,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         //FALTA CARGAR LA IMAGEN Y DESCARGARLA
 
-       /*  document.getElementById("image").addEventListener("click", showImage);
-       
-        function showImage(){
-                var imageData = ctx.createImageData(c.height, c.width);
-                let buttonimage = document.getElementById("imagen").files[0];
-                console.log(buttonimage);
-                var imagen = new Image();
-                imagen.src = buttonimage;
-                imagen.onload = loadImage() 
-        }  */       
+            
              
         ///////////////////// FILTROS
        
@@ -107,6 +98,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
                                 imageData.data[index + 0] = grey;
                                 imageData.data[index + 1] = grey;
                                 imageData.data[index + 2] = grey;
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        });
+        let buttonbrillo = document.getElementById("brillo");
+        buttonbrillo.addEventListener("click", function aplicarFiltroBrillo(){
+                loadImage();
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                g = getGreen(imageData, x, y);
+                                b = getBlue(imageData, x, y);
+                                r = (r*100)/70;
+                                g = (g*100)/70;
+                                b = (b*100)/70;
+                                imageData.data[index + 0] = r;
+                                imageData.data[index + 1] = g;
+                                imageData.data[index + 2] = b;
                         }
                 }
                 ctx.putImageData(imageData, 0, 0);
@@ -158,7 +172,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 let b;
                 let g;
                 var imagenAux = new Image();
-                imagen.src = "src/images/messirve.jpg";
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let imageData2= ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
