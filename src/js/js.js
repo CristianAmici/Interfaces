@@ -40,18 +40,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 });
                 
                 function draw(c,evt){
+
+                                let cuerpo=document.getElementById('MyCanvas');
+                                cuerpo.style.cursor="url('https://www.pngegg.com/es/png-cilri'),auto";
                         
+                        let tamaño= document.getElementById("grosor").value
                         if(paint){
                                 coordenada2 =  oMousePos(c, evt);
                                 ctx.beginPath();
-                                ctx.lineWidth = 7; // ANCHO
                                 if(lapiz){
                                         color = document.getElementById("favcolor").value;
                                 }
-                                ctx.strokeStyle = color; //COLOR
+                                ctx.fillStyle = color; //COLOR
                                 ctx.moveTo(coordenada1.x,coordenada1.y);
-                                ctx.lineTo(coordenada2.x,coordenada2.y);
-                                ctx.stroke();
+                                ctx.arc(coordenada2.x,coordenada2.y,tamaño, 0,2* Math.PI);
+                                ctx.fill();
                                 coordenada1 = coordenada2
                         }
                 } 
@@ -71,13 +74,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
              
         ///////////////////// FILTROS
        
-        
+        /*
         var imageData = ctx.createImageData(c.height, c.width);
         let imageScaledWidth = c.width;
         let imageScaledHeight = c.height;
         var imagen = new Image();
         imagen.src = "src/images/messirve.jpg";
-        imagen.onload = loadImage()
+        imagen.onload = loadImage()*/
         let buttonOriginal= document.getElementById("original").addEventListener("click", loadImage);
         function loadImage() {
                 ctx.drawImage(imagen, 0, 0);
@@ -104,7 +107,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
         let buttonbrillo = document.getElementById("brillo");
         buttonbrillo.addEventListener("click", function aplicarFiltroBrillo(){
-                loadImage();
                 let r;
                 let b;
                 let g;
@@ -127,7 +129,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
         let buttonNegative = document.getElementById("negativo");
         buttonNegative.addEventListener("click", function aplicarFiltroNegativo(){
-            loadImage();
                 let r;
                 let b;
                 let g;
@@ -147,7 +148,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
         let buttonsepia = document.getElementById("sepia");
         buttonsepia.addEventListener("click", function aplicarFiltroSepia(){
-            loadImage();
                 let r;
                 let b;
                 let g;
@@ -167,7 +167,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
         let buttonblur = document.getElementById("blur");
         buttonblur.addEventListener("click", function aplicarFiltroblur(){
-            loadImage();
                 let r;
                 let b;
                 let g;
@@ -189,7 +188,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
         let buttonBinarizacion = document.getElementById("binarizacion");
         buttonBinarizacion.addEventListener("click", function aplicarFiltroBinarizacion(){
-                loadImage();
                 let r;
                 let b;
                 let g;
