@@ -17,9 +17,10 @@
 			<input type="color" class="favcolor" id="favcolor" value="#000000">
 		  </form>
 		<div>
-			<label for="image">Inserte imagen</label>
-			   <input type="file" class="image" id="imagen"  value="">
-			   <input type="file" id="fileElem" accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+			<form method="POST" enctype="multipart/form-data" id="imageForm">
+				<input type="file" name="file">
+				<button type="submit" role="button">Upload File</button>
+			</form>
 		</div>
 
     <button id="gris">Gris</button>
@@ -28,6 +29,7 @@
 	<button id="negativo">Negativo</button>
 	<button id="sepia">Sepia</button>
 	<button id="original">Original</button>
+	<button id="nuevoLienzo">Nuevo Dibujo</button>
 	<button id="binarizacion" >Binarizacion</button>
 </body>
 <script src="src/js/js.js"></script>
