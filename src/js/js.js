@@ -54,10 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (lapiz) {
                                         color = document.getElementById("favcolor").value;
                                 }
-                                ctx.fillStyle = color; //COLOR
+                                ctx.lineWidth = tamaño;
+                                ctx.strokeStyle = color; //COLOR
                                 ctx.moveTo(coordenada1.x, coordenada1.y);
-                                ctx.arc(coordenada2.x, coordenada2.y, tamaño, 0, 2 * Math.PI);
-                                ctx.fill();
+                                ctx.lineTo(coordenada2.x, coordenada2.y)
+                                ctx.stroke();
                                 coordenada1 = coordenada2
                         }
                 }
