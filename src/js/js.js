@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let c = document.getElementById("MyCanvas");
         let ctx = c.getContext("2d");
-        document.getElementById("nuevoLienzo").addEventListener("click", function lienzoBlanco() {
+        document.getElementById("nuevoLienzo").addEventListener("click", lienzoBlanco );
+
+        function lienzoBlanco() {
 
                 //Lienzo en blanco      
                 ctx.beginPath();
                 ctx.rect(0, 0, c.width, c.height);
                 ctx.fillStyle = "rgba(255,255,255,1)";
                 ctx.fill();
-        })
-
+        }
         let coordenada1;
         let coordenada2;
         let paint = false;
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 function draw(c, evt) {
 
 
-                        c.style.cursor = "url('src/images/pincel.png'),auto";
+                        c.style.cursor = "url('https://miracomosehace.com/wp-content/uploads/2020/06/flecha-colores-sin-fondo.jpg')";
 
                         let tamaño = document.getElementById("grosor").value
                         if (paint) {
@@ -52,7 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 ctx.beginPath();
                                 ctx.lineCap = "round";
                                 if (lapiz) {
+                                        c.style.cursor = "url(src/images/pincel.cur), auto";
                                         color = document.getElementById("favcolor").value;
+                                }
+                                else{
+                                        c.style.cursor = "auto";
                                 }
                                 ctx.lineWidth = tamaño;
                                 ctx.strokeStyle = color; //COLOR
@@ -72,29 +77,45 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        //FALTA CARGAR LA IMAGEN Y DESCARGARLA
-
-
-
-        ///////////////////// FILTROS
-        document.getElementById("imageForm").addEventListener("submit", (e) => {
-                e.preventDefault();
-                const files = document.getElementById('file');
-                const formData = new FormData();
-                formData.append('lienzo', files[0]);
-        })
-        var imagen = new Image();
-        imagen.src = "src/images/messirve.jpg";
-        imagen.onload = loadImage()
-        let imageScaledWidth = imagen.width;
-        let imageScaledHeight = imagen.height;
-        c.height = imageScaledHeight / 2;
-        c.width = imageScaledWidth / 2;
-        var imageData = ctx.createImageData(c.height, c.width);
-        document.getElementById("original").addEventListener("click", loadImage);
-        function loadImage() {
+        //DESCARGA
+        document.getElementById("descargar").addEventListener("click", function saveImage() {
+                var link = window.document.createElement( 'a' ),
+                    url = c.toDataURL(),
+                    filename = 'screenshot.jpg';
+             
+                link.setAttribute( 'href', url );
+                link.setAttribute( 'download', filename );
+                link.style.visibility = 'hidden';
+                window.document.body.appendChild( link );
+                link.click();
+                window.document.body.removeChild( link );
+            });
+        //CARGAR LA IMAGEN 
+        document.getElementById("archivoSubido").addEventListener("change", function (ev) {
+                var imagen = new Image();
+                let imageData;
+                imageData = ev.value;
                 ctx.drawImage(imagen, 0, 0, c.width, c.height);
-        }
+                imageData = ctx.getImageData(0, 0, c.width, c.height);
+
+
+                if (ev.target.files) {
+                        let file = ev.target.files[0];
+                        let proceso = new FileReader();
+                        proceso.readAsDataURL(file);
+                        proceso.onloadend = function (e) {
+                                imagen.src = e.target.result;
+                                imagen.onload = loadImage()
+                        }
+                        ev.target.files="";
+                        archivoSubido.value="";
+                }
+                function loadImage() {
+                        ctx.drawImage(imagen, 0, 0, c.width, c.height);
+                }
+        });
+        ///////////////////// FILTROS
+
         let buttongris = document.getElementById("gris");
         buttongris.addEventListener("click", function aplicarFiltroGrises() {
                 let r;
@@ -121,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let b;
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
-                let brillo= document.getElementById("porcentajeBrillo").value;
+                let brillo = document.getElementById("porcentajeBrillo").value;
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;

@@ -18,36 +18,34 @@
 		<input type="color" class="favcolor" id="favcolor" value="#000000">
 	</form>
 	<div>
-		<form method="POST" enctype="multipart/form-data" id="imageForm">
-			<input type="file" name="file">
-			<button type="submit" role="button">Upload File</button>
-		</form>
+		<input id="archivoSubido" name="uploadedfile" type="file">
 	</div>
-
-	<button id="gris">Gris</button>
-	<input type="range" list="tickmarks" id="porcentajeBrillo">
-	<datalist id="tickmarks">
-		<option value="100" label="100%">
-		<option value="90">
-		<option value="80">
-		<option value="70">
-		<option value="60">
-		<option value="50" label="50%">
-		<option value="40">
-		<option value="30">
-		<option value="20">
-		<option value="10">
-		<option value="0" label="0%">
-	</datalist>
-	<button id="brillo">Brillo</button>
-	<button id="blur">La desenfocación</button>
-	<button id="negativo">Negativo</button>
-	<button id="sepia">Sepia</button>
-	<button id="original">Original</button>
-	<button id="nuevoLienzo">Nuevo Dibujo</button>
-	<button id="binarizacion">Binarizacion</button>
-	<button id="sobel">Sobel</button>
-	<button id="contraste">Contraste</button>
+	<div class="barraHerramientas">
+		<button id="gris">Gris</button>
+		<input type="range" list="tickmarks" id="porcentajeBrillo">
+		<datalist id="tickmarks">
+			<option value="100" label="100%">
+			<option value="90">
+			<option value="80">
+			<option value="70">
+			<option value="60">
+			<option value="50" label="50%">
+			<option value="40">
+			<option value="30">
+			<option value="20">
+			<option value="10">
+			<option value="0" label="0%">
+		</datalist>
+		<button id="brillo">Brillo</button>
+		<button id="blur">La desenfocación</button>
+		<button id="negativo">Negativo</button>
+		<button id="sepia">Sepia</button>
+		<button id="nuevoLienzo">Nuevo Dibujo</button>
+		<button id="binarizacion">Binarizacion</button>
+		<button id="sobel">Sobel</button>
+		<button id="contraste">Contraste</button>
+		<button id="descargar">Descargar</button>
+	</div>
 </body>
 <script src="src/js/js.js"></script>
 
