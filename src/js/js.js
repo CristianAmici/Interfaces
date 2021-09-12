@@ -121,15 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 let b;
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                let brillo= document.getElementById("porcentajeBrillo").value;
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;
                                 r = getRed(imageData, x, y);
                                 g = getGreen(imageData, x, y);
                                 b = getBlue(imageData, x, y);
-                                r = (r * 100) / 70;
-                                g = (g * 100) / 70;
-                                b = (b * 100) / 70;
+                                r = (r * 100) / brillo;
+                                g = (g * 100) / brillo;
+                                b = (b * 100) / brillo;
                                 imageData.data[index + 0] = r;
                                 imageData.data[index + 1] = g;
                                 imageData.data[index + 2] = b;
