@@ -1,36 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E
-<html xmlns=" http://www.w3.org/1999/xhtml%22%3E> 
+<html xmlns=" http://www.w3.org/1999/xhtml%22%3E>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="src/styles/style.css">
-<title>Clase 1 - Template</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="src/styles/style.css">
+	<title>Clase 1 - Template</title>
 </head>
 
 <body>
-		<canvas id="MyCanvas" width="1000" height="500" > </canvas>
-		<button id="lapiz">Lapiz</button>
-		<button id="goma">Goma</button>
-		<h3>Tamaño del pincel</h3>
-		<input type="number" id="grosor" value="10">
-		<form >
-			<label for="favcolor">Color:</label>
-			<input type="color" class="favcolor" id="favcolor" value="#000000">
-		  </form>
-		<div>
-			<form method="POST" enctype="multipart/form-data" id="imageForm">
-				<input type="file" name="file">
-				<button type="submit" role="button">Upload File</button>
-			</form>
-		</div>
+	<canvas id="MyCanvas" width="1000" height="500"> </canvas>
+	<button id="lapiz">Lapiz</button>
+	<button id="goma">Goma</button>
+	<h3>Tamaño del pincel</h3>
+	<input type="number" id="grosor" value="10">
+	<form>
+		<label for="favcolor">Color:</label>
+		<input type="color" class="favcolor" id="favcolor" value="#000000">
+	</form>
+	<div>
+		<form method="POST" enctype="multipart/form-data" id="imageForm">
+			<input type="file" name="file">
+			<button type="submit" role="button">Upload File</button>
+		</form>
+	</div>
 
-    <button id="gris">Gris</button>
+	<button id="gris">Gris</button>
 	<button id="brillo">Brillo</button>
 	<button id="blur">La desenfocación</button>
 	<button id="negativo">Negativo</button>
 	<button id="sepia">Sepia</button>
 	<button id="original">Original</button>
 	<button id="nuevoLienzo">Nuevo Dibujo</button>
-	<button id="binarizacion" >Binarizacion</button>
+	<button id="binarizacion">Binarizacion</button>
+	<button id="sobel">Sobel</button>
+	<button id="contraste">Contraste</button>
 </body>
 <script src="src/js/js.js"></script>
+
 </html>

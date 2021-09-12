@@ -43,13 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 function draw(c, evt) {
 
-                        let cuerpo = document.getElementById('MyCanvas');
-                        cuerpo.style.cursor = "url('https://www.pngegg.com/es/png-cilri'),auto";
+
+                        c.style.cursor = "url('src/images/pincel.png'),auto";
 
                         let tamaño = document.getElementById("grosor").value
                         if (paint) {
                                 coordenada2 = oMousePos(c, evt);
                                 ctx.beginPath();
+                                ctx.lineCap = "round";
                                 if (lapiz) {
                                         color = document.getElementById("favcolor").value;
                                 }
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ///////////////////// FILTROS
         document.getElementById("imageForm").addEventListener("submit", (e) => {
                 e.preventDefault();
-                const files = document.querySelector('[name=file]').files;
+                const files = document.getElementById('file');
                 const formData = new FormData();
                 formData.append('lienzo', files[0]);
         })
@@ -133,6 +134,40 @@ document.addEventListener("DOMContentLoaded", () => {
                                 imageData.data[index + 2] = b;
                         }
                 }
+                ctx.putImageData(imageData, 0, 0);
+        });
+        let buttonSobel = document.getElementById("sobel");
+        buttonSobel.addEventListener("click", function aplicarFiltroSobel() {
+                let Gx1 = [[-1, 0, +1], [-2, 0, +2], [-1, 0, +1]];
+                let Gx2 = [[-1, -2, -1], [0, 0, 0], [+1, +2, +1]];
+                Gx1.forEach(element => {
+                        console.log(element[1]);
+                });
+
+                ctx.putImageData(imageData, 0, 0);
+        });
+        let buttonContraste = document.getElementById("contraste");
+        buttonContraste.addEventListener("click", function aplicarFiltroContrastel() {
+                let r;
+                let b;
+                let g;
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                let contraste = 100;
+                let FACTOR = (259 * (contraste + 255)) / (255 * (259 - contraste));
+                for (let x = 0; x < c.width; x++) {
+                        for (let y = 0; y < c.height; y++) {
+                                let index = (x + y * imageData.width) * 4;
+                                r = getRed(imageData, x, y);
+                                g = getGreen(imageData, x, y);
+                                b = getBlue(imageData, x, y);
+                                imageData.data[index + 0] = FACTOR * (r - 128) + 128;
+                                imageData.data[index + 1] = FACTOR * (g - 128) + 128;
+                                imageData.data[index + 2] = FACTOR * (b - 128) + 128;
+                        }
+                }
+
+
+
                 ctx.putImageData(imageData, 0, 0);
         });
         let buttonNegative = document.getElementById("negativo");
