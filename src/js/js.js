@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         c.style.cursor = "auto";
                                 }
                                 ctx.lineWidth = tamaño;
-                                ctx.strokeStyle = color; //COLOR
+                                ctx.strokeStyle = color; //COLOR                            
                                 ctx.moveTo(coordenada1.x, coordenada1.y);
                                 ctx.lineTo(coordenada2.x, coordenada2.y)
                                 ctx.stroke();
@@ -71,9 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 //toma las cordeeanadas     
                 function oMousePos(c, evt) {
+                        var posicion = c.getBoundingClientRect();
+                        var canvasX = posicion.left;
+                        var canvasY = posicion.top;
                         return { //objeto
-                                x: Math.round(evt.clientX),
-                                y: Math.round(evt.clientY)
+                                x: Math.round(evt.clientX-canvasX),
+                                y: Math.round(evt.clientY-canvasY)
                         }
                 }
         }
@@ -141,8 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let b;
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
-                let brillo = document.getElementById("porcentajeBrillo").value;
-                console.log(brillo)
+                let brillo =100 -parseInt(document.getElementById("porcentajeBrillo").value);     
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;
@@ -176,7 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let contraste = document.getElementById("porcentajeContraste").value;
+                console.log(contraste);
                 let FACTOR = (259 * (contraste + 255)) / (255 * (259 - contraste));
+                console.log(FACTOR);
                 for (let x = 0; x < c.width; x++) {
                         for (let y = 0; y < c.height; y++) {
                                 let index = (x + y * imageData.width) * 4;
