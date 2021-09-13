@@ -13,19 +13,20 @@
 <body>
 	<main>
 		<canvas id="MyCanvas" width="1000" height="500"> </canvas>
-		<button id="lapiz">Lapiz</button>
-		<button id="goma">Goma</button>
-		<h3>Tamaño del pincel</h3>
-		<input type="number" id="grosor" value="10">
-		<form>
-			<label for="favcolor">Color:</label>
-			<input type="color" class="favcolor" id="favcolor" value="#000000">
-		</form>
-		<div>
-			<input type="file" id="file" accept="image/*" />
-			<button id="cargarFoto">Mostrar Imagen</button>
-		</div>
 		<div class="barraHerramientas">
+			<button id="nuevoLienzo">Nuevo Dibujo</button>
+			<button id="lapiz">Lapiz</button>
+			<button id="goma">Goma</button>
+			<h3>Tamaño del pincel</h3>
+			<input type="number" id="grosor" value="10">
+			<form>
+				<label for="favcolor">Color:</label>
+				<input type="color" class="favcolor" id="favcolor" value="#000000">
+			</form>
+			<div>
+				<input type="file" id="file" accept="image/*" />
+				<button id="cargarFoto">Mostrar Imagen</button>
+			</div>
 			<button id="gris">Gris</button>
 			<input type="range" list="tickmarks" id="porcentajeBrillo">
 		
@@ -33,11 +34,11 @@
 			<button id="blur">La desenfocación</button>
 			<button id="negativo">Negativo</button>
 			<button id="sepia">Sepia</button>
-			<button id="nuevoLienzo">Nuevo Dibujo</button>
 			<button id="binarizacion">Binarizacion</button>
 			<button id="sobel">Sobel</button>
 			<input type="range" min="-200" max="200" id="porcentajeContraste">
 			<button id="contraste">Contraste</button>
+			<label for="">Si desea descargar la imagen presione el siguiente boton</label>
 			<button id="descargar">Descargar</button>
 		</div>
 	</main>
