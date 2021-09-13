@@ -1,51 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E
-<html xmlns=" http://www.w3.org/1999/xhtml%22%3E>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>TUDAI-INTERFACES</title>
 	<link rel="stylesheet" href="src/styles/style.css">
-	<title>Clase 1 - Template</title>
 </head>
 
 <body>
-	<canvas id="MyCanvas" width="1000" height="500"> </canvas>
-	<button id="lapiz">Lapiz</button>
-	<button id="goma">Goma</button>
-	<h3>Tamaño del pincel</h3>
-	<input type="number" id="grosor" value="10">
-	<form>
-		<label for="favcolor">Color:</label>
-		<input type="color" class="favcolor" id="favcolor" value="#000000">
-	</form>
-	<div>
-		<input id="archivoSubido" name="uploadedfile" type="file">
-	</div>
-	<div class="barraHerramientas">
-		<button id="gris">Gris</button>
-		<input type="range" list="tickmarks" id="porcentajeBrillo">
-		<datalist id="tickmarks">
-			<option value="100" label="100%">
-			<option value="90">
-			<option value="80">
-			<option value="70">
-			<option value="60">
-			<option value="50" label="50%">
-			<option value="40">
-			<option value="30">
-			<option value="20">
-			<option value="10">
-			<option value="0" label="0%">
-		</datalist>
-		<button id="brillo">Brillo</button>
-		<button id="blur">La desenfocación</button>
-		<button id="negativo">Negativo</button>
-		<button id="sepia">Sepia</button>
-		<button id="nuevoLienzo">Nuevo Dibujo</button>
-		<button id="binarizacion">Binarizacion</button>
-		<button id="sobel">Sobel</button>
-		<button id="contraste">Contraste</button>
-		<button id="descargar">Descargar</button>
-	</div>
+	<main>
+		<canvas id="MyCanvas" width="1000" height="500"> </canvas>
+		<button id="lapiz">Lapiz</button>
+		<button id="goma">Goma</button>
+		<h3>Tamaño del pincel</h3>
+		<input type="number" id="grosor" value="10">
+		<form>
+			<label for="favcolor">Color:</label>
+			<input type="color" class="favcolor" id="favcolor" value="#000000">
+		</form>
+		<div>
+			<input type="file" id="file" accept="image/*" />
+			<button id="cargarFoto">Mostrar Imagen</button>
+		</div>
+		<div class="barraHerramientas">
+			<button id="gris">Gris</button>
+			<input type="range" list="tickmarks" id="porcentajeBrillo">
+		
+			<button id="brillo">Brillo</button>
+			<button id="blur">La desenfocación</button>
+			<button id="negativo">Negativo</button>
+			<button id="sepia">Sepia</button>
+			<button id="nuevoLienzo">Nuevo Dibujo</button>
+			<button id="binarizacion">Binarizacion</button>
+			<button id="sobel">Sobel</button>
+			<input type="range" min="-200" max="200" id="porcentajeContraste">
+			<button id="contraste">Contraste</button>
+			<button id="descargar">Descargar</button>
+		</div>
+	</main>
 </body>
 <script src="src/js/js.js"></script>
 

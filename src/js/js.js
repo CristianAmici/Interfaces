@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let c = document.getElementById("MyCanvas");
         let ctx = c.getContext("2d");
-        document.getElementById("nuevoLienzo").addEventListener("click", lienzoBlanco );
+        lienzoBlanco();
+        document.getElementById("nuevoLienzo").addEventListener("click", lienzoBlanco);
 
         function lienzoBlanco() {
 
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let paint = false;
         let lapiz = false;
         let color;
+        var imagen = new Image();
 
         document.getElementById("lapiz").addEventListener("click", () => {
                 lapiz = true;
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         c.style.cursor = "url(src/images/pincel.cur), auto";
                                         color = document.getElementById("favcolor").value;
                                 }
-                                else{
+                                else {
                                         c.style.cursor = "auto";
                                 }
                                 ctx.lineWidth = tamaño;
@@ -79,41 +81,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //DESCARGA
         document.getElementById("descargar").addEventListener("click", function saveImage() {
-                var link = window.document.createElement( 'a' ),
-                    url = c.toDataURL(),
-                    filename = 'screenshot.jpg';
-             
-                link.setAttribute( 'href', url );
-                link.setAttribute( 'download', filename );
+                var link = window.document.createElement('a'),
+                        url = c.toDataURL(),
+                        filename = 'screenshot.jpg';
+
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
                 link.style.visibility = 'hidden';
-                window.document.body.appendChild( link );
+                window.document.body.appendChild(link);
                 link.click();
-                window.document.body.removeChild( link );
-            });
+                window.document.body.removeChild(link);
+        });
         //CARGAR LA IMAGEN 
-        document.getElementById("archivoSubido").addEventListener("change", function (ev) {
-                var imagen = new Image();
-                let imageData;
-                imageData = ev.value;
-                ctx.drawImage(imagen, 0, 0, c.width, c.height);
-                imageData = ctx.getImageData(0, 0, c.width, c.height);
+        document.getElementById("file").addEventListener("change", () => {
 
+                var archivo = document.getElementById("file").files[0];
+                var reader = new FileReader();
+                if (archivo) {
+                        reader.readAsDataURL(archivo);
+                        reader.onloadend = function () {
+                                imagen.src = reader.result;
 
-                if (ev.target.files) {
-                        let file = ev.target.files[0];
-                        let proceso = new FileReader();
-                        proceso.readAsDataURL(file);
-                        proceso.onloadend = function (e) {
-                                imagen.src = e.target.result;
-                                imagen.onload = loadImage()
                         }
-                        ev.target.files="";
-                        archivoSubido.value="";
-                }
-                function loadImage() {
-                        ctx.drawImage(imagen, 0, 0, c.width, c.height);
                 }
         });
+        document.getElementById("cargarFoto").addEventListener("click", () => {
+                if (imagen.width < c.width && imagen.height < c.height) {
+                        ctx.drawImage(imagen, (c.width-imagen.width)/2, (c.height-imagen.height)/2, imagen.width, imagen.height);
+                } else {
+                        ctx.drawImage(imagen, 0, 0, c.width, c.height);
+
+                }
+        })
         ///////////////////// FILTROS
 
         let buttongris = document.getElementById("gris");
@@ -143,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let brillo = document.getElementById("porcentajeBrillo").value;
+                console.log(brillo)
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
                                 let index = (x + y * imageData.width) * 4;
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let b;
                 let g;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
-                let contraste = 100;
+                let contraste = document.getElementById("porcentajeContraste").value;
                 let FACTOR = (259 * (contraste + 255)) / (255 * (259 - contraste));
                 for (let x = 0; x < c.width; x++) {
                         for (let y = 0; y < c.height; y++) {
