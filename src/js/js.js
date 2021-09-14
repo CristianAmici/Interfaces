@@ -112,13 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (imagen.width < c.width && imagen.height < c.height) {
                         ctx.drawImage(imagen, (c.width-imagen.width)/2, (c.height-imagen.height)/2, imagen.width, imagen.height);
                 }
-                else if(imagen.width < c.width && imagen.height > c.height){
+                /*else if(imagen.width < c.width && imagen.height > c.height){
                         ctx.drawImage(imagen, (c.width-imagen.width)/2, c.height, imagen.width, imagen.height);
                         console.log("estoy muy alto")
                 } else if(imagen.width > c.width && imagen.height < c.height){
                         ctx.drawImage(imagen, c.width, c.height, imagen.width, imagen.height);
                         console.log("estoy muy ancho")
-                }else {
+                }*/else {
                         ctx.drawImage(imagen, 0, 0, c.width, c.height);
 
                 }
@@ -263,12 +263,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                 (getBlue(imageData, x, y - 1)*Gx[2][1]) + //0
                                 (getBlue(imageData, x, y + 1)*Gx[0][1]); //0
 
-                                if(r<10&&g<10&&b<10){
+                          
 
                                         imageData2.data[index + 0] = r ;
                                         imageData2.data[index + 1] = g ;
                                         imageData2.data[index + 2] = b ;
-                                }
+                                
                         }
                 }
 
@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 var imagenAux = new Image();
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let imageData2 = ctx.getImageData(0, 0, c.width, c.height);
-                for (let y = 0; y < imageData.height; y++) {
-                        for (let x = 0; x < imageData.width; x++) {
+                for (let y = 1; y < imageData.height-1; y++) {
+                        for (let x = 1; x < imageData.width-1; x++) {
                                 let index = (x + y * imageData.width) * 4;
                                 r = getRed(imageData, x, y) + getRed(imageData, x + 1, y) + getRed(imageData, x - 1, y) + getRed(imageData, x + 1, y - 1) + getRed(imageData, x - 1, y + 1) + getRed(imageData, x - 1, y - 1) + getRed(imageData, x + 1, y + 1) + getRed(imageData, x, y - 1) + getRed(imageData, x, y + 1);
                                 g = getGreen(imageData, x, y) + getGreen(imageData, x + 1, y) + getGreen(imageData, x - 1, y) + getGreen(imageData, x + 1, y - 1) + getGreen(imageData, x - 1, y + 1) + getRed(imageData, x - 1, y - 1) + getGreen(imageData, x + 1, y + 1) + getGreen(imageData, x, y - 1) + getGreen(imageData, x, y + 1);
