@@ -13,14 +13,13 @@ main{
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.452);
     align-items: center;
+    justify-content: space-evenly;
 }
 h3{
     text-align: center;
 }
  .botonEstilo{
     border: none;
-    margin: 3px;
-    padding: 3px;
     width: 150px;
     font-family: "montserrat",sans-serif;
     border-radius: 6px;
