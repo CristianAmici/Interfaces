@@ -1,5 +1,66 @@
-Bienvenido!!
-Este proyecto es un intento de paint...
-Las funciones son similares a este programa conocido, ademas de poder aplicar filtros a imagenes que se pueden cargar mediante un boton y luego mostrar mediante otro boton.
-Tambien tiene la funcion de descarga dicha imagen.
-Hay filtros que tiene una barra para seleccionar la intencidad (brillo y contraste) y otros que van sumando intensidad constante.
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>TUDAI-INTERFACES</title>
+	<link rel="stylesheet" href="src/styles/style.css">
+</head>
+
+<body>
+	<header>
+		<h3>DIBUJE DIBU</h3>
+	</header>
+	<main>
+		<canvas id="MyCanvas" width="1000" height="500"> </canvas>
+		<div id="mySidebar" class="sidebar">
+			
+			<button class="botonEstilo btnColor1" id="nuevoLienzo">Nuevo Dibujo</button>
+			<button class="botonEstilo btnColor1" id="lapiz">Lapiz</button>
+			<button class="botonEstilo btnColor1" id="goma">Goma</button>
+			<h3>Tamaño del pincel</h3>
+			<input type="number" id="grosor" value="10">
+			<form>
+				<label for="favcolor">Color:</label>
+				<input type="color" class="favcolor" id="favcolor" value="#000000">
+				
+			</form>
+
+			<div>
+				<label for="">Elegir imagen</label>
+				<input type="file" id="file" accept="image/*" />
+				<button class="botonEstilo btnColor1" id="cargarFoto">Mostrar Imagen</button>
+				
+			</div>
+				<label for="">Si desea descargar la imagen presione el siguiente boton</label>
+				<button class="botonEstilo btnColor1" id="descargar">Descargar</button>
+
+			<input type="range" list="tickmarks" id="porcentajeBrillo">
+			<button class="botonEstilo btnColor4" id="brillo">Brillo</button>
+			
+			
+			<button class="botonEstilo btnColor2" id="gris">Gris</button>
+			
+			<button class="botonEstilo btnColor4" id="negativo">Negativo</button>
+			<button class="botonEstilo btnColor4" id="sepia">Sepia</button>
+			<button class="botonEstilo btnColor4" id="saturacion">Saturacion</button>
+			<input type="range" min="-200" max="200" id="porcentajeContraste">	
+			<button class="botonEstilo btnColor4"  id="contraste">Contraste</button>
+			
+			<button class="botonEstilo btnColor4" id="blur">Desenfoque</button>
+
+			<button class="botonEstilo btnColor4" id="binarizacion">Binarizacion</button>
+			<button class="botonEstilo btnColor4" id="sobel">Sobel</button>
+			
+			
+			
+			
+		</div>
+	</main>
+</body>
+<script src="src/js/js.js"></script>
+
+</html>
