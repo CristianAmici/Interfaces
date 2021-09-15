@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function lienzoBlanco() {
 
                 ctx.beginPath();
-                ctx.rect(0, 0, c.width, c.height);
+                ctx.rect(0, 0, 1000, 500);
                 ctx.fillStyle = "rgba(255,255,255,1)";
                 ctx.fill();
         }
@@ -114,22 +114,22 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("cargarFoto").addEventListener("click", cargarFoto);
 
         function cargarFoto() {
-                let relacionAspecto;
-                let anchoEscala;
-                let altoEscala;
-
-                if (imagen.width > imagen.height) {
+                let relacionAspecto=0;
+                let ancho=0;
+                let alto=0;
+                lienzoBlanco();
+                if (imagen.width < imagen.height) {
                         relacionAspecto = imagen.height / imagen.width;
-                        anchoEscala = c.width;
-                        altoEscala = c.width * relacionAspecto;
-                        c.height = altoEscala;
-                } else {
+                        ancho= c.width;
+                        alto = c.width * relacionAspecto;
+                        c.height = alto;
+                } else{
                         relacionAspecto = imagen.width / imagen.height;
-                        anchoEscala = c.height;
-                        altoEscala = c.height * relacionAspecto;
-                        c.width = anchoEscala;
+                        alto= c.height;
+                        ancho = c.height * relacionAspecto;
+                        c.width = ancho;
                 }
-                ctx.drawImage(imagen, 0, 0, anchoEscala, altoEscala);
+                ctx.drawImage(imagen, 0, 0, ancho, alto);
 
         }
         ///////////////////// FILTROS ////////////////////////////////////////
