@@ -58,5 +58,3 @@
 	</main>
 </body>
 <script src="src/js/js.js"></script>
-
-</html>
