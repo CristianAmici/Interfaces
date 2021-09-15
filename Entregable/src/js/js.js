@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-        ///FILTRO DE BRILLO
+        ///FILTRO DE BRILLO: aumenta los valores de el RGB para que sus valores sean mas cercanos al blanco
         let buttonbrillo = document.getElementById("brillo");
         buttonbrillo.addEventListener("click", function aplicarFiltroBrillo() {
                 let r;
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.putImageData(imageData, 0, 0);
         });
 
-        //FILTRO DE SOBEL
+        //FILTRO DE SOBEL: se busca mediante 2 matrices el cambio de color en diferentes pixeles para dibujar un tono claro en caso de encontrarlo
         let buttonSobel = document.getElementById("sobel");
         buttonSobel.addEventListener("click", function aplicarFiltroSobel() {
                 let Gx = [[-1, 0, +1],
@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 ctx.putImageData(imageData2, 0, 0);
         });
-        //FILTRO DE CONTRASTE
+        //FILTRO DE CONTRASTE: destaca la diferencia de los colores que presenta la imagen
         let buttonContraste = document.getElementById("contraste");
         buttonContraste.addEventListener("click", function aplicarFiltroContraste() {
                 let r;
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 ctx.putImageData(imageData, 0, 0);
         });
-        //FILTRO NEGATIVO
+        //FILTRO NEGATIVO: invierte el valor de los colores
         let buttonNegative = document.getElementById("negativo");
         buttonNegative.addEventListener("click", function aplicarFiltroNegativo() {
                 let r;
@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-        //FILTRO SEPIA
+        //FILTRO SEPIA: se le da una tonalidad mayormente R y G que a B y em ese orde de importancia de valores.
         let buttonsepia = document.getElementById("sepia");
         buttonsepia.addEventListener("click", function aplicarFiltroSepia() {
                 let r;
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ctx.putImageData(imageData, 0, 0);
         });
-        //FILTRO BLUR
+        //FILTRO BLUR: Se realiza un promedio a partir de los valores de los pixeles que estan al rededor del tomado y se coloca en ese lugar el promedio de todos los valores.
         let buttonblur = document.getElementById("blur");
         buttonblur.addEventListener("click", function aplicarFiltroblur() {
                 let r;
@@ -468,7 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ctx.putImageData(imageData2, 0, 0);
         });
-        //FILTRO BINARIZACION
+        //FILTRO BINARIZACION: se vuelve los valores de los pixeles o blacos o negros, a partir de un valor, que decidimos por gusto que sea 320.
         let buttonBinarizacion = document.getElementById("binarizacion");
         buttonBinarizacion.addEventListener("click", function aplicarFiltroBinarizacion() {
                 let r;
