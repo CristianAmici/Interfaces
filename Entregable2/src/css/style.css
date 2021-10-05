@@ -1,0 +1,36 @@
+main{
+    display:flex;
+    text-align: center;
+}
+.sidebar{
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(48, 156, 106, 0.884);
+    align-items: center;
+    justify-content: space-evenly;
+}
+h1{
+    text-align: center;
+}
+canvas{
+    margin-left: 20%;
+}
+
+#effect{
+    max-height: 650px;
+    max-width: 650px;
+    animation-name: cambiarFondo;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes cambiarFondo {
+    0% {background-color: rgb(73, 168, 160);}
+    50% {background-color: rgb(180, 64, 165);}
+    100% {background-color: rgb(108, 30, 209);}
+}
+img{
+    border-radius: 70%;
+}
