@@ -2,12 +2,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     var CARD_WIDTH = 100;
     var CARD_HEIGHT = 50;
-    var cards = [];
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
     var coorY, coorX;
-    var fichas = [];
+    var matrix= new Array()
     var state = {
         spaces: [
             { x: 0, y: 250, card: null },
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cards: document.getElementById('fichas')
     };
 
+    
     var context = {
         spaces: canvases.spaces.getContext('2d'),
         drag: canvases.drag.getContext('2d'),
@@ -36,38 +36,34 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     var ctx = context.spaces;
 
-    for (var index = 0; index < 10; index++) {
-        cards.push({
-            x: window.innerWidth * Math.random(),
-            y: window.innerHeight * Math.random(),
-        });
-    }
-
     //Cargamos las imagenes y los subimos a los objetos
     img.src = "src/css/images/vacio.jpg";
 
     img.onload = function () {
         for (let x = 0; x <= 7; x++) {
+            let lugares=[]
             for (let y = 3; y < 9; y++) {
                 coorY = y * 100;
                 if (x != 0 && y != 0) {
                     context.spaces.drawImage(img, coorX, coorY);
+                    lugares.push(coorY)
                 }
 
 
             }
+            matrix[x] = lugares;
             coorX = x * 100;
         }
     }
+    console.log(matrix)
     img2.src = "src/css/images/fichaAmarilla.jpg";
     img3.src = "src/css/images/fichaRoja.jpg";
     img2.onload = function () {
         for (let x = 8; x <= 10; x++) {
-            for (let y = 4; y < 10; y++) {
+            for (let y = 4; y< 10; y++) {
                 coorY = y * 80;
                 if (x > 8) {
-                    context.cards.drawImage(img2, coorX, coorY);
-                    fichas.push({
+                    state.fichas.push({
                         img: img2,
                         x: coorX, y: coorY,
                         width: img2.width, height: img2.height,
@@ -83,8 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let y = 4; y < 10; y++) {
                 coorY = y * 80;
                 if (x > 10) {
-                    context.cards.drawImage(img3, coorX, coorY);
-                    fichas.push({
+                    state.fichas.push({
                         img: img3,
                         x: coorX, y: coorY,
                         width: img2.width, height: img2.height,
@@ -93,8 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             coorX = x * 100;
         }
+        drawSpaces();
+        drawCards();
     }
-    state.fichas = fichas;
 
     onresize();
 
@@ -107,9 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases[key].height = h;
         }
     }
-    drawSpaces();
-    drawCards();
-
+   
+    //Dibujamos los espacios para depositar las fichas
     function drawSpace(space) {
 
         ctx.fillStyle = '#555555';
@@ -124,7 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
             drawSpace(space);
         });
     }
-    function drawCard(ficha, ctx) {
+    //Dibujamos las fichas
+    function dibujarFicha(ficha, ctx) {
         ctx.drawImage(ficha.img, ficha.x, ficha.y);
     }
 
@@ -134,27 +130,27 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.width,
             canvases.cards.height
         );
-
         state.fichas.forEach(function (ficha) {
             if (ficha !== state.holdingCard) {
-                drawCard(ficha, context.cards);
+                dibujarFicha(ficha, context.cards);
             }
+                
         });
     }
-    canvases.drag.onmousedown = function (e) {
-        var card;
+    canvases.drag.addEventListener("mousedown", function (e) {
+        var ficha;
 
         state.isMouseDown = true;
 
         for (var index = 0; index < state.fichas.length; index++) {
-            card = state.fichas[index];
+            ficha = state.fichas[index];
 
-            if (e.clientX >= card.x && e.clientX < CARD_WIDTH + card.x
-                && e.clientY >= card.y && e.clientY < CARD_HEIGHT + card.y) {
-                state.holdingCard = card;
+            if (e.clientX >= ficha.x && e.clientX < ficha.width + ficha.x
+                && e.clientY >= ficha.y && e.clientY < ficha.height + ficha.y) {
+                state.holdingCard = ficha;
                 state.cursorOffset = {
-                    x: e.clientX - card.x,
-                    y: e.clientY - card.y
+                    x: e.clientX - ficha.x,
+                    y: e.clientY - ficha.y
                 };
 
                 drawCards();
@@ -162,30 +158,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     canvases.drag.width,
                     canvases.drag.height,
                 );
-                drawCard(state.holdingCard, context.drag);
+                dibujarFicha(state.holdingCard, context.drag);
                 break;
             }
         }
-    };
+    });
 
-    canvases.drag.onmouseup = function () {
+    canvases.drag.addEventListener("mouseup", function () {
         state.isMouseDown = false;
 
-        var didMatch = false;
+        var didMatch = false; // para identificar si entra o no la ficha
 
         if (state.cursorOffset != null) {
-            var card = state.holdingCard;
+            var ficha = state.holdingCard;
 
             state.cursorOffset = null;
 
             for (var index = 0; index < state.spaces.length; index++) {
                 var s = state.spaces[index];
 
-                if (Math.abs(card.x - s.x) < (CARD_WIDTH / 1.5)
-                    && Math.abs(card.y - s.y) < (CARD_HEIGHT / 1.5)
+                if (Math.abs(ficha.x - s.x) < (CARD_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
+                    && Math.abs(ficha.y - s.y) < (CARD_HEIGHT / 1.75)
                 ) {
-                    card.x = s.x;
-                    card.y = s.y;
+                    ficha.x = s.x;
+                    ficha.y = s.y;
                     didMatch = true;
                     state.holdingCard = null;
                     break;
@@ -193,8 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        if (didMatch) {
-            context.cards.clearRect(0, 0,
+        if (didMatch) { //disparar evento de depositar ficha
+            context.cards.clearRect(0, 0,   //borra de ficha canvas en movimiento y la deja en el tablero
                 canvases.cards.width,
                 canvases.cards.height
             );
@@ -203,32 +199,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.height
             );
             drawCards();
+        }else{
+            drawCards(false);
         }
-    };
+    });
 
-    canvases.drag.onmousemove = function (e) {
+    canvases.drag.addEventListener("mousemove", function (e) {
         if (state.cursorOffset && state.holdingCard != null) {
-            var card = state.holdingCard;
+            var ficha = state.holdingCard;
 
-            card.x = e.clientX - state.cursorOffset.x;
-            card.y = e.clientY - state.cursorOffset.y;
+            ficha.x = e.clientX - state.cursorOffset.x;         //tocar para modificar el margen
+            ficha.y = e.clientY - state.cursorOffset.y;
 
             context.drag.clearRect(0, 0,
                 canvases.drag.width,
                 canvases.drag.height,
             );
 
-            drawCard(card, context.drag);
+            dibujarFicha(ficha, context.drag);
         }
-    };
+    });
     //Boton de jugador 1
-    document.getElementById("j1").addEventListener("click", () => {
+  /*   document.getElementById("j1").addEventListener("click", () => {
         j1 = true;
     });
     //Boton de jugador 2
     document.getElementById("j2").addEventListener("click", () => {
         j1 = false;
     });
-
+ */
 
 })

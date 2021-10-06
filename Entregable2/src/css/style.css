@@ -1,6 +1,6 @@
 main{
     display:flex;
-    text-align: center;
+   /*   text-align: center;*/
 }
 .sidebar{
     margin-left: 1%;
@@ -13,10 +13,10 @@ main{
 h1{
     text-align: center;
 }
-canvas{
+/* canvas{
     margin-left: 20%;
 }
-
+ */
 #effect{
     max-height: 650px;
     max-width: 650px;
