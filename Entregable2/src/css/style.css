@@ -34,3 +34,11 @@ canvas{
 img{
     border-radius: 70%;
 }
+body {
+    background: #222;
+  }
+  .base {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
