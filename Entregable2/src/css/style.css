@@ -33,6 +33,27 @@ h1{
 }
 img{
     border-radius: 70%;
+    animation-name: movingBox;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}  @keyframes movingBox {
+    0% {
+        transform: translate(0, 0);
+      
+    }
+    25%{
+        transform: translate(250px, 0px);
+    }
+    50% {
+        transform: translate(500px, 0px);  
+    }
+    75%{
+        transform: translate(250px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+       
+    } 
 }
 .base {
     position: fixed;

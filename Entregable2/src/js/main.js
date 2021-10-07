@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var img3 = new Image();
     var img4 = new Image();
     var coorY, coorX;
-    var matrix= new Array();
+    var matrix = new Array(); 
     const valoresOriginales = new Array();
     var state = {
         spaces: [
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         drag: document.getElementById('movimiento'),
         cards: document.getElementById('fichas')
     };
-
+    
     
     var context = {
         spaces: canvases.spaces.getContext('2d'),
@@ -48,14 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 coorY = y * 100;
                 if (x != 0 && y != 0) {
                     context.spaces.drawImage(img, coorX, coorY);
-                    lugares.push(coorY)
+                    lugares.push({
+                        coorY,
+                        vacio: true,
+                    });
                 }
             }
             matrix[x] = lugares;
             coorX = x * 100;
         }
     }
-    console.log(matrix)
     img2.src = "src/css/images/fichaAmarilla.jpg";
     img3.src = "src/css/images/fichaRoja.jpg";
     img2.onload = function () {
@@ -247,6 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     function fichaCayendo(fichaPorCaer){
+        
         if(fichaPorCaer.color == "amarillo"){
             img4.src = "src/css/images/fichaAmarillaTablero.jpg";
         }
@@ -255,9 +258,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         var cordenadaAnteriorY;
+        var espacioenX = fichaPorCaer.x/100+1;   //HARCODEADO
+        var hastaDondeTienequeBajar;
+        for (let y = 0; y < 6; y++) {
+            if( matrix[espacioenX][y].vacio){
+                hastaDondeTienequeBajar = y;
+            }
+           
+        }
+        //el tres es por que empieza 300 pixeles abajo
         img4.onload = function () {
-            for (let y = 3; y < 9; y++) {
-                    
+            for (let y = 3; y <= hastaDondeTienequeBajar+3; y++) {
                     coorX = fichaPorCaer.x;
                     coorY = y*100;
                     if(y!=3){
@@ -268,8 +279,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     context.spaces.drawImage(img, coorX, cordenadaAnteriorY);
                     context.spaces.drawImage(img4, coorX, coorY);
+                    
             }
+            matrix[espacioenX][hastaDondeTienequeBajar].vacio = false;
         } 
+        
+        
     }
-
 })
