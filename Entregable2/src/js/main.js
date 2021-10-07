@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
+    var img4 = new Image();
     var coorY, coorX;
-    var matrix= new Array()
+    var matrix= new Array();
+    const valoresOriginales = new Array();
     var state = {
         spaces: [
             { x: 0, y: 250, card: null },
@@ -48,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     context.spaces.drawImage(img, coorX, coorY);
                     lugares.push(coorY)
                 }
-
-
             }
             matrix[x] = lugares;
             coorX = x * 100;
@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         img: img2,
                         x: coorX, y: coorY,
                         width: img2.width, height: img2.height,
+                        color : "amarillo",
+                    })
+                    valoresOriginales.push({
+                        x: coorX, y: coorY,
                     })
                 }
             }
@@ -82,16 +86,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     state.fichas.push({
                         img: img3,
                         x: coorX, y: coorY,
-                        width: img2.width, height: img2.height,
+                        width: img3.width, height: img3.height,
+                        color : "rojo",
+                    })
+                    valoresOriginales.push({
+                        x: coorX, y: coorY,
                     })
                 }
             }
             coorX = x * 100;
         }
         drawSpaces();
-        drawCards();
+        drawCards(); 
     }
-
+    /* 4 en linea // 6x7 
+    6 en linea, 8x9,
+    7 en linea 9x10
+    5 en linea seria 7x8 */
     onresize();
 
     function onresize() {
@@ -134,12 +145,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (ficha !== state.holdingCard) {
                 dibujarFicha(ficha, context.cards);
             }
-                
+    
         });
     }
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
-
+        
         state.isMouseDown = true;
 
         for (var index = 0; index < state.fichas.length; index++) {
@@ -166,11 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     canvases.drag.addEventListener("mouseup", function () {
         state.isMouseDown = false;
-
+        var fichaPorCaer;
         var didMatch = false; // para identificar si entra o no la ficha
-
         if (state.cursorOffset != null) {
             var ficha = state.holdingCard;
+            fichaPorCaer = ficha;
 
             state.cursorOffset = null;
 
@@ -199,9 +210,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.height
             );
             drawCards();
+            fichaCayendo(fichaPorCaer);
         }else{
-            drawCards(false);
+            context.drag.clearRect(0, 0,
+                canvases.drag.width,
+                canvases.drag.height,
+            );
+            state.fichas.forEach(function (fichita) {
+                if (fichita == state.holdingCard) {
+                    var pos = state.fichas.indexOf(fichita);
+                    var valor =  valoresOriginales[pos];
+                    state.holdingCard = null;
+                    state.fichas[pos].x = valor.x;
+                    state.fichas[pos].y = valor.y;
+                }
+                
+            })
+            drawCards();
         }
+        
     });
 
     canvases.drag.addEventListener("mousemove", function (e) {
@@ -219,14 +246,30 @@ document.addEventListener("DOMContentLoaded", () => {
             dibujarFicha(ficha, context.drag);
         }
     });
-    //Boton de jugador 1
-  /*   document.getElementById("j1").addEventListener("click", () => {
-        j1 = true;
-    });
-    //Boton de jugador 2
-    document.getElementById("j2").addEventListener("click", () => {
-        j1 = false;
-    });
- */
+    function fichaCayendo(fichaPorCaer){
+        if(fichaPorCaer.color == "amarillo"){
+            img4.src = "src/css/images/fichaAmarillaTablero.jpg";
+        }
+        else{
+            img4.src = "src/css/images/fichaRojaTablero.jpg";
+        }
+        
+        var cordenadaAnteriorY;
+        img4.onload = function () {
+            for (let y = 3; y < 9; y++) {
+                    
+                    coorX = fichaPorCaer.x;
+                    coorY = y*100;
+                    if(y!=3){
+                        cordenadaAnteriorY = coorY-100;
+                    }
+                    else{
+                        cordenadaAnteriorY = coorY;
+                    }
+                    context.spaces.drawImage(img, coorX, cordenadaAnteriorY);
+                    context.spaces.drawImage(img4, coorX, coorY);
+            }
+        } 
+    }
 
 })

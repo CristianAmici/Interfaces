@@ -34,10 +34,7 @@ h1{
 img{
     border-radius: 70%;
 }
-body {
-    background: #222;
-  }
-  .base {
+.base {
     position: fixed;
     top: 0;
     left: 0;
