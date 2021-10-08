@@ -1,3 +1,6 @@
+html{
+    background-color: rgba(58, 56, 56, 0.836);
+}
 main{
     display:flex;
    /*   text-align: center;*/
@@ -17,20 +20,20 @@ h1{
     margin-left: 20%;
 }
  */
-#effect{
+ #effect{
     max-height: 650px;
     max-width: 650px;
-    animation-name: cambiarFondo;
+  /*  animation-name: cambiarFondo;*/
     animation-duration: 6s;
     animation-iteration-count: infinite;
 
 }
-
+/*
 @keyframes cambiarFondo {
     0% {background-color: rgb(73, 168, 160);}
     50% {background-color: rgb(180, 64, 165);}
     100% {background-color: rgb(108, 30, 209);}
-}
+} */
 .imgHeader{
     border-radius: 70%;
     animation-name: movingBox;

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var img4 = new Image();
     var coorY, coorX;
     var valorDeLinea=0;
+    var rivales = "";
     var matrix = new Array();
     const valoresOriginales = new Array();
     var state = {
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("nuevoJuego").addEventListener("click", () => {
         let juego = document.getElementById("selectJuego").value;
         valorDeLinea=parseInt(juego);
-        let rivales = document.getElementById("selectRivales").value;
+        rivales = document.getElementById("selectRivales").value;
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
 
@@ -64,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         if (rivales = "economia") {
-            img2.src = "src/css/images/fichaAmarilla.jpg";
-            img3.src = "src/css/images/fichaRoja.jpg";
+            img2.src = "src/css/images/fichaLiberalismo.png";
+            img3.src = "src/css/images/fichaComunismo.png";
         } else if (rivales = "comida") {
             img2.src = "src/css/images/fichaAmarilla.jpg";
             img3.src = "src/css/images/fichaRoja.jpg";
@@ -160,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ficha = state.fichas[index];
 
             if ((e.clientX-200) >= ficha.x && (e.clientX-200) < ficha.width + ficha.x
-                && e.clientY >= ficha.y && e.clientY < ficha.height + ficha.y) {
+                && (e.clientY-100) >= ficha.y && (e.clientY-100) < ficha.height + ficha.y) {
                 state.holdingCard = ficha;
                 state.cursorOffset = {
                     x: e.clientX - ficha.x,
@@ -254,12 +255,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function fichaCayendo(fichaPorCaer) {
         var jugador = 0;
         if (fichaPorCaer.jugador == 1) {
-            img4.src = "src/css/images/fichaAmarillaTablero.jpg";
+            if(rivales=="economia")
+            img4.src = "src/css/images/fichaLiberalismoTablero.png";
             jugador = 1;
         }
         else {
-            img4.src = "src/css/images/fichaRojaTablero.jpg";
+            if(rivales=="economia"){
+            img4.src = "src/css/images/fichaComunismoTablero.png";
             jugador = 2;
+            }
         }
 
         var cordenadaAnteriorY;
@@ -295,27 +299,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function hayGanador(numeroX, numeroY, jugador) {
         let linea = 0;
+        let index =1;
         //por linea
-        for (let index = 1; index < matrix[numeroX].length; index++) {
 
-            if (matrix[index][numeroY].vacio = jugador) {
+            while (matrix[index][numeroY].vacio == jugador&&index<matrix[numeroY].length) {
                 linea++
+                index++
             }
             if (linea == 4 + valorDeLinea) {
                 ganador.innerHTML = "gano el Jugador N° " + jugador
+                return
             }
-        }
+       
         //por columna
         linea = 0;
-        for (let index = 1; index < matrix[numeroY].length; index++) {
-
-            if (matrix[1][index].vacio = jugador) {
-                linea++
-            }
+        while (matrix[numeroX][index].vacio == jugador&&index < matrix[numeroY].length) {
+            console.log(matrix[numeroX][index])
+            linea++
+            index++
             if (linea == 4 + valorDeLinea) {
                 ganador.innerHTML = "gano el Jugador N° " + jugador
             }
         }
+       /*  
         //Diagonales
         //hacia arriba
         linea = 0;
@@ -337,6 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (linea == 4 + valorDeLinea) {
                 ganador.innerHTML = "gano el Jugador N° " + jugador
             }
-        }
+        } */
     }
 })
