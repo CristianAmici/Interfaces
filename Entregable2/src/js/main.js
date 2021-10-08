@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             img: img2,
                             x: coorX, y: coorY,
                             width: img2.width, height: img2.height,
-                            color: "amarillo",
+                            jugador:1,
                         })
                         valoresOriginales.push({
                             x: coorX, y: coorY,
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             img: img3,
                             x: coorX, y: coorY,
                             width: img3.width, height: img3.height,
-                            color: "rojo",
+                            jugador:2,
                         })
                         valoresOriginales.push({
                             x: coorX, y: coorY,
