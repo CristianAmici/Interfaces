@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var img3 = new Image();
     var img4 = new Image();
     var coorY, coorX;
+    var turno = 2;
     var valorDeLinea=0;
     var rivales = "";
     var matrix = new Array();
@@ -122,9 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
     //Dibujamos los espacios para depositar las fichas
     function drawSpace(space) {
 
-        ctx.fillStyle = '#555555';
+        ctx.fillStyle = '#183DB0';
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#999999';
+        ctx.strokeStyle = '#5B7BDD';
         ctx.fillRect(space.x, space.y, CARD_WIDTH, CARD_HEIGHT);
         ctx.strokeRect(space.x, space.y, CARD_WIDTH, CARD_HEIGHT);
     }
@@ -146,35 +147,46 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.height
         );
         state.fichas.forEach(function (ficha) {
-            if (ficha !== state.holdingCard) {
+            if (ficha !== state.holdingCard && ficha !=false) {
                 dibujarFicha(ficha, context.cards);
             }
 
         });
     }
+    
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
-
+        ganador.innerHTML = ""
         state.isMouseDown = true;
-
+        
         for (var index = 0; index < state.fichas.length; index++) {
             ficha = state.fichas[index];
 
             if ((e.clientX-200) >= ficha.x && (e.clientX-200) < ficha.width + ficha.x
                 && (e.clientY-180) >= ficha.y && (e.clientY-180) < ficha.height + ficha.y) {
-                state.holdingCard = ficha;
-                state.cursorOffset = {
-                    x: e.clientX - ficha.x,
-                    y: e.clientY - ficha.y
-                };
-
-                drawCards();
-                context.drag.clearRect(0, 0,
-                    canvases.drag.width,
-                    canvases.drag.height,
-                );
-                dibujarFicha(state.holdingCard, context.drag);
-                break;
+                
+                if(turno!=state.fichas[index].jugador){
+                    state.holdingCard = ficha;
+                    state.cursorOffset = {
+                        x: e.clientX - ficha.x,
+                        y: e.clientY - ficha.y
+                    };
+                
+                    drawCards();
+                    context.drag.clearRect(0, 0,
+                        canvases.drag.width,
+                        canvases.drag.height,
+                    );
+                    dibujarFicha(state.holdingCard, context.drag);
+                   
+                    
+                   
+                    
+                    break;
+                }
+                else{
+                    ganador.innerHTML = "No es tu turno"
+                }
             }
         }
     });
@@ -198,12 +210,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     ficha.x = s.x;
                     ficha.y = s.y;
                     didMatch = true;
+                    turno = ficha.jugador;
                     state.holdingCard = null;
                     break;
                 }
             }
         }
-
+        
+            
         if (didMatch) { //disparar evento de depositar ficha
             context.cards.clearRect(0, 0,   //borra de ficha canvas en movimiento y la deja en el tablero
                 canvases.cards.width,
@@ -213,10 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.width,
                 canvases.cards.height
             );
-            let pos = state.fichas.indexOf(fichaPorCaer)    //borro la ficha del estado para que no la dibuje
-            state.fichas.splice(pos,1)
+            let pos = state.fichas.indexOf(fichaPorCaer); 
+            state.fichas.splice(pos,1,false) ;////reemplazo la ficha por un false para que no la dibuje
             drawCards();
             fichaCayendo(fichaPorCaer);
+            
         } else {
             context.drag.clearRect(0, 0,
                 canvases.drag.width,
@@ -275,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         }
-        hayGanador(espacioenX, hastaDondeTienequeBajar, jugador)
+       
         //el uno es por que empieza 100 pixeles abajo
         img4.onload = function () {
             for (let y = 1; y <= hastaDondeTienequeBajar +1; y++) {
@@ -292,34 +307,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
             matrix[espacioenX][hastaDondeTienequeBajar].vacio = jugador;
+            hayGanador(espacioenX, hastaDondeTienequeBajar, jugador)
         }
-
+        
 
     }
 
     function hayGanador(numeroX, numeroY, jugador) {
-        let linea = 0;
+        let linea = 1;
         let index =1;
         //por linea
 
-            while (matrix[index][numeroY].vacio == jugador&&index<matrix[numeroY].length) {
-                linea++
-                index++
-                if (linea == 4 + valorDeLinea) {
-                    ganador.innerHTML = "gano el Jugador N° " + jugador
+        while (matrix[index][numeroY].vacio == jugador&&index<matrix[numeroY].length) {
+            linea++
+            index++
+            if (linea == 3) {// + valorDeLinea
+                ganador.innerHTML = "gano el Jugador N° " + jugador
                     //toggle para que se vaya el tablero y fichas
-                    return
-                }
+                return
             }
+        }
        
         //por columna
-        linea = 0;
+        linea = 1;
         while (matrix[numeroX][index].vacio == jugador&&index < matrix[numeroY].length) {
             console.log(matrix[numeroX][index])
             linea++
             index++
-            if (linea == 4 + valorDeLinea) {
+            if (linea == 3 ) {//+ valorDeLinea
                 ganador.innerHTML = "gano el Jugador N° " + jugador
+                return
             }
         }
        /*  
@@ -346,4 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } */
     }
+
+
+
 })

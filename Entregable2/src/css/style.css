@@ -1,68 +1,109 @@
 html{
-    background-color: rgba(182, 167, 81, 0.836);
+    background-color: #000000f7 ;
 }
 main{
     display:flex;
    /*   text-align: center;*/
-}
-.sidebar{
-    margin-left: 1%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(48, 156, 106, 0.884);
-    align-items: center;
-    justify-content: space-evenly;
-}
-h1{
-    text-align: center;
-}
-/* canvas{
-    margin-left: 20%;
-}
- */
- #effect{
-    max-height: 650px;
-    max-width: 650px;
-  /*  animation-name: cambiarFondo;*/
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-
-}
-/*
-@keyframes cambiarFondo {
-    0% {background-color: rgb(73, 168, 160);}
-    50% {background-color: rgb(180, 64, 165);}
-    100% {background-color: rgb(108, 30, 209);}
-} */
-.imgHeader{
-    border-radius: 70%;
-    animation-name: movingBox;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-}  @keyframes movingBox {
-    0% {
-        transform: translate(0, 0);
-      
-    }
-    25%{
-        transform: translate(250px, 0px);
-    }
-    50% {
-        transform: translate(500px, 0px);  
-    }
-    75%{
-        transform: translate(250px, 0px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-       
-    } 
 }
 .base {
     position: absolute;
     top: 200px;
     left:200px;
   }
-  .claseGanador{
-      position: absolute;
-  }
+.sidebar{
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    background-color: #28c3f2bf;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: "montserrat",sans-serif;
+}
+label{
+    margin: 3%;
+    text-align: center;
+    font-family: "montserrat",sans-serif;
+}
+h1{
+    text-align: center;
+}
+#effect{
+    max-height: 650px;
+    max-width: 650px;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+
+}
+.imgHeader{
+    border-radius: 50%;
+    animation-name: movingBox;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+} 
+@keyframes movingBox {
+    0% {transform: translate(0, 0);}
+    25%{transform: translate(200px, 0px);}
+    50% {transform: translate(400px, 0px);}
+    75%{transform: translate(200px, 0px);}
+    100% {transform: translate(0px, 0px);} 
+}
+.botonEstilo{
+    border: none;
+    margin: 2%;
+    width: 130px;
+    height: 40px;
+    font-family: "montserrat",sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-size: 200%;
+    transition: 0.6s;
+} 
+.botonEstilo:hover{
+    background-position: right;
+}
+.btnColor1{
+    background-image: linear-gradient(to left,#2e2be0,#42b3bb,#2e2be0);
+}  
+.content-select{
+	max-width: 200px;
+	position: relative;
+}
+ 
+.content-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	height: 40px;
+	background: #f0f0f0;
+	font-size: 1em;
+	color: rgb(16, 15, 15);
+	font-family:'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+ 
+.content-select select:hover{
+	background: #ffffff;
+}
+ 
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: 18px;
+	width: 12px;
+	height: 12px;
+	display: block;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.content-select:hover i{
+	margin-top: 1px;
+}
