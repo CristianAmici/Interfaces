@@ -1,5 +1,5 @@
 html{
-    background-color: rgba(58, 56, 56, 0.836);
+    background-color: rgba(182, 167, 81, 0.836);
 }
 main{
     display:flex;
@@ -60,7 +60,7 @@ h1{
 }
 .base {
     position: absolute;
-    top: 0px;
+    top: 200px;
     left:200px;
   }
   .claseGanador{

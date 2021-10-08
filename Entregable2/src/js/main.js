@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const valoresOriginales = new Array();
     var state = {
         spaces: [
-            { x: 0, y: 250, card: null },
-            { x: 100, y: 250, card: null },
-            { x: 200, y: 250, card: null },
-            { x: 300, y: 250, card: null },
-            { x: 400, y: 250, card: null },
-            { x: 500, y: 250, card: null },
-            { x: 600, y: 250, card: null }
+            { x: 0, y: 50, card: null },
+            { x: 100, y: 50, card: null },
+            { x: 200, y: 50, card: null },
+            { x: 300, y: 50, card: null },
+            { x: 400, y: 50, card: null },
+            { x: 500, y: 50, card: null },
+            { x: 600, y: 50, card: null }
         ],
         fichas: [],
         holdingCard: null,
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.onload = function () {
             for (let x = 0; x <= 7; x++) {
                 let lugares = []
-                for (let y = 3; y < 9; y++) {
+                for (let y = 0; y < 7; y++) {
                     coorY = y * 100;
                     if (x != 0 && y != 0) {
                         context.spaces.drawImage(img, coorX, coorY);
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         img2.onload = function () {
             for (let x = 8; x <= 10; x++) {
-                for (let y = 4; y < 10; y++) {
+                for (let y = 0; y < 7; y++) {
                     coorY = y * 80;
                     if (x > 8) {
                         state.fichas.push({
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         img3.onload = function () {
             for (let x = 10; x <= 12; x++) {
-                for (let y = 4; y < 10; y++) {
+                for (let y = 0; y < 7; y++) {
                     coorY = y * 80;
                     if (x > 10) {
                         state.fichas.push({
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ficha = state.fichas[index];
 
             if ((e.clientX-200) >= ficha.x && (e.clientX-200) < ficha.width + ficha.x
-                && (e.clientY-100) >= ficha.y && (e.clientY-100) < ficha.height + ficha.y) {
+                && (e.clientY-180) >= ficha.y && (e.clientY-180) < ficha.height + ficha.y) {
                 state.holdingCard = ficha;
                 state.cursorOffset = {
                     x: e.clientX - ficha.x,
@@ -275,12 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         }
-        //el tres es por que empieza 300 pixeles abajo
+        hayGanador(espacioenX, hastaDondeTienequeBajar, jugador)
+        //el uno es por que empieza 100 pixeles abajo
         img4.onload = function () {
-            for (let y = 3; y <= hastaDondeTienequeBajar + 3; y++) {
+            for (let y = 1; y <= hastaDondeTienequeBajar +1; y++) {
                 coorX = fichaPorCaer.x;
                 coorY = y * 100;
-                if (y != 3) {
+                if (y != 1) {
                     cordenadaAnteriorY = coorY - 100;
                 }
                 else {
@@ -291,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
             matrix[espacioenX][hastaDondeTienequeBajar].vacio = jugador;
-            hayGanador(espacioenX, hastaDondeTienequeBajar, jugador)
         }
 
 
@@ -305,10 +305,11 @@ document.addEventListener("DOMContentLoaded", () => {
             while (matrix[index][numeroY].vacio == jugador&&index<matrix[numeroY].length) {
                 linea++
                 index++
-            }
-            if (linea == 4 + valorDeLinea) {
-                ganador.innerHTML = "gano el Jugador N° " + jugador
-                return
+                if (linea == 4 + valorDeLinea) {
+                    ganador.innerHTML = "gano el Jugador N° " + jugador
+                    //toggle para que se vaya el tablero y fichas
+                    return
+                }
             }
        
         //por columna
