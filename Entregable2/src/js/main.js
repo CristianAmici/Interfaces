@@ -65,16 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 coorX = x * 100;
             }
         }
-        if (rivales = "economia") {
-            img2.src = "src/css/images/fichaLiberalismo.png";
-            img3.src = "src/css/images/fichaComunismo.png";
-        } else if (rivales = "comida") {
+        if (rivales = "aves") {
+            img2.src = "src/css/images/fichaAguila.png";
+            img3.src = "src/css/images/fichaCondor.png";
+        } else if (rivales = "starWars") {
             img2.src = "src/css/images/fichaAmarilla.jpg";
             img3.src = "src/css/images/fichaRoja.jpg";
-        } else if (rivales = "aborto") {
+        } else if (rivales = "alien") {
             img2.src = "src/css/images/fichaAmarilla.jpg";
             img3.src = "src/css/images/fichaRoja.jpg";
-        } else if (rivales = "futbol") {
+        } else if (rivales = "mortalKombat") {
             img2.src = "src/css/images/fichaAmarilla.jpg";
             img3.src = "src/css/images/fichaRoja.jpg";
         }
@@ -271,12 +271,12 @@ document.addEventListener("DOMContentLoaded", () => {
         var jugador = 0;
         if (fichaPorCaer.jugador == 1) {
             if(rivales=="economia")
-            img4.src = "src/css/images/fichaLiberalismoTablero.png";
+            img4.src = "src/css/images/fichaAguilaTablero.png";
             jugador = 1;
         }
         else {
             if(rivales=="economia"){
-            img4.src = "src/css/images/fichaComunismoTablero.png";
+            img4.src = "src/css/images/fichaCondorTablero.png";
             jugador = 2;
             }
         }
