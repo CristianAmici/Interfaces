@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     var turno = 2;
     var valorDeLinea=0;
     var rivales = "";
-    let lineaj1 = 0;
-    let lineaj2 = 0;
+    var lineaj1 = 0;
+    var lineaj2 = 0;
     var matrix = new Array();
     const valoresOriginales = new Array();
     var state = {
@@ -44,71 +44,92 @@ document.addEventListener("DOMContentLoaded", () => {
         drag: canvases.drag.getContext('2d'),
         cards: canvases.cards.getContext('2d'),
     };
-    
+    var intervalo;
+
+    var minutos= 1;
+    var segundos = 30;
+ //Definimos y ejecutamos los segundos
+    function cargarSegundo(){
+
+        
+     let txtSegundos;
+ 
+     if(segundos < 0){
+         segundos = 59; 
+     }
+ 
+     //Mostrar Segundos en pantalla
+     if(segundos < 10){
+         txtSegundos = `0${segundos}`;
+     }else{
+         txtSegundos = segundos;
+     }
+     document.getElementById('segundos').innerHTML = txtSegundos;
+     segundos--;
+ 
+     cargarMinutos(segundos);
+ }
+ 
+ //Definimos y ejecutamos los minutos
+ function cargarMinutos(segundos){
+     let txtMinutos;
+ 
+     if(segundos == -1 && minutos !== 0){
+         setTimeout(() =>{
+             minutos--;
+         },500)
+     }else if(segundos == -1 && minutos == 0){
+         setTimeout(() =>{
+             minutos = 1;
+         },500)
+     }
+     
+     //Mostrar Minutos en pantalla
+     if(minutos < 10){
+         txtMinutos = `0${minutos}`;
+     }else{
+         txtMinutos = minutos;
+     }
+
+     document.getElementById('minutos').innerHTML = txtMinutos;
+     if(minutos == 0 && segundos == 0){
+        document.getElementById('segundos').innerHTML = "Perdiste tu turno!";
+        document.getElementById('minutos').innerHTML = "";
+        segundos = 30
+     }
+    }
+
+
+
+
+
     var ctx = context.spaces;
     var ganador = document.getElementById("ganador");
     document.getElementById("nuevoJuego").addEventListener("click", () => {
         let juego = document.getElementById("selectJuego").value;
-        valorDeLinea=parseInt(juego);
+        valorDeLinea = parseInt(juego);
         rivales = document.getElementById("selectRivales").value;
+
+        context.spaces.clearRect(
+            0, 0,
+            canvases.spaces.width,
+            canvases.spaces.height
+        );
+        context.drag.clearRect(
+            0, 0,
+            canvases.drag.width,
+            canvases.drag.height
+        );
+        context.cards.clearRect(
+            0, 0,
+            canvases.cards.width,
+            canvases.cards.height
+        );
+
+        
+
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
-
-
-
-
-        
-
-        var intervalo = setInterval(cargarSegundo,1000);  
-         
-        let minutos = 1;
-        let segundos = 59;
-     //Definimos y ejecutamos los segundos
-        function cargarSegundo(){
-         let txtSegundos;
-     
-         if(segundos < 0){
-             segundos = 59; 
-         }
-     
-         //Mostrar Segundos en pantalla
-         if(segundos < 10){
-             txtSegundos = `0${segundos}`;
-         }else{
-             txtSegundos = segundos;
-         }
-         document.getElementById('segundos').innerHTML = txtSegundos;
-         segundos--;
-     
-         cargarMinutos(segundos);
-     }
-     
-     //Definimos y ejecutamos los minutos
-     function cargarMinutos(segundos){
-         let txtMinutos;
-     
-         if(segundos == -1 && minutos !== 0){
-             setTimeout(() =>{
-                 minutos--;
-             },500)
-         }else if(segundos == -1 && minutos == 0){
-             setTimeout(() =>{
-                 minutos = 59;
-             },500)
-         }
-     
-         //Mostrar Minutos en pantalla
-         if(minutos < 10){
-             txtMinutos = `0${minutos}`;
-         }else{
-             txtMinutos = minutos;
-         }
-         document.getElementById('minutos').innerHTML = txtMinutos;
-        }
-        
-     
-        
-        
         img.onload = function () {
             for (let x = 0; x < 8+valorDeLinea; x++) {
                 let lugares = []
@@ -140,8 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
             img3.src = "src/css/images/fichaRoja.jpg";
         }
         img2.onload = function () {
-            for (let x = 8; x <= 10; x++) {
-                for (let y = 0; y < 7; y++) {
+            for (let x = 8+valorDeLinea; x < 11+valorDeLinea; x++) {
+                for (let y = 0; y < 7+valorDeLinea; y++) {
                     coorY = y * 80;
                     if (x > 8) {
                         state.fichas.push({
@@ -160,8 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         img3.onload = function () {
-            for (let x = 10; x <= 12; x++) {
-                for (let y = 0; y < 7; y++) {
+            for (let x = 10+valorDeLinea; x < 13+valorDeLinea; x++) {
+                for (let y = 0; y < 7+valorDeLinea; y++) {
                     coorY = y * 80;
                     if (x > 10) {
                         state.fichas.push({
@@ -180,6 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
             drawSpaces();
             drawCards();
         }
+        
+        intervalo = setInterval(cargarSegundo,1000);  
     })
     //Dibujamos los espacios para depositar las fichas
     function drawSpace(space) {
@@ -295,8 +318,9 @@ document.addEventListener("DOMContentLoaded", () => {
             state.fichas.splice(pos,1,false) ;////reemplazo la ficha por un false para que no la dibuje
             drawCards();
             fichaCayendo(fichaPorCaer);
-            clearInterval(x);
-            //setInterval(cargarSegundo,1000); 
+           
+            minutos = 1;
+            segundos = 30;
             
         } else {
             context.drag.clearRect(0, 0,
@@ -336,12 +360,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function fichaCayendo(fichaPorCaer) {
         var jugador = 0;
         if (fichaPorCaer.jugador == 1) {
-            if(rivales=="economia")
+            if(rivales=="aves")
             img4.src = "src/css/images/fichaAguilaTablero.png";
             jugador = 1;
         }
         else {
-            if(rivales=="economia"){
+            if(rivales=="aves"){
             img4.src = "src/css/images/fichaCondorTablero.png";
             jugador = 2;
             }
@@ -386,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 1 = horizontal, cambia x
         // 2 = diagonal derecha, cambia x e y 
         // 3 = diagonal izquierda, cambia x e y 
-        /* 
+        
         if((numeroX+1)<8 && matrix[numeroX+1][numeroY].jugador == j){      //X+1, Y
             console.log("hay algo X+1, Y");
             if(lineaj1 == j){
@@ -397,6 +421,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             haylinea(1,j,numeroX+1,numeroY);
+            //linea = uncion recursiva hacia adelante 
+            //linea += funcion recursiva hacia atras
         }
         if((numeroX-1)>0  && matrix[numeroX-1][numeroY] !=null && matrix[numeroX-1][numeroY].jugador == j){      //X-1, Y
             console.log("hay algo X-1, Y");
@@ -500,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             console.log(suma)
             
-        }/* 
+        }
         else if(tipoLinea == 1){
             while(y<7){ 
                 if(matrix[x+1][y].jugador == j){
@@ -554,12 +580,12 @@ document.addEventListener("DOMContentLoaded", () => {
             else{
                 lineaj2+suma;
             }
-        }  */
-        /* if(lineaj1==3){
+        }  
+         if(lineaj1==3){
             console.log("gano");
             ganador.innerHTML = "gano el Jugador N° " + j
         }
- */
+ 
 
 
 
