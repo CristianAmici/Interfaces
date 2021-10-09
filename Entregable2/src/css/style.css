@@ -10,6 +10,15 @@ main{
     top: 200px;
     left:200px;
   }
+.boxGanador{
+    display:none
+}
+.ganador{
+    display:flex;
+    width: 200px;
+    height: 200px;
+    background-color:rgba(16, 15, 15, 0.603)
+}
 .sidebar{
     display: flex;
     border-radius: 5%;
