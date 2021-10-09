@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     var turno = 2;
     var valorDeLinea=0;
     var rivales = "";
+    let lineaj1 = 0;
+    let lineaj2 = 0;
     var matrix = new Array();
     const valoresOriginales = new Array();
     var state = {
@@ -20,7 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
             { x: 300, y: 50, card: null },
             { x: 400, y: 50, card: null },
             { x: 500, y: 50, card: null },
-            { x: 600, y: 50, card: null }
+            { x: 600, y: 50, card: null },//4 en linea
+            { x: 700, y: 50, card: null },//5 en linea
+            { x: 800, y: 50, card: null },//6 en inea
+            { x: 900, y: 50, card: null } //7 en inea
         ],
         fichas: [],
         holdingCard: null,
@@ -39,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         drag: canvases.drag.getContext('2d'),
         cards: canvases.cards.getContext('2d'),
     };
+    
     var ctx = context.spaces;
     var ganador = document.getElementById("ganador");
     document.getElementById("nuevoJuego").addEventListener("click", () => {
@@ -48,16 +54,71 @@ document.addEventListener("DOMContentLoaded", () => {
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
 
+
+
+
+        
+
+        var intervalo = setInterval(cargarSegundo,1000);  
+         
+        let minutos = 1;
+        let segundos = 59;
+     //Definimos y ejecutamos los segundos
+        function cargarSegundo(){
+         let txtSegundos;
+     
+         if(segundos < 0){
+             segundos = 59; 
+         }
+     
+         //Mostrar Segundos en pantalla
+         if(segundos < 10){
+             txtSegundos = `0${segundos}`;
+         }else{
+             txtSegundos = segundos;
+         }
+         document.getElementById('segundos').innerHTML = txtSegundos;
+         segundos--;
+     
+         cargarMinutos(segundos);
+     }
+     
+     //Definimos y ejecutamos los minutos
+     function cargarMinutos(segundos){
+         let txtMinutos;
+     
+         if(segundos == -1 && minutos !== 0){
+             setTimeout(() =>{
+                 minutos--;
+             },500)
+         }else if(segundos == -1 && minutos == 0){
+             setTimeout(() =>{
+                 minutos = 59;
+             },500)
+         }
+     
+         //Mostrar Minutos en pantalla
+         if(minutos < 10){
+             txtMinutos = `0${minutos}`;
+         }else{
+             txtMinutos = minutos;
+         }
+         document.getElementById('minutos').innerHTML = txtMinutos;
+        }
+        
+     
+        
+        
         img.onload = function () {
-            for (let x = 0; x <= 7; x++) {
+            for (let x = 0; x < 8+valorDeLinea; x++) {
                 let lugares = []
-                for (let y = 0; y < 7; y++) {
+                for (let y = 0; y < 7+valorDeLinea; y++) {
                     coorY = y * 100;
-                    if (x != 0 && y != 0) {
+                    if (y != 0) {
                         context.spaces.drawImage(img, coorX, coorY);
                         lugares.push({
                             coorY,
-                            vacio: 0,
+                            jugador: 0,
                         });
                     }
                 }
@@ -131,8 +192,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawSpaces() {
+        let tope = 0;
         state.spaces.forEach(function (space) {
-            drawSpace(space);
+            if(tope< (7+valorDeLinea)){
+                 drawSpace(space);
+                 tope++;
+            }
+               
         });
     }
     //Dibujamos las fichas
@@ -153,12 +219,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
     }
-    
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
         ganador.innerHTML = ""
         state.isMouseDown = true;
-        
         for (var index = 0; index < state.fichas.length; index++) {
             ficha = state.fichas[index];
 
@@ -231,6 +295,8 @@ document.addEventListener("DOMContentLoaded", () => {
             state.fichas.splice(pos,1,false) ;////reemplazo la ficha por un false para que no la dibuje
             drawCards();
             fichaCayendo(fichaPorCaer);
+            clearInterval(x);
+            //setInterval(cargarSegundo,1000); 
             
         } else {
             context.drag.clearRect(0, 0,
@@ -285,14 +351,14 @@ document.addEventListener("DOMContentLoaded", () => {
         var espacioenX = fichaPorCaer.x / 100 + 1;   //HARCODEADO
         var hastaDondeTienequeBajar;
         for (let y = 0; y < 6; y++) {
-            if (matrix[espacioenX][y].vacio==0) {
+            if (matrix[espacioenX][y].jugador==0) {
                 hastaDondeTienequeBajar = y;
             }
 
         }
        
         //el uno es por que empieza 100 pixeles abajo
-        img4.onload = function () {
+        img4.onload = function () {  //if hasta donde tiene que bajar es igual a 0
             for (let y = 1; y <= hastaDondeTienequeBajar +1; y++) {
                 coorX = fichaPorCaer.x;
                 coorY = y * 100;
@@ -306,64 +372,243 @@ document.addEventListener("DOMContentLoaded", () => {
                 context.spaces.drawImage(img4, coorX, coorY);
 
             }
-            matrix[espacioenX][hastaDondeTienequeBajar].vacio = jugador;
+            matrix[espacioenX][hastaDondeTienequeBajar].jugador = jugador;
             hayGanador(espacioenX, hastaDondeTienequeBajar, jugador)
         }
         
 
     }
 
-    function hayGanador(numeroX, numeroY, jugador) {
-        let linea = 1;
-        let index =1;
-        //por linea
+    function hayGanador(numeroX, numeroY, j) {
+       
+        //AGARRAR LOS ALREDEDORES
+        // 0 = vertical, cambia y
+        // 1 = horizontal, cambia x
+        // 2 = diagonal derecha, cambia x e y 
+        // 3 = diagonal izquierda, cambia x e y 
+        /* 
+        if((numeroX+1)<8 && matrix[numeroX+1][numeroY].jugador == j){      //X+1, Y
+            console.log("hay algo X+1, Y");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            
+            haylinea(1,j,numeroX+1,numeroY);
+        }
+        if((numeroX-1)>0  && matrix[numeroX-1][numeroY] !=null && matrix[numeroX-1][numeroY].jugador == j){      //X-1, Y
+            console.log("hay algo X-1, Y");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            
+            haylinea(1,j,numeroX-1,numeroY);
+        }
+        
+        if((numeroX-1)>0  && (numeroY-1)>0 && matrix[numeroX-1][numeroY-1] != null && matrix[numeroX-1][numeroY-1].jugador == j){      //X-1, Y-1
+            console.log("hay algo X-1, Y-1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            
+            haylinea(2,j,numeroX-1,numeroY-1);
+        }
+        if((numeroX+1)<8 && (numeroY+1)<7 && matrix[numeroX+1][numeroY+1] != null &&matrix[numeroX+1][numeroY+1].jugador == j){      //X+1, Y+1
+            console.log("hay algo X+1, Y+1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            haylinea(2,j,numeroX+1,numeroY+1);
+        }
+        if((numeroX+1)<8 && (numeroY-1)>0 && matrix[numeroX+1][numeroY-1] != null && matrix[numeroX+1][numeroY-1].jugador == j){      //X+1, Y-1
+            console.log("hay algo X+1, Y-1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            
+            haylinea(3,j, numeroX+1,numeroY-1);
+        }
+        if((numeroX-1)>0 && (numeroY+1)<7 && matrix[numeroX-1][numeroY+1] != null && matrix[numeroX-1][numeroY+1].jugador == j){      //X-1, Y+1
+            console.log("hay algo X-1, Y+1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            haylinea(3,j,numeroX-1,numeroY+1);
+        }
+        if((numeroY+1)<7 && matrix[numeroX][numeroY+1] != null && matrix[numeroX][numeroY+1].jugador == j){      //X, Y+1
+            console.log("hay algo X, Y+1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            
+            haylinea(0, j ,numeroX,numeroY+1);
+        }
+        if((numeroY-1)>0 && matrix[numeroX][numeroY-1] !=null && matrix[numeroX][numeroY-1].jugador == j ){      //X, Y-1
+            console.log("hay algo X, Y-1");
+            if(lineaj1 == j){
+                lineaj1++;
+            }
+            else{
+                lineaj2++;
+            }
+            haylinea(0, j, numeroX, numeroY-1);
+        }
+    }
+    function haylinea(tipoLinea, j, x, y){ 
+        let suma = 0;
+        let index = y;
+        if(tipoLinea == 0){
+            while(index<7 && matrix[x][index] !=null){
+                if(matrix[x][index].jugador){
+                    suma++;
+                }
+                index++;
+            }
+            console.log(suma)
+            index = y;
+            while(index>0 && matrix[x][index] !=null){ 
+                if(matrix[x][index].jugador == j){
+                    suma++;
+                }
+                index--;
+            }
+            if(lineaj1 == j){
+                lineaj1+suma;
+            }
+            else{
+                lineaj2+suma;
+            }
+            console.log(suma)
+            
+        }/* 
+        else if(tipoLinea == 1){
+            while(y<7){ 
+                if(matrix[x+1][y].jugador == j){
+                    suma++;
+                }
+            }
+            while(y>0){ 
+                if(matrix[x-1][y].jugador == j){
+                    suma++;
+                }
+            }
+            if(lineaj1 == j){
+                lineaj1+suma;
+            }
+            else{
+                lineaj2+suma;
+            }
+        }
+        else if(tipoLinea == 2){
+            while(y<7){ 
+                if(matrix[x+1][y+1].jugador == j){
+                    suma++;
+                }
+            }
+            while(y>0){ 
+                if(matrix[x-1][y-1].jugador == j){
+                    suma++;
+                }
+            }
+            if(lineaj1 == j){
+                lineaj1+suma;
+            }
+            else{
+                lineaj2+suma;
+            }
+        }
+        else{
+            while(y<7){ 
+                if(matrix[x-1][y+1].jugador == j){
+                    suma++;
+                }
+            }
+            while(y>0){ 
+                if(matrix[x+1][y-1].jugador == j){
+                    suma++;
+                }
+            }
+            if(lineaj1 == j){
+                lineaj1+suma;
+            }
+            else{
+                lineaj2+suma;
+            }
+        }  */
+        /* if(lineaj1==3){
+            console.log("gano");
+            ganador.innerHTML = "gano el Jugador N° " + j
+        }
+ */
 
-        while (matrix[index][numeroY].vacio == jugador&&index<matrix[numeroY].length) {
+
+
+
+
+    
+
+        //por linea
+/*   */ let linea = 1;
+        let index =1;
+//por linea
+
+        while (matrix[index][numeroY].jugador == j && index<matrix.length) {
             linea++
             index++
             if (linea == 3) {// + valorDeLinea
-                ganador.innerHTML = "gano el Jugador N° " + jugador
-                    //toggle para que se vaya el tablero y fichas
+                ganador.innerHTML = "gano el Jugador N° " + j
+            //toggle para que se vaya el tablero y fichas
+            return
+            }   
+        }
+
+
+//por columna
+        linea = 1;
+        index = 0;
+        console.log(matrix.length)
+        console.log(matrix[numeroX].length)
+        console.log(matrix[numeroX][numeroY])
+
+        while (matrix[numeroX][index].jugador == j&&index < matrix[numeroY].length) {
+            console.log(matrix[numeroX][index])
+            linea++
+            index++
+            if (linea == 2 ) {//+ valorDeLinea
+                ganador.innerHTML = "gano el Jugador N° " + j
                 return
             }
         }
        
-        //por columna
-        linea = 1;
-        while (matrix[numeroX][index].vacio == jugador&&index < matrix[numeroY].length) {
-            console.log(matrix[numeroX][index])
-            linea++
-            index++
-            if (linea == 3 ) {//+ valorDeLinea
-                ganador.innerHTML = "gano el Jugador N° " + jugador
-                return
-            }
-        }
-       /*  
-        //Diagonales
-        //hacia arriba
-        linea = 0;
-        for (let index = 1; index < matrix[numeroY].length; index++) {
-            if (matrix[1][index].vacio = jugador) {
-                linea++
-            }
-            if (linea == 4 + valorDeLinea) {
-                ganador.innerHTML = "gano el Jugador N° " + jugador
-            }
-        }
-        //hacia abajo
-        linea = 0;
-        for (let index = 1; index < matrix[numeroY].length; index++) {
 
-            if (matrix[1][index].vacio = jugador) {
-                linea++
-            }
-            if (linea == 4 + valorDeLinea) {
-                ganador.innerHTML = "gano el Jugador N° " + jugador
-            }
-        } */
     }
 
-
-
 })
+
+
+
+
+
+
+
+
