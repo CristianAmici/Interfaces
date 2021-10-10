@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     var img2 = new Image();
     var img3 = new Image();
     var img4 = new Image();
+    var imgFinal = new Image();
+    //
     var coorY, coorX;
     var turno = 2;
     var valorDeLinea = 0;
@@ -106,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function reiniciar(){
         clearInterval(intervalo)
+        
         minutos=1;
         segundos=30;
         context.spaces.clearRect(
@@ -264,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
-        ganador.innerHTML = ""
+        turnoTitulo.innerHTML = ""
         state.isMouseDown = true;
         for (var index = 0; index < state.fichas.length; index++) {
             ficha = state.fichas[index];
@@ -292,9 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
                 }
                 else {
-                    mensaje.classList.toggle("mensajeVisible");
-                    ganador.innerHTML = "No es tu turno";
-                    setTimeout(mensaje.classList.toggle("mensajeOculto"),1000)
+                    turnoTitulo.innerHTML = "No es tu turno";
                 }
             }
         }
@@ -454,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
         linea2 = horizontalAtras(X, Y, j, linea2);
         if ((linea+linea2) == 4) {
             console.log("gano");
-            ganador.innerHTML = "gano el Jugador N° " + j
+            ganador.innerHTML = "Ganó el jugador N° " + j
         } else {
             linea = 1;
             linea2 = 0;
@@ -462,7 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
             linea2 = verticalArriba(X, Y, j, linea2)
             if ((linea+linea2) == 4) {
                 console.log("gano");
-                ganador.innerHTML = "gano el Jugador N° " + j
+                ganador.innerHTML =  "Ganó el jugador N° " + j
             } else {
                 linea = 1;
                 linea2 = 0;
@@ -470,7 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 linea2 = diagonalPuntaAbajoIzquierda(X, Y, j, linea2)
                 if ((linea+linea2) == 4) {
                     console.log("gano");
-                    ganador.innerHTML = "gano el Jugador N° " + j
+                    ganador.innerHTML =  "Ganó el jugador N° " + j
                 } else {
                     linea = 1;
                     linea2 = 0;
@@ -478,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     linea2 = diagonalPuntaAbajoDerecha(X, Y, j, linea2)
                     if ((linea+linea2) == 4) {
                         console.log("gano");
-                        ganador.innerHTML = "gano el Jugador N° " + j
+                        ganador.innerHTML =  "Ganó el jugador N° " + j
                     }
                 }
 
@@ -487,10 +488,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (linea == 4) {
             mensaje.classList.toggle("mensajeVisible");
             document.getElementById('minutos').innerHTML = "";
-            setTimeout(mensaje.classList.toggle("mensajeOculto"),5000)
-            setTimeout(reiniciar(), 10000);
+            setTimeout(mensajeGanador, 10000);
+            reiniciar();
         }
     }
+
+    function mensajeGanador(){
+        mensaje.classList.remove("mensajeVisible");
+        mensaje.classList.add("mensajeOculto");
+    }
+    
+
     function horizontalAdelante(X, Y, j, linea) {
         if ((X + 1) < matrix.length && Y < matrix[X].length) {
 
