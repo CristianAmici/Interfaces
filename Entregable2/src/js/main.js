@@ -1,7 +1,7 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", () => {
-    var CARD_WIDTH = 100;
-    var CARD_HEIGHT = 50;
+    var FICHA_WIDTH = 100;
+    var FICHA_HEIGHT = 50;
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const valoresOriginales = new Array();
     var ganador = document.getElementById("ganador");
     var mensaje = document.getElementById("mensajeGanador");
-    var state = {
+    var juego = {
         spaces: [
             { x: 0, y: 50, card: null },
             { x: 100, y: 50, card: null },
@@ -126,24 +126,24 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         matrix.splice(0, matrix.length);
         valoresOriginales.splice(0, valoresOriginales.length)
-        state.fichas.splice(0, state.fichas.length)
+        juego.fichas.splice(0, juego.fichas.length)
     }
 
     function jugar() {
-        let juego = document.getElementById("selectJuego").value;
-        valorDeLinea = parseInt(juego);
+        let tipoJuego = document.getElementById("selectJuego").value;
+        valorDeLinea = parseInt(tipoJuego);
         turno = 2;
         coorY = 0, coorX = 0;
         reiniciar();
         if (valorDeLinea == 1) {
-            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
         } else if (valorDeLinea == 2) {
-            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
-            state.spaces.push({ x: 800, y: 50, card: null })//6 en inea
+            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            juego.spaces.push({ x: 800, y: 50, card: null })//6 en inea
         } else if (valorDeLinea == 3) {
-            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
-            state.spaces.push({ x: 800, y: 50, card: null })//6 en inea
-            state.spaces.push({ x: 900, y: 50, card: null }) //7 en inea
+            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            juego.spaces.push({ x: 800, y: 50, card: null })//6 en inea
+            juego.spaces.push({ x: 900, y: 50, card: null }) //7 en inea
         }
 
 
@@ -167,9 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 matrix[x] = lugares;
                 coorX = x * 100;
             }
-            console.log(matrix)
+          
         }
-        console.log(matrix)
+        
         //determinamos cuales van a ser las fichas que se van a jugar y tambien las mostramos en la pagina
         rivales = document.getElementById("selectRivales").value;
         if (rivales == "aves") {
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let y = 0; y < 25 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 8) {
-                        state.fichas.push({
+                        juego.fichas.push({
                             img: img2,
                             x: coorX, y: coorY,
                             width: img2.width, height: img2.height,
@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let y = 0; y < 25 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 11) {
-                        state.fichas.push({
+                        juego.fichas.push({
                             img: img3,
                             x: coorX, y: coorY,
                             width: img3.width, height: img3.height,
@@ -243,15 +243,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fillStyle = '#183DB0';
         ctx.lineWidth = 2;
         ctx.strokeStyle = '#5B7BDD';
-        ctx.fillRect(space.x, space.y, CARD_WIDTH, CARD_HEIGHT);
-        ctx.strokeRect(space.x, space.y, CARD_WIDTH, CARD_HEIGHT);
+        ctx.fillRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
+        ctx.strokeRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
     }
 
     function drawSpaces() {
         let tope = 0;
-        state.spaces.forEach(function (space) {
+        juego.spaces.forEach(function (space) {
             if (tope < (7 + valorDeLinea)) {
-                console.log(space)
                 drawSpace(space);
                 tope++;
             }
@@ -269,8 +268,8 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.width,
             canvases.cards.height
         );
-        state.fichas.forEach(function (ficha) {
-            if (ficha !== state.holdingCard && ficha != false) {
+        juego.fichas.forEach(function (ficha) {
+            if (ficha !== juego.holdingCard && ficha != false) {
                 dibujarFicha(ficha, context.cards);
             }
 
@@ -279,16 +278,16 @@ document.addEventListener("DOMContentLoaded", () => {
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
         turnoTitulo.innerHTML = ""
-        state.isMouseDown = true;
-        for (var index = 0; index < state.fichas.length; index++) {
-            ficha = state.fichas[index];
+        juego.isMouseDown = true;
+        for (var index = 0; index < juego.fichas.length; index++) {
+            ficha = juego.fichas[index];
 
             if ((e.clientX - 200) >= ficha.x && (e.clientX - 200) < ficha.width + ficha.x
                 && (e.clientY - 180) >= ficha.y && (e.clientY - 180) < ficha.height + ficha.y) {
 
-                if (turno != state.fichas[index].jugador) {
-                    state.holdingCard = ficha;
-                    state.cursorOffset = {
+                if (turno != juego.fichas[index].jugador) {
+                    juego.holdingCard = ficha;
+                    juego.cursorOffset = {
                         x: e.clientX - ficha.x,
                         y: e.clientY - ficha.y
                     };
@@ -298,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         canvases.drag.width,
                         canvases.drag.height,
                     );
-                    dibujarFicha(state.holdingCard, context.drag);
+                    dibujarFicha(juego.holdingCard, context.drag);
 
 
 
@@ -313,22 +312,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     canvases.drag.addEventListener("mouseup", function () {
-        state.isMouseDown = false;
+        juego.isMouseDown = false;
         var fichaPorCaer;
         var didMatch = false; // para identificar si entra o no la ficha
-        if (state.cursorOffset != null) {
-            var ficha = state.holdingCard;
+        if (juego.cursorOffset != null) {
+            var ficha = juego.holdingCard;
             fichaPorCaer = ficha;
 
-            state.cursorOffset = null;
+            juego.cursorOffset = null;
 
           
 
-                for (var index = 0; index < state.spaces.length; index++) {
-                    var s = state.spaces[index];
+                for (var index = 0; index < juego.spaces.length; index++) {
+                    var s = juego.spaces[index];
     
-                    if (Math.abs(ficha.x - s.x) < (CARD_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
-                        && Math.abs(ficha.y - s.y) < (CARD_HEIGHT / 1.75)
+                    if (Math.abs(ficha.x - s.x) < (FICHA_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
+                        && Math.abs(ficha.y - s.y) < (FICHA_HEIGHT / 1.75)
                     ) {
                        ficha.x = s.x;
                        ficha.y = s.y;
@@ -337,13 +336,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                               didMatch= true;
                               turno = ficha.jugador;
-                              state.holdingCard = null;
+                              juego.holdingCard = null;
                         }
                       });
                        /*  if(matrix[s.x/100+1][0].jugador!=0){    //si la linea esta llena no se deposita la ficha
                             didMatch= true;
                             turno = ficha.jugador;
-                            state.holdingCard = null;
+                            juego.holdingCard = null;
                             break;
                         } */
 
@@ -361,8 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.width,
                 canvases.cards.height
             );
-            let pos = state.fichas.indexOf(fichaPorCaer);
-            state.fichas.splice(pos, 1, false);////reemplazo la ficha por un false para que no la dibuje
+            let pos = juego.fichas.indexOf(fichaPorCaer);
+            juego.fichas.splice(pos, 1, false);////reemplazo la ficha por un false para que no la dibuje
             drawCards();
             fichaCayendo(fichaPorCaer);
 
@@ -374,13 +373,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.drag.width,
                 canvases.drag.height,
             );
-            state.fichas.forEach(function (fichita) {
-                if (fichita == state.holdingCard) {
-                    var pos = state.fichas.indexOf(fichita);
+            juego.fichas.forEach(function (fichita) {
+                if (fichita == juego.holdingCard) {
+                    var pos = juego.fichas.indexOf(fichita);
                     var valor = valoresOriginales[pos];
-                    state.holdingCard = null;
-                    state.fichas[pos].x = valor.x;
-                    state.fichas[pos].y = valor.y;
+                    juego.holdingCard = null;
+                    juego.fichas[pos].x = valor.x;
+                    juego.fichas[pos].y = valor.y;
                 }
 
             })
@@ -390,11 +389,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     canvases.drag.addEventListener("mousemove", function (e) {
-        if (state.cursorOffset && state.holdingCard != null) {
-            var ficha = state.holdingCard;
+        if (juego.cursorOffset && juego.holdingCard != null) {
+            var ficha = juego.holdingCard;
 
-            ficha.x = e.clientX - state.cursorOffset.x;         //tocar para modificar el margen
-            ficha.y = e.clientY - state.cursorOffset.y;
+            ficha.x = e.clientX - juego.cursorOffset.x;         //tocar para modificar el margen
+            ficha.y = e.clientY - juego.cursorOffset.y;
 
             context.drag.clearRect(0, 0,
                 canvases.drag.width,
@@ -438,7 +437,6 @@ document.addEventListener("DOMContentLoaded", () => {
         var espacioenX = fichaPorCaer.x / 100 + 1;
         var hastaDondeTienequeBajar;
         for (let y = 0; y < (6+valorDeLinea); y++) {
-            console.log(matrix[espacioenX][y])
             if (matrix[espacioenX][y].jugador == 0) {
                 hastaDondeTienequeBajar = y;
             }
@@ -477,21 +475,25 @@ document.addEventListener("DOMContentLoaded", () => {
         var linea2 = 0;
         linea = horizontalAdelante(X, Y, j, linea);
         linea2 = horizontalAtras(X, Y, j, linea2);
-        if ((linea + linea2) < (4+valorDeLinea)) {
+        linea+=linea2;
+        if (linea < (4+valorDeLinea)) {
             linea = 1;
             linea2 = 0;
             linea = verticalAbajo(X, Y, j, linea)
             linea2 = verticalArriba(X, Y, j, linea2)
-            if ((linea + linea2) < (4+valorDeLinea)) {
+            linea+=linea2;
+            if (linea< (4+valorDeLinea)) {
                 linea = 1;
                 linea2 = 0;
                 linea = diagonalPuntaArribaDerecha(X, Y, j, linea)
                 linea2 = diagonalPuntaAbajoIzquierda(X, Y, j, linea2)
-                if ((linea + linea2) < (4+valorDeLinea)) {
+                linea+=linea2;
+                if (linea < (4+valorDeLinea)) {
                     linea = 1;
                     linea2 = 0;
                     linea = diagonalPuntaArribaIzquierda(X, Y, j, linea)
                     linea2 = diagonalPuntaAbajoDerecha(X, Y, j, linea2)
+                    linea+=linea2;
                 }
 
             }
