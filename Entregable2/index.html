@@ -13,43 +13,48 @@
 
 <body id="effect">
     <header style="padding-left: 50%;z-index:2">
-        <img class="imgHeader" src="src/css/images/header.png" class= "box"></img>
+        <img class="imgHeader" src="src/css/images/header.png" class="box"></img>
     </header>
     <main>
 
         <canvas id="tablero" class="base" width="2000" height="1000"></canvas>
-        <canvas id="fichas" class="base"width="2000" height="1000"></canvas>
-        <canvas id="movimiento" class="base"width="2000" height="1000"></canvas>
-        
+        <canvas id="fichas" class="base" width="2000" height="1000"></canvas>
+        <canvas id="movimiento" class="base" width="2000" height="1000"></canvas>
+
         <div id="mySidebar" class="sidebar">
-             <label for="">Seleccione el tipo de juego</label> 
-             <div class="content-select">
-             <select id="selectJuego" name="selectJuego">
-                 <option value="0" selected>4 en 1</option>
-                 <option value="1">5 en 1</option>
-                 <option value="2">6 en 1</option>
-                 <option value="3">7 en 1</option>
+            <label for="">Seleccione el tipo de juego</label>
+            <div class="content-select">
+                <select id="selectJuego" name="selectJuego">
+                    <option value="0" selected>4 en 1</option>
+                    <option value="1">5 en 1</option>
+                    <option value="2">6 en 1</option>
+                    <option value="3">7 en 1</option>
                 </select>
-             </div>
-                <label for="">Seleccione la rivalidad</label>
-                <div class="content-select">
+            </div>
+            <label for="">Seleccione la rivalidad</label>
+            <div class="content-select">
                 <select id="selectRivales" name="selectRivales">
-                    <option value="aves" >Condor vs Aguila</option>
+                    <option value="aves">Condor vs Aguila</option>
                     <option value="starWars">Rebeldes vs Imperio</option>
                     <option value="alien">Alien vs Predator</option>
                     <option value="mortalKombat">Scorpion vs Sub-Zero </option>
-                </select></div>
-                <button class="botonEstilo btnColor1" id="nuevoJuego">Nuevo juego</button>
+                </select>
+            </div>
+            <button class="botonEstilo btnColor1" id="nuevoJuego">Nuevo juego</button>
             <h3>Jugador 1</h3>
             <img id="j1" src="src/css/images/fichaAmarillaSuelta.png"></img>
             <h3>Jugador 2</h3>
-            <img id="j2" src="src/css/images/fichaRojaSuelta.png" ></img>
-            <h3 id="ganador" ></h1>
+            <img id="j2" src="src/css/images/fichaRojaSuelta.png"></img>
+            <div class="mensajeOculto" id=mensajeGanador>
+                <h3 id="ganador">
+                </h1>
+            </div>
+          
                 <div class="bloque">
                     <p class="time" id="minutos">00:00</p>
                 </div>
         </div>
-        
+
     </main>
 
 </body>

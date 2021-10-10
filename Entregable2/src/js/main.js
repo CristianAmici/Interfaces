@@ -11,7 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     var valorDeLinea = 0;
     var rivales = "";
     var matrix = new Array();
-    const valoresOriginales = new Array();
+    var imgJ1=document.getElementById('j1');
+    var imgJ2=document.getElementById('j2');
+    const valoresOriginales = new Array();    
+    var ganador = document.getElementById("ganador");
+    var mensaje = document.getElementById("mensajeGanador");
     var state = {
         spaces: [
             { x: 0, y: 50, card: null },
@@ -90,17 +94,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         document.getElementById('minutos').innerHTML = txtMinutos+":" +txtSegundos;
         if (minutos == 0 && segundos == 0) {
-            document.getElementById('minutos').innerHTML = "Perdiste tu turno!";
+         
+            
             segundos = 30
         }
     }
 
     var ctx = context.spaces;
-    var ganador = document.getElementById("ganador");
+
     document.getElementById("nuevoJuego").addEventListener("click", jugar)
 
     function reiniciar(){
         clearInterval(intervalo)
+        minutos=1;
+        segundos=30;
         context.spaces.clearRect(
             0, 0,
             canvases.spaces.width,
@@ -149,25 +156,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 matrix[x] = lugares;
                 coorX = x * 100;
             }
+            console.log(matrix)
         }
         rivales = document.getElementById("selectRivales").value;
         if (rivales == "aves") {
             img2.src = "src/css/images/fichaAguila.png";
+            imgJ1.src=img2.src;
             img3.src = "src/css/images/fichaCondor.png";
+            imgJ2.src=img3.src;
         } else if (rivales == "starWars") {
             img2.src = "src/css/images/fichaRebeldes.png";
+            imgJ1.src=img2.src;
             img3.src = "src/css/images/fichaImperio.png";
+            imgJ2.src=img3.src;
         } else if (rivales == "alien") {
             img2.src = "src/css/images/fichaAlien.png";
+            imgJ1.src=img2.src;
             img3.src = "src/css/images/fichaDepredador.png";
+            imgJ2.src=img3.src;
         } else if (rivales == "mortalKombat") {
             img2.src = "src/css/images/fichaSub-zero.png";
+            imgJ1.src=img2.src;
             img3.src = "src/css/images/fichaEscorpion.png";
+            imgJ2.src=img3.src;
         }
         img2.onload = function () {
             for (let x = 8+valorDeLinea; x < 11+valorDeLinea; x++) {
-                for (let y = 0; y < 7 + valorDeLinea; y++) {
-                    coorY = y * 50;
+                for (let y = 0; y < 13 + valorDeLinea; y++) {
+                    coorY = y * 20;
                     if (x > 8) {
                         state.fichas.push({
                             img: img2,
@@ -186,8 +202,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         img3.onload = function () {
             for (let x = 11+ valorDeLinea; x < 14+valorDeLinea ; x++) {
-                for (let y = 0; y < 7 + valorDeLinea; y++) {
-                    coorY = y * 50;
+                for (let y = 0; y < 13 + valorDeLinea; y++) {
+                    coorY = y * 20;
                     if (x > 11) {
                         state.fichas.push({
                             img: img3,
@@ -276,7 +292,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
                 }
                 else {
-                    ganador.innerHTML = "No es tu turno"
+                    mensaje.classList.toggle("mensajeVisible");
+                    ganador.innerHTML = "No es tu turno";
+                    setTimeout(mensaje.classList.toggle("mensajeOculto"),1000)
                 }
             }
         }
@@ -394,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var cordenadaAnteriorY;
         var espacioenX = fichaPorCaer.x / 100 + 1;   
         var hastaDondeTienequeBajar;
-        for (let y = 0; y < 6; y++) {
+        for (let y = 0; y <6; y++) {
             if (matrix[espacioenX][y].jugador == 0) {
                 hastaDondeTienequeBajar = y;
             }
@@ -403,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //el uno es por que empieza 100 pixeles abajo
         img4.onload = function () {  //if hasta donde tiene que bajar es igual a 0
-            for (let y = 1; y <= hastaDondeTienequeBajar + 1; y++) {
+            for (let y = 1; y <= (hastaDondeTienequeBajar + 1+ valorDeLinea); y++) {
                 coorX = fichaPorCaer.x;
                 coorY = y * 100;
                 if (y != 1) {
@@ -467,7 +485,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         if (linea == 4) {
+            mensaje.classList.toggle("mensajeVisible");
             document.getElementById('minutos').innerHTML = "";
+            setTimeout(mensaje.classList.toggle("mensajeOculto"),5000)
             setTimeout(reiniciar(), 10000);
         }
     }
