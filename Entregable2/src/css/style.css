@@ -1,5 +1,5 @@
 html{
-    background-color: #000000f7 ;
+    background-color: #363434f7 ;
 }
 main{
     display:flex;
@@ -115,4 +115,10 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
  
 .content-select:hover i{
 	margin-top: 1px;
+}
+
+.time{
+    font-size: 50px;
+    margin: 20px;
+    font-family: monospace;
 }

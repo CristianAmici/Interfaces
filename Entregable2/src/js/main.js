@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             txtSegundos = segundos;
         }
-        document.getElementById('segundos').innerHTML = txtSegundos;
+        //document.getElementById('segundos').innerHTML = txtSegundos;
         segundos--;
 
-        cargarMinutos(segundos);
+        cargarMinutos(segundos,txtSegundos);
     }
 
     //Definimos y ejecutamos los minutos
-    function cargarMinutos(segundos) {
+    function cargarMinutos(segundos, txtSegundos) {
         let txtMinutos;
 
         if (segundos == -1 && minutos !== 0) {
@@ -88,11 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             txtMinutos = minutos;
         }
-
-        document.getElementById('minutos').innerHTML = txtMinutos;
+        document.getElementById('minutos').innerHTML = txtMinutos+":" +txtSegundos;
         if (minutos == 0 && segundos == 0) {
-            document.getElementById('segundos').innerHTML = "Perdiste tu turno!";
-            document.getElementById('minutos').innerHTML = "";
+            document.getElementById('minutos').innerHTML = "Perdiste tu turno!";
             segundos = 30
         }
     }
@@ -101,13 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     var ganador = document.getElementById("ganador");
     document.getElementById("nuevoJuego").addEventListener("click", jugar)
 
-
-    function jugar() {
+    function reiniciar(){
         clearInterval(intervalo)
-        let juego = document.getElementById("selectJuego").value;
-        valorDeLinea = parseInt(juego);
-        coorY = 0, coorX = 0;
-        
         context.spaces.clearRect(
             0, 0,
             canvases.spaces.width,
@@ -123,6 +116,17 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.width,
             canvases.cards.height
         );
+        matrix.splice(0, matrix.length);
+        valoresOriginales.splice(0,valoresOriginales.length)
+        state.fichas.splice(0,state.fichas.length)
+    }
+
+    function jugar() {
+        let juego = document.getElementById("selectJuego").value;
+        valorDeLinea = parseInt(juego);
+        turno=2;
+        coorY = 0, coorX = 0;
+       reiniciar();
 
 
 
@@ -161,9 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
             img3.src = "src/css/images/fichaEscorpion.png";
         }
         img2.onload = function () {
-            for (let x = 8; x < 11; x++) {
+            for (let x = 8+valorDeLinea; x < 11+valorDeLinea; x++) {
                 for (let y = 0; y < 7 + valorDeLinea; y++) {
-                    coorY = y * 80;
+                    coorY = y * 50;
                     if (x > 8) {
                         state.fichas.push({
                             img: img2,
@@ -181,9 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         img3.onload = function () {
-            for (let x = 11; x < 14 ; x++) {
+            for (let x = 11+ valorDeLinea; x < 14+valorDeLinea ; x++) {
                 for (let y = 0; y < 7 + valorDeLinea; y++) {
-                    coorY = y * 80;
+                    coorY = y * 50;
                     if (x > 11) {
                         state.fichas.push({
                             img: img3,
@@ -463,9 +467,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         if (linea == 4) {
-            document.getElementById('segundos').innerHTML = "Se reiniciara el juego en 5 segundos";
             document.getElementById('minutos').innerHTML = "";
-            setTimeout(jugar(), 5000);
+            setTimeout(reiniciar(), 10000);
         }
     }
     function horizontalAdelante(X, Y, j, linea) {
