@@ -3,6 +3,7 @@ html{
 }
 .fondoGanador{
     background-image: url("images/conffeti.gif") ;
+    background-size:cover;
 }
 main{
     display:flex;

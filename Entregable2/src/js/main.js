@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         img2.onload = function () {
             for (let x = 8 + valorDeLinea; x < 11 + valorDeLinea; x++) {
-                for (let y = 0; y < 13 + valorDeLinea; y++) {
+                for (let y = 0; y < 25 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 8) {
                         state.fichas.push({
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         img3.onload = function () {
             for (let x = 11 + valorDeLinea; x < 14 + valorDeLinea; x++) {
-                for (let y = 0; y < 13 + valorDeLinea; y++) {
+                for (let y = 0; y < 25 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 11) {
                         state.fichas.push({
@@ -322,25 +322,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
             state.cursorOffset = null;
 
-            for (var index = 0; index < state.spaces.length; index++) {
-                var s = state.spaces[index];
+          
 
-                if (Math.abs(ficha.x - s.x) < (CARD_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
-                    && Math.abs(ficha.y - s.y) < (CARD_HEIGHT / 1.75)
-                ) {
-                   ficha.x = s.x;
-                   ficha.y = s.y;
+                for (var index = 0; index < state.spaces.length; index++) {
+                    var s = state.spaces[index];
+    
+                    if (Math.abs(ficha.x - s.x) < (CARD_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
+                        && Math.abs(ficha.y - s.y) < (CARD_HEIGHT / 1.75)
+                    ) {
+                       ficha.x = s.x;
+                       ficha.y = s.y;
+                       matrix[s.x/100+1].forEach(element => {
+                          if(element.jugador==0){
 
-                   matrix[ficha.x/100+1].forEach(element => {
-                        if(element.jugador==0){
-                            didMatch= true;
+                              didMatch= true;
+                              turno = ficha.jugador;
+                              state.holdingCard = null;
                         }
-                    });
-                    turno = ficha.jugador;
-                    state.holdingCard = null;
-                    break;
+                      });
+                       /*  if(matrix[s.x/100+1][0].jugador!=0){    //si la linea esta llena no se deposita la ficha
+                            didMatch= true;
+                            turno = ficha.jugador;
+                            state.holdingCard = null;
+                            break;
+                        } */
+
+                    }
                 }
-            }
         }
 
 
@@ -353,7 +361,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.width,
                 canvases.cards.height
             );
-            console.log("entre")
             let pos = state.fichas.indexOf(fichaPorCaer);
             state.fichas.splice(pos, 1, false);////reemplazo la ficha por un false para que no la dibuje
             drawCards();
@@ -430,7 +437,8 @@ document.addEventListener("DOMContentLoaded", () => {
         var cordenadaAnteriorY;
         var espacioenX = fichaPorCaer.x / 100 + 1;
         var hastaDondeTienequeBajar;
-        for (let y = 0; y < 6; y++) {
+        for (let y = 0; y < (6+valorDeLinea); y++) {
+            console.log(matrix[espacioenX][y])
             if (matrix[espacioenX][y].jugador == 0) {
                 hastaDondeTienequeBajar = y;
             }
@@ -439,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //el uno es por que empieza 100 pixeles abajo
         img4.onload = function () {  //if hasta donde tiene que bajar es igual a 0
-            for (let y = 1; y <= (hastaDondeTienequeBajar + 1 + valorDeLinea); y++) {
+            for (let y = 1; y <= (hastaDondeTienequeBajar + 1); y++) {
                 coorX = fichaPorCaer.x;
                 coorY = y * 100;
                 if (y != 1) {
