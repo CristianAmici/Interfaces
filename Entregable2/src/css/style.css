@@ -1,6 +1,9 @@
 html{
     background-color: #363434f7 ;
 }
+.fondoGanador{
+    background-image: url("images/conffeti.gif") ;
+}
 main{
     display:flex;
    /*   text-align: center;*/
@@ -23,7 +26,7 @@ main{
     align-items: center;
     text-align: center;
     flex-direction: column;
-    background-image: url("images/conffeti.gif") ;
+    /*background-image: url("images/conffeti.gif") ;  */
 }
 .sidebar{
     display: flex;

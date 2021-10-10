@@ -6,16 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     var img2 = new Image();
     var img3 = new Image();
     var img4 = new Image();
-    var imgFinal = new Image();
+    
     //
     var coorY, coorX;
     var turno = 2;
     var valorDeLinea = 0;
     var rivales = "";
     var matrix = new Array();
-    var imgJ1=document.getElementById('j1');
-    var imgJ2=document.getElementById('j2');
-    const valoresOriginales = new Array();    
+    var imgJ1 = document.getElementById('j1');
+    var imgJ2 = document.getElementById('j2');
+    var imgGanador= document.getElementById("jGanador");
+    const valoresOriginales = new Array();
     var ganador = document.getElementById("ganador");
     var mensaje = document.getElementById("mensajeGanador");
     var state = {
@@ -27,9 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { x: 400, y: 50, card: null },
             { x: 500, y: 50, card: null },
             { x: 600, y: 50, card: null },//4 en linea
-            { x: 700, y: 50, card: null },//5 en linea
-            { x: 800, y: 50, card: null },//6 en inea
-            { x: 900, y: 50, card: null } //7 en inea
         ],
         fichas: [],
         holdingCard: null,
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //document.getElementById('segundos').innerHTML = txtSegundos;
         segundos--;
 
-        cargarMinutos(segundos,txtSegundos);
+        cargarMinutos(segundos, txtSegundos);
     }
 
     //Definimos y ejecutamos los minutos
@@ -94,10 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             txtMinutos = minutos;
         }
-        document.getElementById('minutos').innerHTML = txtMinutos+":" +txtSegundos;
+        document.getElementById('minutos').innerHTML = txtMinutos + ":" + txtSegundos;
         if (minutos == 0 && segundos == 0) {
-         
-            
+
+
             segundos = 30
         }
     }
@@ -106,11 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("nuevoJuego").addEventListener("click", jugar)
 
-    function reiniciar(){
+    function reiniciar() {
         clearInterval(intervalo)
-        
-        minutos=1;
-        segundos=30;
+
+        minutos = 1;
+        segundos = 30;
         context.spaces.clearRect(
             0, 0,
             canvases.spaces.width,
@@ -127,23 +125,33 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.height
         );
         matrix.splice(0, matrix.length);
-        valoresOriginales.splice(0,valoresOriginales.length)
-        state.fichas.splice(0,state.fichas.length)
+        valoresOriginales.splice(0, valoresOriginales.length)
+        state.fichas.splice(0, state.fichas.length)
     }
 
     function jugar() {
         let juego = document.getElementById("selectJuego").value;
         valorDeLinea = parseInt(juego);
-        turno=2;
+        turno = 2;
         coorY = 0, coorX = 0;
-       reiniciar();
+        reiniciar();
+        if (valorDeLinea == 1) {
+            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+        } else if (valorDeLinea == 2) {
+            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            state.spaces.push({ x: 800, y: 50, card: null })//6 en inea
+        } else if (valorDeLinea == 3) {
+            state.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            state.spaces.push({ x: 800, y: 50, card: null })//6 en inea
+            state.spaces.push({ x: 900, y: 50, card: null }) //7 en inea
+        }
 
 
 
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
         img.onload = function () {
-            
+
             for (let x = 0; x < 8 + valorDeLinea; x++) {
                 let lugares = []
                 for (let y = 0; y < 7 + valorDeLinea; y++) {
@@ -161,30 +169,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             console.log(matrix)
         }
+        console.log(matrix)
+        //determinamos cuales van a ser las fichas que se van a jugar y tambien las mostramos en la pagina
         rivales = document.getElementById("selectRivales").value;
         if (rivales == "aves") {
             img2.src = "src/css/images/fichaAguila.png";
-            imgJ1.src=img2.src;
+            imgJ1.src = img2.src;
             img3.src = "src/css/images/fichaCondor.png";
-            imgJ2.src=img3.src;
+            imgJ2.src = img3.src;
         } else if (rivales == "starWars") {
             img2.src = "src/css/images/fichaRebeldes.png";
-            imgJ1.src=img2.src;
+            imgJ1.src = img2.src;
             img3.src = "src/css/images/fichaImperio.png";
-            imgJ2.src=img3.src;
+            imgJ2.src = img3.src;
         } else if (rivales == "alien") {
             img2.src = "src/css/images/fichaAlien.png";
-            imgJ1.src=img2.src;
+            imgJ1.src = img2.src;
             img3.src = "src/css/images/fichaDepredador.png";
-            imgJ2.src=img3.src;
+            imgJ2.src = img3.src;
         } else if (rivales == "mortalKombat") {
             img2.src = "src/css/images/fichaSub-zero.png";
-            imgJ1.src=img2.src;
+            imgJ1.src = img2.src;
             img3.src = "src/css/images/fichaEscorpion.png";
-            imgJ2.src=img3.src;
+            imgJ2.src = img3.src;
         }
         img2.onload = function () {
-            for (let x = 8+valorDeLinea; x < 11+valorDeLinea; x++) {
+            for (let x = 8 + valorDeLinea; x < 11 + valorDeLinea; x++) {
                 for (let y = 0; y < 13 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 8) {
@@ -204,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         img3.onload = function () {
-            for (let x = 11+ valorDeLinea; x < 14+valorDeLinea ; x++) {
+            for (let x = 11 + valorDeLinea; x < 14 + valorDeLinea; x++) {
                 for (let y = 0; y < 13 + valorDeLinea; y++) {
                     coorY = y * 20;
                     if (x > 11) {
@@ -241,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let tope = 0;
         state.spaces.forEach(function (space) {
             if (tope < (7 + valorDeLinea)) {
+                console.log(space)
                 drawSpace(space);
                 tope++;
             }
@@ -317,9 +328,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (Math.abs(ficha.x - s.x) < (CARD_WIDTH / 1.75) // si el 40% de la figura esta sobre el espacio se deposita
                     && Math.abs(ficha.y - s.y) < (CARD_HEIGHT / 1.75)
                 ) {
-                    ficha.x = s.x;
-                    ficha.y = s.y;
-                    didMatch = true;
+                   ficha.x = s.x;
+                   ficha.y = s.y;
+
+                   matrix[ficha.x/100+1].forEach(element => {
+                        if(element.jugador==0){
+                            didMatch= true;
+                        }
+                    });
                     turno = ficha.jugador;
                     state.holdingCard = null;
                     break;
@@ -337,6 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvases.cards.width,
                 canvases.cards.height
             );
+            console.log("entre")
             let pos = state.fichas.indexOf(fichaPorCaer);
             state.fichas.splice(pos, 1, false);////reemplazo la ficha por un false para que no la dibuje
             drawCards();
@@ -411,9 +428,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         var cordenadaAnteriorY;
-        var espacioenX = fichaPorCaer.x / 100 + 1;   
+        var espacioenX = fichaPorCaer.x / 100 + 1;
         var hastaDondeTienequeBajar;
-        for (let y = 0; y <6; y++) {
+        for (let y = 0; y < 6; y++) {
             if (matrix[espacioenX][y].jugador == 0) {
                 hastaDondeTienequeBajar = y;
             }
@@ -422,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //el uno es por que empieza 100 pixeles abajo
         img4.onload = function () {  //if hasta donde tiene que bajar es igual a 0
-            for (let y = 1; y <= (hastaDondeTienequeBajar + 1+ valorDeLinea); y++) {
+            for (let y = 1; y <= (hastaDondeTienequeBajar + 1 + valorDeLinea); y++) {
                 coorX = fichaPorCaer.x;
                 coorY = y * 100;
                 if (y != 1) {
@@ -443,49 +460,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function hayGanador(X, Y, j) {
-
+        if(j==1)
+        imgGanador.src= img2.src;
+        else 
+        imgGanador.src= img3.src;
+        ganador.innerHTML = "Felicitaciones jugador " + j+" has ganado!!"
         var linea = 1;
         var linea2 = 0;
-        //AGARRAR LOS ALREDEDORES
-        // 0 = vertical, cambia y
-        // 1 = horizontal, cambia x
-        // 2 = diagonal derecha, cambia x e y 
-        // 3 = diagonal izquierda, cambia x e y 
         linea = horizontalAdelante(X, Y, j, linea);
         linea2 = horizontalAtras(X, Y, j, linea2);
-        if ((linea+linea2) == 4) {
-            console.log("gano");
-            ganador.innerHTML = "Ganó el jugador N° " + j
-        } else {
+        if ((linea + linea2) < (4+valorDeLinea)) {
             linea = 1;
             linea2 = 0;
             linea = verticalAbajo(X, Y, j, linea)
             linea2 = verticalArriba(X, Y, j, linea2)
-            if ((linea+linea2) == 4) {
-                console.log("gano");
-                ganador.innerHTML =  "Ganó el jugador N° " + j
-            } else {
+            if ((linea + linea2) < (4+valorDeLinea)) {
                 linea = 1;
                 linea2 = 0;
                 linea = diagonalPuntaArribaDerecha(X, Y, j, linea)
                 linea2 = diagonalPuntaAbajoIzquierda(X, Y, j, linea2)
-                if ((linea+linea2) == 4) {
-                    console.log("gano");
-                    ganador.innerHTML =  "Ganó el jugador N° " + j
-                } else {
+                if ((linea + linea2) < (4+valorDeLinea)) {
                     linea = 1;
                     linea2 = 0;
                     linea = diagonalPuntaArribaIzquierda(X, Y, j, linea)
                     linea2 = diagonalPuntaAbajoDerecha(X, Y, j, linea2)
-                    if ((linea+linea2) == 4) {
-                        console.log("gano");
-                        ganador.innerHTML =  "Ganó el jugador N° " + j
-                    }
                 }
 
             }
         }
-        if (linea == 4) {
+        if (linea == (4+valorDeLinea)) {
+            document.getElementById("html").classList.add("fondoGanador");
             mensaje.classList.toggle("mensajeVisible");
             document.getElementById('minutos').innerHTML = "";
             setTimeout(mensajeGanador, 10000);
@@ -493,28 +497,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function mensajeGanador(){
+    function mensajeGanador() {
+        document.getElementById("html").classList.remove("fondoGanador");
         mensaje.classList.remove("mensajeVisible");
         mensaje.classList.add("mensajeOculto");
     }
-    
+
 
     function horizontalAdelante(X, Y, j, linea) {
         if ((X + 1) < matrix.length && Y < matrix[X].length) {
 
             if ((X + 1) < (8 + valorDeLinea) && matrix[X + 1][Y].jugador == j) {      //X+1, Y
-                console.log("hay algo X+1, Y" );
                 linea = horizontalAdelante(X + 1, Y, j, linea + 1)
             }
-            
+
         } return linea;
-           
+
     }
     function horizontalAtras(X, Y, j, linea2) {
         if ((X - 1) >= 0 && Y < matrix[X].length) {
 
             if (matrix[X - 1][Y].jugador == j && (X - 1) >= 0) {      //X-1, Y
-                console.log("hay algo X-1, Y");
+             
                 linea2 = horizontalAtras(X - 1, Y, j, linea2 + 1)
             }
         }
@@ -524,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (X < matrix.length && (Y + 1) < matrix[X].length) {
 
             if (matrix[X][Y + 1].jugador == j && (Y + 1) <= (7 + valorDeLinea) && matrix[X][Y + 1] != null) {      //X, Y+1
-                console.log("hay algo X, Y+1");
+               
                 linea = verticalAbajo(X, Y + 1, j, linea + 1)
             }
         }
@@ -534,53 +538,53 @@ document.addEventListener("DOMContentLoaded", () => {
         if (X < matrix.length && (Y - 1) >= 0) {
 
             if (matrix[X][Y - 1].jugador == j && (Y - 1) >= 0) {         //X,Y-1
-                console.log("hay algo X, Y-1");
+             
                 linea2 = verticalArriba(X, Y - 1, j, linea2 + 1)
             }
         }
         return linea2;
     }
     function diagonalPuntaArribaDerecha(X, Y, j, linea) {
-        if ((X + 1 )< matrix.length && (Y + 1) < matrix[X].length) {
+        if ((X + 1) < matrix.length && (Y + 1) < matrix[X].length) {
 
             if (matrix[X + 1][Y + 1].jugador == j && (Y - 1) <= (7 + valorDeLinea) && (X + 1) < (8 + valorDeLinea)) {      //X+1, Y-1
-                console.log("hay algo X+1, Y+1");
+             
                 linea = diagonalPuntaArribaDerecha(X + 1, Y + 1, j, linea + 1)
-            } 
-        } 
-            return linea;
+            }
+        }
+        return linea;
     }
     function diagonalPuntaAbajoIzquierda(X, Y, j, linea2) {
         if ((X - 1) < matrix.length && (Y - 1) >= 0) {
 
             if (matrix[X - 1][Y - 1].jugador == j && (X - 1) >= 0 && (Y - 1) >= 0) {      //X-1, Y-1
-                console.log("hay algo X-1, Y-1");
+             
                 linea2 = diagonalPuntaAbajoIzquierda(X - 1, Y - 1, j, linea2 + 1)
             }
         }
-            return linea2;
+        return linea2;
     }
-    
+
     function diagonalPuntaArribaIzquierda(X, Y, j, linea) {
         if ((X - 1) >= 0 && (Y + 1) < matrix[X].length) {
 
             if (matrix[X - 1][Y + 1].jugador == j && (X - 1) >= 0 && (Y + 1) <= (7 + valorDeLinea)) {      //X-1, Y+1
-                console.log("hay algo X-1, Y+1");
+              
                 linea = diagonalPuntaArribaIzquierda(X - 1, Y + 1, j, linea + 1)
-            } 
+            }
         }
-            return linea;
+        return linea;
     }
     function diagonalPuntaAbajoDerecha(X, Y, j, linea2) {
-        if ((X + 1 )< matrix.length && ( Y - 1) >= 0) {
+        if ((X + 1) < matrix.length && (Y - 1) >= 0) {
             if (matrix[X + 1][Y - 1].jugador == j && (Y + 1) <= (7 + valorDeLinea) && (X + 1) < (8 + valorDeLinea)) {      //X+1, Y+1
-                console.log("hay algo X+1, Y+1");
+              
                 linea2 = diagonalPuntaAbajoDerecha(X + 1, Y - 1, j, linea2 + 1)
             }
         }
-            return linea2;
+        return linea2;
     }
-   
+
 })
 
 
