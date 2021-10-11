@@ -283,6 +283,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
     }
+    function oMousePosScale(canvas, evt) {
+        var ClientRect = canvas.getBoundingClientRect();
+            let scaleX = canvas.width / ClientRect.width;
+            let scaleY = canvas.height / ClientRect.height;
+            return {
+            x: (evt.clientX - ClientRect.left) * scaleX,
+            y: (evt.clientY - ClientRect.top) * scaleY
+        }
+    }
     //Mediante el evento mousedown chequeamos que el lugar donde se genero el mousedown sea el mismo lugar
     //donde se encuentre alguna de las fichas.  Si esto tambien se cumple la ficha se borra de el canvas donde estan las demas fichas
     //(cards) y la dibuja en el canvas drag.
@@ -290,17 +299,17 @@ document.addEventListener("DOMContentLoaded", () => {
         var ficha;
         turnoTitulo.innerHTML = ""
         juego.isMouseDown = true;
+        let dimensiones=oMousePosScale(canvases.cards,e)
         for (var index = 0; index < juego.fichas.length; index++) {
             ficha = juego.fichas[index];
-
-            if ((e.clientX - 200) >= ficha.x && (e.clientX - 200) < ficha.width + ficha.x
-                && (e.clientY - 180) >= ficha.y && (e.clientY - 180) < ficha.height + ficha.y) {
+            if (dimensiones.x >= ficha.x && dimensiones.x < ficha.width + ficha.x
+                && dimensiones.y >= ficha.y && dimensiones.y< ficha.height + ficha.y) {
 
                 if (turno != juego.fichas[index].jugador) {
                     juego.holdingCard = ficha;
                     juego.cursorOffset = {
-                        x: e.clientX- ficha.x,
-                        y: e.clientY- ficha.y
+                        x: dimensiones.x- ficha.x,
+                        y: dimensiones.y- ficha.y
                     };
 
                     drawCards();
@@ -397,9 +406,9 @@ document.addEventListener("DOMContentLoaded", () => {
     canvases.drag.addEventListener("mousemove", function (e) {
         if (juego.cursorOffset && juego.holdingCard != null) {
             var ficha = juego.holdingCard;
-
-            ficha.x = e.clientX - juego.cursorOffset.x;         //tocar para modificar el margen
-            ficha.y = e.clientY - juego.cursorOffset.y;
+            let dimensiones=oMousePosScale(canvases.cards,e)
+            ficha.x = dimensiones.x - juego.cursorOffset.x;         //tocar para modificar el margen
+            ficha.y = dimensiones.y - juego.cursorOffset.y;
 
             context.drag.clearRect(0, 0,
                 canvases.drag.width,
