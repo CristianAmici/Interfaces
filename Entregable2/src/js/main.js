@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             segundos = 30
+            if(turno==2){
+                turno=1;
+            }else{
+                turno=2;
+            }
         }
     }
 
