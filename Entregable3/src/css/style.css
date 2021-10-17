@@ -1,0 +1,121 @@
+/* Eliminamos márgenes y ponemos fondo de página negro */
+html,body {
+  margin:0;
+  background:#000;
+}
+
+/* Bernard Bernoulli: Animación del personaje */
+#bern {
+  /* Tamaño de la viñeta individual */
+  width:112px;
+  height:156px;
+  /* Cómo hay establecido un tamaño, centramos con margin:auto */
+  margin:auto;  
+  /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
+  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/bernard-sprite.png) repeat-x;
+  /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
+  animation:walk .8s steps(6) infinite;
+  /* Posicionamos el personaje sobre el camino de madera */
+  position:relative;
+  bottom:34px;
+}
+
+/* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
+@keyframes walk {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position:0 }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position:-115px }
+}
+
+/* Animación del cielo. Efecto "Parallax", va más lento que el mar. */
+#sky {
+  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/monkey-sky.png) repeat-X;
+  animation: movebg 9s linear infinite;
+}
+
+/* Animación del mar. */
+#sea {
+  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/monkey-sea.png) repeat-x;
+  animation: movebg 6s linear infinite;
+  /* Posicionamos el mar, para que no solape al cielo */
+  position:relative;
+  top:145px;
+  /* Pequeño degradado interior para suavizar el mar. Puede consumir muchos recursos */
+  box-shadow:10px 10px 45px RGBA(0,0,0, 0.85) inset;
+}
+
+/* Animación para mover cielo y mar */
+@keyframes movebg {
+  0% { background-position:550px } 
+  100% { background-position:0 }
+}
+@keyframes roboWalkLeft {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position: 0px}
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position:-707px}
+}
+@keyframes roboStand {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position: 0px}
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position:-763px}
+}
+@keyframes roboWalkRight {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position:-707px}
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position: 0px}
+}
+/* OPCIONAL: Guybrush */
+#gb {
+  width:54px;
+  height:100px;
+  background:url(images/mario-sprite.png) no-repeat;
+  animation:walk 0.8s steps(2) infinite;
+  margin:auto;
+  position:relative;
+  top:50px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); */
+}
+.robocopLeft{
+  width:60px;
+  height:84px;
+  background:url(images/RoboWalkLeft.png) no-repeat;
+  animation: roboWalkLeft 1.2s steps(10) infinite;
+  margin:auto;
+  position:relative;
+  top:25px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); */
+}
+.robocopStand{
+  width:72px;
+  height:84px;
+  background:url(images/robocopStand3.png) no-repeat;
+  animation: roboStand 1.2s steps(10) infinite;
+  margin:auto;
+  position:relative;
+  top:25px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); */
+}
+
+.robocopRight{
+  width:70px;
+  height:84px;
+  background:url(images/RoboWalkRight.png) no-repeat;
+  animation: roboWalkRight 1.2s steps(10) infinite;
+  margin:auto;
+  position:relative;
+  top:25px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); */
+}
+
+@keyframes gbwalk {
+  0% { background-position:0 }
+  100% { background-position:-624px }
+}
