@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   var space=false
   window.addEventListener("keydown", (e) => {
     stand=false;
-    console.log(e.key)
+    console.log(e.key);
+    console.log(robocop);
     if (e.key == "ArrowLeft") {
       keyLeft = true;
       keyRight = false;

@@ -60,7 +60,7 @@ html,body {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position: 0px}
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position:-763px}
+  100% { background-position:-760px}
 }
 @keyframes roboWalkRight {
   /* Partimos de la primera viñeta del sprite sheet */
@@ -70,9 +70,9 @@ html,body {
 }
 @keyframes shoot {
   /* Partimos de la primera viñeta del sprite sheet */
-  0% { background-position-x: -250px; background-position-y:0px }
+  0% { background-position-x: 0px;}
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position: 0px; background-position-y:84px }
+  100% { background-position-x: -167px;}
 }
 /* OPCIONAL: Guybrush */
 #gb {
@@ -97,7 +97,7 @@ html,body {
   /* filter:drop-shadow(5px 5px 5px #000); */
 }
 .robocopStand{
-  width:72px;
+  width:73px;
   height:84px;
   background:url(images/robocopStand3.png) no-repeat;
   animation: roboStand 1.2s steps(10) infinite;
@@ -120,10 +120,10 @@ html,body {
   /* filter:drop-shadow(5px 5px 5px #000); */
 }
 .robocopShooter {
-  width:60px;
-  height:84px;
+  width:83px;
+  height:92px;
   background:url(images/robocopShooter.png) no-repeat;
-  animation:shoot 0.5s steps(2) infinite;
+  animation:shoot 0.2s steps(2) infinite;
   margin:auto;
   position:relative;
   top:25px;
