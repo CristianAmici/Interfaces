@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var keyDown = false;
   var robocop = document.getElementById('robocop');
   var stand=false;
+  var space=false
   window.addEventListener("keydown", (e) => {
     stand=false;
     console.log(e.key)
@@ -29,7 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
       keyLeft = false;
       keyRight = false;
       keyUp = false;
+    }else if (e.key == " ") {
+      space= true
+      keyDown = false;
+      keyLeft = false;
+      keyRight = false;
+      keyUp = false;
     }
+
   })
   window.addEventListener("keyup", (e) => {
     stand=true;
@@ -37,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     keyLeft = false;
     keyRight = false;
     keyUp = false;
+    space=false;
   })
   let intervalId = setInterval(function () {
     if (keyLeft) {
@@ -54,6 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }else if (stand){
       robocop.className='';
       robocop.classList.add('robocopStand')
+    }else if (space){
+      robocop.className='';
+      robocop.classList.add('robocopShooter')
     }
   }, 50)
 })

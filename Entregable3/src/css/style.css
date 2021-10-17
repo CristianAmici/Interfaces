@@ -68,13 +68,18 @@ html,body {
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
   100% { background-position: 0px}
 }
+@keyframes shoot {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position-x: -250px; background-position-y:0px }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position: 0px; background-position-y:84px }
+}
 /* OPCIONAL: Guybrush */
 #gb {
   width:54px;
   height:100px;
   background:url(images/mario-sprite.png) no-repeat;
   animation:walk 0.8s steps(2) infinite;
-  margin:auto;
   position:relative;
   top:50px;
   /* Ojo, muy costoso en rendimiento */
@@ -104,10 +109,21 @@ html,body {
 }
 
 .robocopRight{
-  width:70px;
+  width:60px;
   height:84px;
   background:url(images/RoboWalkRight.png) no-repeat;
   animation: roboWalkRight 1.2s steps(10) infinite;
+  margin:auto;
+  position:relative;
+  top:25px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); */
+}
+.robocopShooter {
+  width:60px;
+  height:84px;
+  background:url(images/robocopShooter.png) no-repeat;
+  animation:shoot 0.5s steps(2) infinite;
   margin:auto;
   position:relative;
   top:25px;
