@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var robocop = document.getElementById('robocop');
   var stand=false;
   var space=false
-  var situacionY = document.getElementById("robocop").offsetLeft;
+  var situacionY = document.getElementById("robocop").offsetRight;
     var situacionX = document.getElementById("robocop").offsetTop;
   window.addEventListener("keydown", (e) => {
     stand=false;
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
       keyRight = false;
       keyUp = false;
       keyDown = false;
-      robocop.style.left=robocop.style.left+10; 
+      
     } else if (e.key == "ArrowRight") {
       keyRight = true;
       keyLeft = false;
       keyUp = false;
       keyDown = false;
-      robocop.style.right= situacionX-220+"px" ; 
+      robocop.style.right= situacionY+10+"px" ; 
     } else if (e.key == "ArrowUp") {
       keyUp = true;
       keyLeft = false;

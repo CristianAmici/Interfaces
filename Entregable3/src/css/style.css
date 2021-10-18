@@ -64,9 +64,9 @@ html,body {
 }
 @keyframes roboWalkRight {
  /* Partimos de la primera viñeta del sprite sheet */
- 0% { background-position-x:  0px }
+ 0% { background-position-x: 0px }
  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
- 100% { background-position-x:-1902px }
+ 100% { background-position-x:1902px}
 }
 @keyframes shoot {
   /* Partimos de la primera viñeta del sprite sheet */
@@ -112,10 +112,10 @@ html,body {
 
 .robocopRight{
    
-  width:190px;
+  width:190.4px;
   height:119px;
   background:url(images/rataLarga.png) no-repeat;
-  animation: roboStand 0.6s steps(10) infinite;
+  animation: roboStand 1s steps(10) infinite;
   margin:auto;
   position:absolute;
   top:25px;

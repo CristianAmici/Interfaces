@@ -1,7 +1,7 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", () => {
     var FICHA_WIDTH = 100;
-    var FICHA_HEIGHT = 50;
+    var FICHA_HEIGHT = 100;
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     var mensaje = document.getElementById("mensajeGanador");
     var juego = {
         spaces: [
-            { x: 0, y: 50, card: null },
-            { x: 100, y: 50, card: null },
-            { x: 200, y: 50, card: null },
-            { x: 300, y: 50, card: null },
-            { x: 400, y: 50, card: null },
-            { x: 500, y: 50, card: null },
-            { x: 600, y: 50, card: null },//4 en linea
+            { x: 0, y: 0, card: null },
+            { x: 100, y: 0, card: null },
+            { x: 200, y: 0, card: null },
+            { x: 300, y: 0, card: null },
+            { x: 400, y: 0, card: null },
+            { x: 500, y: 0, card: null },
+            { x: 600, y: 0, card: null },//4 en linea
         ],
         fichas: [],
         holdingCard: null,
@@ -142,14 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
         coorY = 0, coorX = 0;
         reiniciar();
         if (valorDeLinea == 1) {
-            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
+            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
         } else if (valorDeLinea == 2) {
-            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
-            juego.spaces.push({ x: 800, y: 50, card: null })//6 en inea
+            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
+            juego.spaces.push({ x: 800, y: 0, card: null })//6 en inea
         } else if (valorDeLinea == 3) {
-            juego.spaces.push({ x: 700, y: 50, card: null })//5 en linea
-            juego.spaces.push({ x: 800, y: 50, card: null })//6 en inea
-            juego.spaces.push({ x: 900, y: 50, card: null }) //7 en inea
+            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
+            juego.spaces.push({ x: 800, y: 0, card: null })//6 en inea
+            juego.spaces.push({ x: 900, y: 0, card: null }) //7 en inea
         }
 
 
