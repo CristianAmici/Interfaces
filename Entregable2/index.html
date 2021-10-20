@@ -11,47 +11,47 @@
 
 </head>
 
-    <body>
+<body>
     <header>
         <img class="imgHeader" src="src/css/images/header.png" class="box"></img>
-        
+
         <div id="mySidebar" class="sidebar">
 
-            <div  id="opciones" class="visible">
-                    <label for="">Seleccione el tipo de juego</label>
-                    <div class="content-select">
-                        <select id="selectJuego" name="selectJuego">
-                            <option value="0" selected>4 en 1</option>
-                            <option value="1">5 en 1</option>
-                            <option value="2">6 en 1</option>
-                            <option value="3">7 en 1</option>
-                        </select>
-                    </div>
-                    <label for="">Seleccione la rivalidad</label>
-                    <div class="content-select">
-                        <select id="selectRivales" name="selectRivales">
-                            <option value="aves">Condor vs Aguila</option>
-                            <option value="starWars">Rebeldes vs Imperio</option>
-                            <option value="alien">Alien vs Predator</option>
-                            <option value="mortalKombat">Scorpion vs Sub-Zero </option>
-                        </select>
-                    </div>
-                    <button class="botonEstilo btnColor1" id="nuevoJuego">Nuevo juego</button>
-                    <button class="botonEstilo btnColor1" id="ayudaNuevoJuego">Ayuda</button>
-                
+            <div id="opciones" class="visible">
+                <label for="">Seleccione el tipo de juego</label>
+                <div class="content-select">
+                    <select id="selectJuego" name="selectJuego">
+                        <option value="0" selected>4 en 1</option>
+                        <option value="1">5 en 1</option>
+                        <option value="2">6 en 1</option>
+                        <option value="3">7 en 1</option>
+                    </select>
+                </div>
+                <label for="">Seleccione la rivalidad</label>
+                <div class="content-select">
+                    <select id="selectRivales" name="selectRivales">
+                        <option value="aves">Condor vs Aguila</option>
+                        <option value="starWars">Rebeldes vs Imperio</option>
+                        <option value="alien">Alien vs Predator</option>
+                        <option value="mortalKombat">Scorpion vs Sub-Zero </option>
+                    </select>
+                </div>
+                <button class="botonEstilo btnColor1" id="nuevoJuego">Nuevo juego</button>
+                <button class="botonEstilo btnColor1" id="ayudaNuevoJuego">Aprender a Jugar</button>
+
             </div>
 
-                <div class="oculto" id="jugando">
-                    <button class="botonEstilo btnColor1" id="reiniciarHeader">Reiniciar</button>
-                    <button class="botonEstilo btnColor1" id="ayudaJugabilidad">Ayuda</button>
-                    <p class="coment" id=comentario> </p>
-                    <p class="time">Tiempo</p>
-                    <div class="bloque">
-                        <p class="time" id="minutos">00:00</p>
-                    </div>
-                    <h3>Turno: </h3>
+            <div class="oculto" id="jugando">
+                <button class="botonEstilo btnColor1" id="reiniciarHeader">Reiniciar</button>
+                <button class="botonEstilo btnColor1" id="ayudaJugabilidad">Ayuda</button>
+                <p class="coment" id=comentario> </p>
+                <p class="time">Tiempo</p>
+                <div class="bloque">
+                    <p class="time" id="minutos">00:00</p>
                 </div>
-           
+                <h3>Turno: </h3>
+            </div>
+
 
             <div class="oculto" id="Jugador1">
                 <h3>Jugador 1</h3>
@@ -60,15 +60,15 @@
             <div class="oculto" id="Jugador2">
                 <h3>Jugador 2</h3>
                 <img id="j2" class="imgjugador" src="src/css/images/fichaCondor.png"></img>
-            </div>  
-            
-           
+            </div>
+
+
         </div>
-        
+
     </header>
 
     <main>
-    <!--   <p style="top:250px;left:250px; " class="scroll-down"><a class="animate">More</a></p>
+        <!--   <p style="top:250px;left:250px; " class="scroll-down"><a class="animate">More</a></p>
         <p style="top:300px;left:300px; " class="scroll-down"><a class="animate">More</a></p>
         <p style="top:300px;left:400px; " class="scroll-down"><a class="animate">More</a></p>
         <p style="top:300px;left:500px; " class="scroll-down"><a class="animate">More</a></p>
@@ -78,12 +78,19 @@
         <canvas id="tablero" class="base" width="1920" height="1000"></canvas>
         <canvas id="fichas" class="base" width="1920" height="1000"></canvas>
         <canvas id="movimiento" class="base" width="1920" height="1000"></canvas>
-        
-        
+
+        <div class="mensajeOculto" id=mensajeAyuda>
+            <p class="ayudaTxt" id="ayuda1">
+            </p>
+                <img id="ImgAyuda1" src="src/css/images/turno.png"></img>
+            <p class="ayudaTxt" id="ayuda2"></p>
+                <img id="ImgAyuda2" src="src/css/images/DepositarFicha.png"></img>
+                <button class="botonEstiloCerrar" id="cerrar">cerrar</button>
+        </div>
         <div class="mensajeOculto" id=mensajeGanador>
-                <h3 class="ganador" id="ganador">
-                </h3>
-                <img id="jGanador" src=" "></img>
+            <h3 class="ganador" id="ganador">
+            </h3>
+            <img id="jGanador" src=" "></img>
         </div>
     </main>
 

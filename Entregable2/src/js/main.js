@@ -5,31 +5,42 @@ document.addEventListener("DOMContentLoaded", () => {
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
-    var img4 = new Image();
-
+    var img4 = new Image(); 
     var coorY, coorX;
     var turno = 2;
     var valorDeLinea = 0;
     var rivales = "";
     var matrix = new Array();
     const valoresOriginales = new Array();
-
     var imgJ1 = document.getElementById('j1');
     var imgJ2 = document.getElementById('j2');
     var imgGanador = document.getElementById("jGanador");
-   
+    var imgAyuda1= document.getElementById("imgAyuda1");
+    var imgAyuda2= document.getElementById("imgAyuda2");
+
     var ganador = document.getElementById("ganador");
     var mensaje = document.getElementById("mensajeGanador");
-
-    var comentario = document.getElementById("comentario") ;
-
+    var comentario = document.getElementById("comentario");
+    var mensajeAyuda= document.getElementById("mensajeAyuda");
     var opciones = document.getElementById("opciones");
     var showjugador1 = document.getElementById("Jugador1");
     var showjugador2 = document.getElementById("Jugador2");
     var jugando = document.getElementById("jugando");
+    document.getElementById("cerrar").addEventListener("click", cerrarAyuda);
 
-
-
+    document.getElementById("ayudaNuevoJuego").addEventListener("click", () => {
+        ayuda1.innerHTML = "- El juego consiste en hacer una linea de la cantidad de fichas que se solicita en el tipo de juego "+
+        "en cualquiera de los sentidos (horizontal,vertical y ambas diagonales). Cada jugador tiene un turno de 1:30 minutos, "+
+        "pasado ese tiempo el turno se le otorga al rival."
+        ayuda2.innerHTML = "- Cada jugador debe arrastrar sus fichas hacia el hueco marcado a continuacion para depositar su ficha en esa linea.                   "+
+        "Que se diviertan!"
+        mensajeAyuda.classList.remove("mensajeOculto");
+        mensajeAyuda.classList.add("ayudaVisible")
+    })
+    function cerrarAyuda(){
+        mensajeAyuda.classList.remove("ayudaVisible");
+        mensajeAyuda.classList.add("mensajeOculto");
+    }
 
     var juego = {
         spaces: [
@@ -83,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         segundos--;
         if (minutos == 0 && segundos == 0) {
             minutos = 1;
-            
+
             if (turno == 2) {
                 turno = 1;
             } else {
@@ -116,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             txtMinutos = minutos;
         }
         document.getElementById('minutos').innerHTML = txtMinutos + ":" + txtSegundos;
-        
+
     }
 
     var ctx = context.spaces;
@@ -130,12 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
         showjugador1.classList.remove("visible");
         opciones.classList.add("visible");
         jugando.classList.add("oculto");
-        showjugador1.classList.add("oculto"); 
-        if(turno == 2){
+        showjugador1.classList.add("oculto");
+        if (turno == 2) {
             showjugador1.classList.remove("visible");
             showjugador1.classList.add("oculto");
         }
-        else{
+        else {
             showjugador2.classList.remove("visible");
             showjugador2.classList.add("oculto");
         }
@@ -166,34 +177,34 @@ document.addEventListener("DOMContentLoaded", () => {
         matrix.splice(0, matrix.length);
         valoresOriginales.splice(0, valoresOriginales.length);
         juego.fichas.splice(0, juego.fichas.length);
-        juego.spaces.splice(7,juego.spaces.length);
+        juego.spaces.splice(7, juego.spaces.length);
     }
 
     function tableroModoJuego() {
-        
+
         opciones.classList.remove("visible");
         jugando.classList.remove("oculto");
-        showjugador1.classList.remove("oculto"); 
+        showjugador1.classList.remove("oculto");
 
         opciones.classList.add("oculto");
         jugando.classList.add("visible");
         showjugador1.classList.add("visible");
     }
 
-    function showTurno(turno){
-        if(turno == 2){
+    function showTurno(turno) {
+        if (turno == 2) {
             showjugador2.classList.remove("visible");
-            showjugador1.classList.remove("oculto"); 
-            showjugador2.classList.add("oculto"); 
+            showjugador1.classList.remove("oculto");
+            showjugador2.classList.add("oculto");
             showjugador1.classList.add("visible");
         }
-        else{
+        else {
             showjugador1.classList.remove("visible");
-            showjugador2.classList.remove("oculto"); 
-            showjugador1.classList.add("oculto"); 
+            showjugador2.classList.remove("oculto");
+            showjugador1.classList.add("oculto");
             showjugador2.classList.add("visible");
         }
-        
+
     }
 
     //Se encarga de cargar el tablero y las fichas con las imagenes que seleccione el usuario, ademas del timer
@@ -201,10 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
         tableroModoJuego();
         let tipoJuego = document.getElementById("selectJuego").value;
         valorDeLinea = parseInt(tipoJuego);
-        
-        reiniciar() ;
-        
-        
+
+        reiniciar();
+
+
         if (valorDeLinea == 1) {
             juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
         } else if (valorDeLinea == 2) {
@@ -266,13 +277,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-      
-       
+
+
         //cargamos las fichas del jugador 1
         img2.onload = function () {
-          coorX = (7 + valorDeLinea)*100;
+            coorX = (7 + valorDeLinea) * 100;
             for (let x = (8 + valorDeLinea); x < (11 + valorDeLinea); x++) {
-                for (let y = 0; y < ( 25 + valorDeLinea); y++) {
+                for (let y = 0; y < (25 + valorDeLinea); y++) {
                     coorY = y * 20;
                     if (x > 8) {
                         juego.fichas.push({
@@ -291,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         //cargamos las fichas del jugador 2
         img3.onload = function () {
-            for (let x = (11 + valorDeLinea); x < ( 14 + valorDeLinea); x++) {
+            for (let x = (11 + valorDeLinea); x < (14 + valorDeLinea); x++) {
                 for (let y = 0; y < (25 + valorDeLinea); y++) {
                     coorY = y * 20;
                     if (x > 11) {
@@ -319,10 +330,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fillStyle = '#183DB0';
         ctx.lineWidth = 2;
         ctx.strokeStyle = '#5B7BDD';
-       /*  ctx.drawImage(imagen,space.x, space.y); */
+        /*  ctx.drawImage(imagen,space.x, space.y); */
         ctx.fillRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
-        ctx.strokeRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT); 
-        
+        ctx.strokeRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
+
     }
     //Por cada espacio en juego.spaces se dibuja donde se deposita las fichas
     function drawSpaces() {
@@ -356,9 +367,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function oMousePosScale(canvas, evt) {
         var ClientRect = canvas.getBoundingClientRect();
-            let scaleX = canvas.width / ClientRect.width;
-            let scaleY = canvas.height / ClientRect.height;
-            return {
+        let scaleX = canvas.width / ClientRect.width;
+        let scaleY = canvas.height / ClientRect.height;
+        return {
             x: (evt.clientX - ClientRect.left) * scaleX,
             y: (evt.clientY - ClientRect.top) * scaleY
         }
@@ -369,18 +380,19 @@ document.addEventListener("DOMContentLoaded", () => {
     canvases.drag.addEventListener("mousedown", function (e) {
         var ficha;
         comentario.innerHTML = " ";
+        let jugadorTurno = 1;
         juego.isMouseDown = true;
-        let dimensiones=oMousePosScale(canvases.cards,e)
+        let dimensiones = oMousePosScale(canvases.cards, e)
         for (var index = 0; index < juego.fichas.length; index++) {
             ficha = juego.fichas[index];
             if (dimensiones.x >= ficha.x && dimensiones.x < ficha.width + ficha.x
-                && dimensiones.y >= ficha.y && dimensiones.y< ficha.height + ficha.y) {
+                && dimensiones.y >= ficha.y && dimensiones.y < ficha.height + ficha.y) {
 
                 if (turno != juego.fichas[index].jugador) {
                     juego.holdingCard = ficha;
                     juego.cursorOffset = {
-                        x: dimensiones.x- ficha.x,
-                        y: dimensiones.y- ficha.y
+                        x: dimensiones.x - ficha.x,
+                        y: dimensiones.y - ficha.y
                     };
 
                     drawCards();
@@ -396,12 +408,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
                 }
                 else {
-                    comentario.innerHTML = "¡No es tu turno!";
+                    if (turno == 1) {
+                        jugadorTurno = 2;
+                        imgGanador.src = img3.src;
+                    }
+                    else {
+                        jugadorTurno = 1;
+                        imgGanador.src = img2.src;
+                    }
+
+                    ganador.innerHTML = "Es turno del jugador " + jugadorTurno
+                    mensaje.classList.remove("mensajeOculto");
+                    mensaje.classList.add("noEsTuTurno")
+                    setTimeout(hiddenMensaje, 1500);
                 }
             }
         }
     });
-     //Mediante el evento up, que es cuando el usuario levanta el click, chequea que el lugar donde soltas la ficha sea
+    function hiddenMensaje() {
+        mensaje.classList.remove("noEsTuTurno");
+        mensaje.classList.add("mensajeOculto");
+    }
+    //Mediante el evento up, que es cuando el usuario levanta el click, chequea que el lugar donde soltas la ficha sea
     //el mismo lugar donde se deposita la ficha para que caiga. De ser asi y que la columna no este llena la ficha se cae.
     //De no ser asi, la ficha vuelve a su lugar.
     canvases.drag.addEventListener("mouseup", function () {
@@ -477,7 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvases.drag.addEventListener("mousemove", function (e) {
         if (juego.cursorOffset && juego.holdingCard != null) {
             var ficha = juego.holdingCard;
-            let dimensiones=oMousePosScale(canvases.cards,e)
+            let dimensiones = oMousePosScale(canvases.cards, e)
             ficha.x = dimensiones.x - juego.cursorOffset.x;         //tocar para modificar el margen
             ficha.y = dimensiones.y - juego.cursorOffset.y;
 
@@ -586,20 +614,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         if (linea == (4 + valorDeLinea)) {
-            if(turno == 2){
+            if (turno == 2) {
                 showjugador1.classList.remove("visible");
                 showjugador1.classList.add("oculto");
             }
-            else{
+            else {
                 showjugador2.classList.remove("visible");
                 showjugador2.classList.add("oculto");
             }
-           
+
             document.getElementById("html").classList.add("fondoGanador");
             mensaje.classList.toggle("mensajeVisible");
             document.getElementById('minutos').innerHTML = "";
             setTimeout(mensajeGanador, 10000);
-           
+
             reiniciarHeader();
         }
     }
@@ -608,7 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("html").classList.remove("fondoGanador");
         mensaje.classList.remove("mensajeVisible");
         mensaje.classList.add("mensajeOculto");
-        
+
     }
 
     // el resto de funciones son las que permiten controlar las lineas horizontales, verticales y diagonales 

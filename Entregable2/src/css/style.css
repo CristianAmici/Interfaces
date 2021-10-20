@@ -26,6 +26,20 @@ main{
    flex-direction: row;
 
 } 
+.noEsTuTurno{
+  position:absolute;
+  display:flex;
+  top:300px;
+  left:400px;
+  width: 700px;
+  height: 150px;
+  padding-top: 10px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+ 
+  background: rgb(32, 32, 32)
+}
 .mensajeOculto{
     display:none;
     /* visibility: hidden; */
@@ -43,6 +57,25 @@ main{
     text-align: center;
     flex-direction: column;
     /*background-image: url("images/conffeti.gif") ;  */
+}
+.ayudaTxt{
+  font-family: "montserrat",sans-serif;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+}
+.ayudaVisible{
+    
+  position:absolute;
+  display:flex;
+  top:200px;
+  left:100px;
+  width: 1000px;
+  height: 700px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background: rgb(32, 32, 32)
 }
 .sidebar{
     display: flex;
@@ -66,9 +99,22 @@ h1{
     text-align: center;
     color: white;
 }
-img{
+.botonEstiloCerrar{
+  border: none;
+  margin: 2%;
+  width: 130px;
+  height: 40px;
+  font-family: "montserrat",sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-size: 200%;
+  transition: 0.6s;
+  background-color: rgba(190, 40, 40, 0.651);
+} 
+/* img{
     margin:5px;
-}
+} */
 h3{
     text-align: center;
     margin: 10px;
