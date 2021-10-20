@@ -12,18 +12,33 @@ main{
 .base {
     position: absolute;
     top: 200px;
-    left:200px;
-  }
+    left: 10px;
+}
+
+.oculto{
+  display: none;
+}
+
+.visible{
+   
+   align-items: center;
+   display: flex;
+   flex-direction: row;
+
+} 
 .mensajeOculto{
     display:none;
+    /* visibility: hidden; */
 }
+
 .mensajeVisible{
+    
     position:absolute;
     display:flex;
     top:300px;
     left:400px;
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     align-items: center;
     text-align: center;
     flex-direction: column;
@@ -35,6 +50,7 @@ main{
     align-items: center;
     flex-direction: row;
     font-family: "montserrat",sans-serif;
+   
 }
 .ganador{
     font-family: "montserrat",sans-serif;
@@ -101,7 +117,7 @@ header{
     background-position: right;
 }
 .btnColor1{
-    background-image: linear-gradient(to left,#2e2be0,#42b3bb,#2e2be0);
+    background-image: linear-gradient(to left,#23226d,#1d6bb4,#23226d);
 }  
 .content-select{
 	max-width: 200px;
@@ -145,7 +161,12 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .content-select:hover i{
 	margin-top: 1px;
 }
-
+.coment{
+    font-size: 40px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
 .time{
     font-size: 50px;
     margin: 20px;
