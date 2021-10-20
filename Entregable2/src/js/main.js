@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //permite reiniciar el canvas, el cronometro y el juego
     function reiniciar() {
+        cerrarAyuda()
         clearInterval(intervalo)
         comentario.innerHTML = " ";
         minutos = 1;
