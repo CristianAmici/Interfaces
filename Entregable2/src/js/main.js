@@ -81,7 +81,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         //document.getElementById('segundos').innerHTML = txtSegundos;
         segundos--;
-
+        if (minutos == 0 && segundos == 0) {
+            minutos = 1;
+            
+            if (turno == 2) {
+                turno = 1;
+            } else {
+                turno = 2;
+            }
+            showTurno(turno);
+            segundos = 30;
+        }
         cargarMinutos(segundos, txtSegundos);
     }
 
@@ -108,14 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('minutos').innerHTML = txtMinutos + ":" + txtSegundos;
         if (minutos == 0 && segundos == 0) {
 
-            minutos = 1
-            segundos = 30
+            minutos = 1;
+            
             if (turno == 2) {
                 turno = 1;
             } else {
                 turno = 2;
             }
             showTurno(turno);
+            segundos = 30;
         }
     }
 
