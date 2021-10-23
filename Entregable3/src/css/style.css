@@ -1,7 +1,7 @@
 /* Eliminamos márgenes y ponemos fondo de página negro */
 html,body {
   margin:0;
-  background:#000;
+  background:rgb(129, 105, 105);
 }
 
 /* Bernard Bernoulli: Animación del personaje */
@@ -99,23 +99,28 @@ html,body {
 }
 .robocopStand{
   
-  width:175px;
-  height:119px;
-  background:url(images/RataLargaStand.png) no-repeat;
-  animation: roboStand 0.6s steps(2) infinite;
+  width:70px;
+  height:84px;
+  background:url(images/RoboWalkRight.png) no-repeat;
+  animation: roboWalkLeft  1.2s steps(10) infinite;
+  left:500px;
+  animation-direction: reverse;
   margin:auto;
   position:absolute;
   top:25px;
+  border: solid black;
   /* Ojo, muy costoso en rendimiento */
   /* filter:drop-shadow(5px 5px 5px #000); */
 }
 
 .robocopRight{
    
-  width:190.4px;
-  height:119px;
-  background:url(images/rataLarga.png) no-repeat;
-  animation: roboStand 1s steps(10) infinite;
+  width:70px;
+  height:84px;
+  background:url(images/RoboWalkRight.png) no-repeat;
+  animation: roboWalkLeft  0.9s steps(10) infinite;
+  left:500px;
+  animation-direction: reverse;
   margin:auto;
   position:absolute;
   top:25px;
