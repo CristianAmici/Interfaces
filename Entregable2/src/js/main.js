@@ -28,29 +28,36 @@ document.addEventListener("DOMContentLoaded", () => {
     var jugando = document.getElementById("jugando");
     document.getElementById("cerrar").addEventListener("click", cerrarAyuda);
 
-    document.getElementById("ayudaNuevoJuego").addEventListener("click", () => {
+    
+    document.getElementById("ayudaJugabilidad").addEventListener("click", ayuda);
+
+    document.getElementById("ayudaNuevoJuego").addEventListener("click", ayuda);
+    function cerrarAyuda(){
+        
+        mensajeAyuda.classList.remove("ayudaVisible");
+        mensajeAyuda.classList.add("mensajeOculto");
+        
+        
+    }
+    function ayuda(){
         ayuda1.innerHTML = "- El juego consiste en hacer una linea de la cantidad de fichas que se solicita en el tipo de juego "+
         "en cualquiera de los sentidos (horizontal,vertical y ambas diagonales). Cada jugador tiene un turno de 1:30 minutos, "+
         "pasado ese tiempo el turno se le otorga al rival."
         ayuda2.innerHTML = "- Cada jugador debe arrastrar sus fichas hacia el hueco marcado a continuacion para depositar su ficha en esa linea.                   "+
         "Que se diviertan!"
         mensajeAyuda.classList.remove("mensajeOculto");
-        mensajeAyuda.classList.add("ayudaVisible")
-    })
-    function cerrarAyuda(){
-        mensajeAyuda.classList.remove("ayudaVisible");
-        mensajeAyuda.classList.add("mensajeOculto");
+        mensajeAyuda.classList.add("ayudaVisible");
     }
 
     var juego = {
         spaces: [
-            { x: 0, y: 0, card: null },
-            { x: 100, y: 0, card: null },
-            { x: 200, y: 0, card: null },
             { x: 300, y: 0, card: null },
             { x: 400, y: 0, card: null },
             { x: 500, y: 0, card: null },
-            { x: 600, y: 0, card: null },//4 en linea
+            { x: 600, y: 0, card: null },
+            { x: 700, y: 0, card: null },
+            { x: 800, y: 0, card: null },
+            { x: 900, y: 0, card: null },//4 en linea
         ],
         fichas: [],
         holdingCard: null,
@@ -175,6 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
             canvases.cards.width,
             canvases.cards.height
         );
+        img2.src = "";
+        imgJ1.src = "";
+        img3.src = "";
+        imgJ2.src = "";
         matrix.splice(0, matrix.length);
         valoresOriginales.splice(0, valoresOriginales.length);
         juego.fichas.splice(0, juego.fichas.length);
@@ -216,18 +227,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         reiniciar();
 
-
+        let cantFichas = 0;
+        
         if (valorDeLinea == 1) {
-            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
+            juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
+            cantFichas = 7*8;
         } else if (valorDeLinea == 2) {
-            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
-            juego.spaces.push({ x: 800, y: 0, card: null })//6 en inea
+            juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
+            juego.spaces.push({ x: 1100, y: 0, card: null })//6 en inea
+            cantFichas = 8*9;
         } else if (valorDeLinea == 3) {
-            juego.spaces.push({ x: 700, y: 0, card: null })//5 en linea
-            juego.spaces.push({ x: 800, y: 0, card: null })//6 en inea
-            juego.spaces.push({ x: 900, y: 0, card: null }) //7 en inea
+            juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
+            juego.spaces.push({ x: 1100, y: 0, card: null })//6 en inea
+            juego.spaces.push({ x: 1200, y: 0, card: null }) //7 en inea
+            cantFichas = 9*10;
         }
-
+        else{
+            cantFichas = 6*7;
+        }
+        cantFichas /= 4;
         turno = 2;
 
         //determinamos cuales van a ser las fichas que se van a jugar y tambien las mostramos en la pagina
@@ -257,36 +275,14 @@ document.addEventListener("DOMContentLoaded", () => {
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
 
-        img.onload = function () {
-            coorY = 0, coorX = 0;
-
-            for (let x = 0; x < (8 + valorDeLinea); x++) {
-                let lugares = []
-                for (let y = 0; y < (7 + valorDeLinea); y++) {
-                    coorY = y * 100;
-                    if (y != 0) {
-                        context.spaces.drawImage(img, coorX, coorY);
-                        lugares.push({
-                            coorY,
-                            jugador: 0,
-                        });
-                    }
-                }
-                matrix[x] = lugares;
-                coorX = x * 100;
-            }
-
-        }
-
-
-
+        
         //cargamos las fichas del jugador 1
         img2.onload = function () {
-            coorX = (7 + valorDeLinea) * 100;
-            for (let x = (8 + valorDeLinea); x < (11 + valorDeLinea); x++) {
-                for (let y = 0; y < (25 + valorDeLinea); y++) {
-                    coorY = y * 20;
-                    if (x > 8) {
+            coorY = 0, coorX = 100;
+            for (let x = 1; x < 4 ; x++) {
+                for (let y = 0; y < cantFichas; y++) {
+                    coorY = y * 30;
+                    if (x > 0) {
                         juego.fichas.push({
                             img: img2,
                             x: coorX, y: coorY,
@@ -297,16 +293,43 @@ document.addEventListener("DOMContentLoaded", () => {
                             x: coorX, y: coorY,
                         })
                     }
+                    console.log( coorX, coorY);
                 }
                 coorX = x * 100;
             }
         }
+
+        img.onload = function () {
+            coorY = 0, coorX = 300;
+
+            for (let x = 3; x < (11 + valorDeLinea); x++) {
+                let lugares = []
+                for (let y = 0; y < (7 + valorDeLinea); y++) {
+                    coorY = y * 100;
+                    if (y != 0) {
+                        context.spaces.drawImage(img, coorX, coorY);
+                        lugares.push({
+                            coorY,
+                            jugador: 0,
+                        });
+                    }
+                    console.log( coorX, coorY);
+                }
+                matrix[x] = lugares;
+                coorX = x * 100;
+            }
+
+        } 
+
+
+
         //cargamos las fichas del jugador 2
         img3.onload = function () {
-            for (let x = (11 + valorDeLinea); x < (14 + valorDeLinea); x++) {
-                for (let y = 0; y < (25 + valorDeLinea); y++) {
-                    coorY = y * 20;
-                    if (x > 11) {
+            coorX = (1026+ valorDeLinea*100);
+            for (let x = (11 + valorDeLinea); x < (13 + valorDeLinea); x++) {
+                for (let y = 0; y < cantFichas; y++) {
+                    coorY = y * 30;
+                    if (x > 10) {
                         juego.fichas.push({
                             img: img3,
                             x: coorX, y: coorY,
@@ -316,9 +339,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         valoresOriginales.push({
                             x: coorX, y: coorY,
                         })
+                        console.log( coorX, coorY);
                     }
                 }
-                coorX = x * 100;
+                coorX =( x * 100)+26;
             }
             drawSpaces();
             drawCards();
@@ -330,10 +354,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawSpace(space) {
         ctx.fillStyle = '#183DB0';
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#5B7BDD';
-        /*  ctx.drawImage(imagen,space.x, space.y); */
+        ctx.strokeStyle = '#5B7BDD'; 
         ctx.fillRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
         ctx.strokeRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
+        ctx.beginPath();  
+        ctx.arc(space.x+50, space.y+50,40,0*Math.PI,2*Math.PI);
+        ctx.arc(space.x+50, space.y+50,30,0*Math.PI,2*Math.PI);
+        ctx.font = "15px Comic Sans MS";
+        ctx.textAlign = "center";
+        ctx.strokeText("Inserte", space.x+50, space.y+50);
+        ctx.strokeText(" Aqui", space.x+50, space.y+60);
+        ctx.stroke();
 
     }
     //Por cada espacio en juego.spaces se dibuja donde se deposita las fichas
