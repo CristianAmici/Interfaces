@@ -5,25 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
   var keyUp = false;
   var keyDown = false;
   var robocop = document.getElementById('robocop');
-  var stand=false;
-  var space=false
-  var situacionY =document.getElementById("robocop").offsetTop;
-  var situacionX = document.getElementById("robocop").style.left;
+  var stand = false;
+  var space = false
+  var jump = false;
   window.addEventListener("keydown", (e) => {
-    stand=false;
+    stand = false;
     console.log(e.key);
     if (e.key == "ArrowLeft") {
       keyLeft = true;
       keyRight = false;
       keyUp = false;
       keyDown = false;
-      
+
     } else if (e.key == "ArrowRight") {
       keyRight = true;
       keyLeft = false;
       keyUp = false;
       keyDown = false;
-      robocop.style.left+= situacionX+10+"px" ;
+      robocop.classList.add("move-left");
     } else if (e.key == "ArrowUp") {
       keyUp = true;
       keyLeft = false;
@@ -34,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
       keyLeft = false;
       keyRight = false;
       keyUp = false;
-    }else if (e.key == " ") {
-      space= true
+    } else if (e.key == " ") {
+      space = true
       keyDown = false;
       keyLeft = false;
       keyRight = false;
@@ -44,16 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   })
   window.addEventListener("keyup", (e) => {
-    stand=true;
-    keyDown = false;
-    keyLeft = false;
-    keyRight = false;
-    keyUp = false;
-    space=false;
+    if (jump) {
+      stand = false;
+    }
+    else {
+      stand = true;
+      keyDown = false;
+      keyLeft = false;
+      keyRight = false;
+      keyUp = false;
+      space = false;
+
+    }
   })
   let intervalId = setInterval(function () {
-    situacionX = document.getElementById("robocop").style.left;
-    console.log(situacionX)
     if (keyLeft) {
       robocop.className = '';
       robocop.classList.add('robocopLeft')
@@ -66,11 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (keyDown) {
       robocop.className = '';
       robocop.classList.add('robocopDown')
-    }else if (stand){
-      robocop.className='';
+    } else if (stand) {
+      robocop.className = '';
       robocop.classList.add('robocopStand')
-    }else if (space){
-      robocop.className='';
+    } else if (space) {
+      robocop.className = '';
       robocop.classList.add('robocopShooter')
     }
   }, 50)

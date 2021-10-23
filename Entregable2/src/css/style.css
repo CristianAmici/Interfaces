@@ -345,7 +345,10 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     }
   }
   
-  .scroll-down {
+  .move-left {
+    transform: translate(-10px,0);
+  }
+    .scroll-down {
     margin: 0;
     border: 2px solid #fff;
     -moz-border-radius: 100px;
