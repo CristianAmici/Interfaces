@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var img = new Image();
     var img2 = new Image();
     var img3 = new Image();
-    var img4 = new Image(); 
+    var img4 = new Image();
     var coorY, coorX;
     var turno = 2;
     var valorDeLinea = 0;
@@ -15,36 +15,38 @@ document.addEventListener("DOMContentLoaded", () => {
     var imgJ1 = document.getElementById('j1');
     var imgJ2 = document.getElementById('j2');
     var imgGanador = document.getElementById("jGanador");
-    var imgAyuda1= document.getElementById("imgAyuda1");
-    var imgAyuda2= document.getElementById("imgAyuda2");
+    var imgAyuda1 = document.getElementById("imgAyuda1");
+    var imgAyuda2 = document.getElementById("imgAyuda2");
 
     var ganador = document.getElementById("ganador");
     var mensaje = document.getElementById("mensajeGanador");
     var comentario = document.getElementById("comentario");
-    var mensajeAyuda= document.getElementById("mensajeAyuda");
+    var mensajeAyuda = document.getElementById("mensajeAyuda");
     var opciones = document.getElementById("opciones");
     var showjugador1 = document.getElementById("Jugador1");
     var showjugador2 = document.getElementById("Jugador2");
     var jugando = document.getElementById("jugando");
+    var ayuda1 = document.getElementById("ayuda1");
+    var ayuda2 = document.getElementById("ayuda2");
     document.getElementById("cerrar").addEventListener("click", cerrarAyuda);
 
-    
+
     document.getElementById("ayudaJugabilidad").addEventListener("click", ayuda);
 
     document.getElementById("ayudaNuevoJuego").addEventListener("click", ayuda);
-    function cerrarAyuda(){
-        
+    function cerrarAyuda() {
+
         mensajeAyuda.classList.remove("ayudaVisible");
         mensajeAyuda.classList.add("mensajeOculto");
-        
-        
+
+
     }
-    function ayuda(){
-        ayuda1.innerHTML = "- El juego consiste en hacer una linea de la cantidad de fichas que se solicita en el tipo de juego "+
-        "en cualquiera de los sentidos (horizontal,vertical y ambas diagonales). Cada jugador tiene un turno de 1:30 minutos, "+
-        "pasado ese tiempo el turno se le otorga al rival."
-        ayuda2.innerHTML = "- Cada jugador debe arrastrar sus fichas hacia el hueco marcado a continuacion para depositar su ficha en esa linea.                   "+
-        "Que se diviertan!"
+    function ayuda() {
+        ayuda1.innerHTML = "- El juego consiste en hacer una linea de fichas (en cualquier dirección) consecutivas " +
+            "segun el tipo de juego seleccionado(4 en 1, son 4 consecutivas). Cada jugador tiene un turno de 1:30 minutos, " +
+            "pasado ese tiempo el turno se le otorga al rival."
+        ayuda2.innerHTML = '- Cada jugador debe seleccionar y arrastrar sus fichas hacia la imagen "inserte aqui" marcado a continuacion y soltarla para depositar su ficha en esa línea. </br>' +
+            "¡Que se diviertan!"
         mensajeAyuda.classList.remove("mensajeOculto");
         mensajeAyuda.classList.add("ayudaVisible");
     }
@@ -228,22 +230,22 @@ document.addEventListener("DOMContentLoaded", () => {
         reiniciar();
 
         let cantFichas = 0;
-        
+
         if (valorDeLinea == 1) {
             juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
-            cantFichas = 7*8;
+            cantFichas = 7 * 8;
         } else if (valorDeLinea == 2) {
             juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
             juego.spaces.push({ x: 1100, y: 0, card: null })//6 en inea
-            cantFichas = 8*9;
+            cantFichas = 8 * 9;
         } else if (valorDeLinea == 3) {
             juego.spaces.push({ x: 1000, y: 0, card: null })//5 en linea
             juego.spaces.push({ x: 1100, y: 0, card: null })//6 en inea
             juego.spaces.push({ x: 1200, y: 0, card: null }) //7 en inea
-            cantFichas = 9*10;
+            cantFichas = 9 * 10;
         }
-        else{
-            cantFichas = 6*7;
+        else {
+            cantFichas = 6 * 7;
         }
         cantFichas /= 4;
         turno = 2;
@@ -275,11 +277,11 @@ document.addEventListener("DOMContentLoaded", () => {
         //Cargamos las imagenes y los subimos a los objetos
         img.src = "src/css/images/vacio.jpg";
 
-        
+
         //cargamos las fichas del jugador 1
         img2.onload = function () {
             coorY = 0, coorX = 100;
-            for (let x = 1; x < 4 ; x++) {
+            for (let x = 1; x < 4; x++) {
                 for (let y = 0; y < cantFichas; y++) {
                     coorY = y * 30;
                     if (x > 0) {
@@ -293,7 +295,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             x: coorX, y: coorY,
                         })
                     }
-                    console.log( coorX, coorY);
                 }
                 coorX = x * 100;
             }
@@ -313,19 +314,18 @@ document.addEventListener("DOMContentLoaded", () => {
                             jugador: 0,
                         });
                     }
-                    console.log( coorX, coorY);
                 }
                 matrix[x] = lugares;
                 coorX = x * 100;
             }
 
-        } 
+        }
 
 
 
         //cargamos las fichas del jugador 2
         img3.onload = function () {
-            coorX = (1026+ valorDeLinea*100);
+            coorX = (1026 + valorDeLinea * 100);
             for (let x = (11 + valorDeLinea); x < (13 + valorDeLinea); x++) {
                 for (let y = 0; y < cantFichas; y++) {
                     coorY = y * 30;
@@ -339,10 +339,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         valoresOriginales.push({
                             x: coorX, y: coorY,
                         })
-                        console.log( coorX, coorY);
                     }
                 }
-                coorX =( x * 100)+26;
+                coorX = (x * 100) + 26;
             }
             drawSpaces();
             drawCards();
@@ -354,16 +353,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawSpace(space) {
         ctx.fillStyle = '#183DB0';
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#5B7BDD'; 
+        ctx.strokeStyle = '#5B7BDD';
         ctx.fillRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
         ctx.strokeRect(space.x, space.y, FICHA_WIDTH, FICHA_HEIGHT);
-        ctx.beginPath();  
-        ctx.arc(space.x+50, space.y+50,40,0*Math.PI,2*Math.PI);
-        ctx.arc(space.x+50, space.y+50,30,0*Math.PI,2*Math.PI);
+        ctx.beginPath();
+        ctx.arc(space.x + 50, space.y + 50, 40, 0 * Math.PI, 2 * Math.PI);
+        ctx.arc(space.x + 50, space.y + 50, 30, 0 * Math.PI, 2 * Math.PI);
         ctx.font = "15px Comic Sans MS";
         ctx.textAlign = "center";
-        ctx.strokeText("Inserte", space.x+50, space.y+50);
-        ctx.strokeText(" Aqui", space.x+50, space.y+60);
+        ctx.strokeText("Inserte", space.x + 50, space.y + 50);
+        ctx.strokeText(" Aqui", space.x + 50, space.y + 60);
         ctx.stroke();
 
     }
@@ -380,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //Dibujamos las fichas
     function dibujarFicha(ficha, ctx) {
+        ctx.arc(ficha.x, ficha.y, ficha.width/2, 0 * Math.PI, 2 * Math.PI);
         ctx.drawImage(ficha.img, ficha.x, ficha.y);
     }
     //Limpiamos el canvas donde se dibujan las fichas, y volvemos a dibujar las fichas, salvo la que el usuario
@@ -415,12 +415,15 @@ document.addEventListener("DOMContentLoaded", () => {
         let jugadorTurno = 1;
         juego.isMouseDown = true;
         let dimensiones = oMousePosScale(canvases.cards, e)
+        
         for (var index = 0; index < juego.fichas.length; index++) {
             ficha = juego.fichas[index];
+            let estaEnCirculo = Math.pow(dimensiones.y-ficha.y-ficha.height/2, 2) + Math.pow(dimensiones.x-ficha.x-ficha.width/2, 2);
+            let radioAlCuadrado= ficha.width/2* ficha.height/2;
+            console.log("radio",radioAlCuadrado,"circulo", estaEnCirculo)
             if (dimensiones.x >= ficha.x && dimensiones.x < ficha.width + ficha.x
-                && dimensiones.y >= ficha.y && dimensiones.y < ficha.height + ficha.y) {
-
-                if (turno != juego.fichas[index].jugador) {
+                && dimensiones.y >= ficha.y && dimensiones.y < ficha.height + ficha.y &&estaEnCirculo<radioAlCuadrado) {
+                    if (turno != juego.fichas[index].jugador) {
                     juego.holdingCard = ficha;
                     juego.cursorOffset = {
                         x: dimensiones.x - ficha.x,
