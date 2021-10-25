@@ -108,7 +108,7 @@ html,body {
   animation-direction: reverse;
   margin:auto;
   position:absolute;
-  bottom:12px;
+  bottom: 300px;
   border: solid black;
   z-index:5;
   /* Ojo, muy costoso en rendimiento */
@@ -158,31 +158,61 @@ body { margin: 0; }
 }
 
 #stars {
-  background: url(images/MuyLejos.png) repeat-x 0 bottom;
-  animation: loop 15s linear infinite;
+  background: url(images/cowboy/backgroundFondo.png) repeat-x 0 bottom;
+  animation: loop 20s linear infinite;
   z-index: 1;
 }
 
-#mountains {
-  background: url(images/LejosEdificios.png) repeat-x 0 bottom;
+
+
+/* #mountains {
+  background: url(images/cowboy/backgroundMedio.png) repeat-x 0 bottom;
   animation: loop 12s linear infinite;
   z-index: 2;
-}
+} */
 
 #ground {
-  background: url(images/cercaEdificios.png) repeat-x 0 bottom;
+  background: url(images/cowboy/backgroundSuelo.png) repeat-x 0 bottom;
   animation: loop 9s linear infinite;
   z-index: 3;
 }
 
-#stars, #mountains, #ground {
+#stars, #mountains, #ground{
   width: 200%; height: 100%;
-  background-size:40%;
-  bottom: 0; left: 0;
+  background-size:30%;
+  bottom: 14%;
   position: fixed;
 }
 
 @keyframes loop {
   from { transform: translateX(0); }
-  to { transform: translateX(-40%); }
+  to { transform: translateX(-30%); }
+}
+
+
+/* NUBESSSSSSSSSSSSSSSSS */
+
+#cloud1{
+  position: absolute;
+  top: 500px;
+  right: 0px;
+  z-index: 15;
+  animation: movementCloud 15s linear;
+}
+#cloud2{
+  position: absolute;
+  top: 300px;
+  right: 0px;
+  z-index: 15;
+  animation: movementCloud 22s linear ;
+}
+
+
+@keyframes movementCloud {
+  0% {
+      right: 0%;
+    }
+  100%{
+    right: 100%;
+  }
 }
