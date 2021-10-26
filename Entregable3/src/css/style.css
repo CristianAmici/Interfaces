@@ -54,7 +54,7 @@ html,body {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position: 0px}
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position:-707px}
+  100% { background-position:-800px}
 }
 @keyframes roboStand {
   /* Partimos de la primera viñeta del sprite sheet */
@@ -98,18 +98,16 @@ html,body {
   /* Ojo, muy costoso en rendimiento */
   /* filter:drop-shadow(5px 5px 5px #000); */
 }
-.robocopStand{
+.cowboyStand{
   
-  width:70px;
-  height:84px;
-  background:url(images/RoboWalkRight.png) no-repeat;
-  animation: roboWalkLeft  1.2s steps(10) infinite;
+  width:80px;
+  height:100px;
+  background:url(images/cowboy/CowBoyWalkingBig.png) no-repeat;
+  animation: roboWalkLeft  0.9s steps(8) infinite;
   left:500px;
-  animation-direction: reverse;
   margin:auto;
   position:absolute;
-  bottom: 300px;
-  border: solid black;
+  bottom: 250px;
   z-index:5;
   /* Ojo, muy costoso en rendimiento */
   /* filter:drop-shadow(5px 5px 5px #000); */
@@ -117,10 +115,10 @@ html,body {
 
 .robocopRight{
    
-  width:70px;
-  height:84px;
-  background:url(images/RoboWalkRight.png) no-repeat;
-  animation: roboWalkLeft  0.9s steps(10) infinite;
+  width:48px;
+  height:48px;
+  background:url(images/cowboy/CowBoyWalking.png) no-repeat;
+  animation: roboWalkLeft  0.9s steps(8) infinite;
   left:500px;
   animation-direction: reverse;
   margin:auto;
@@ -163,13 +161,11 @@ body { margin: 0; }
   z-index: 1;
 }
 
-
-
-/* #mountains {
+#mountains {
   background: url(images/cowboy/backgroundMedio.png) repeat-x 0 bottom;
   animation: loop 12s linear infinite;
-  z-index: 2;
-} */
+  z-index: 4;
+}
 
 #ground {
   background: url(images/cowboy/backgroundSuelo.png) repeat-x 0 bottom;

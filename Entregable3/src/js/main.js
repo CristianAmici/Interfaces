@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       robocop.classList.add('robocopDown')
     } else if (stand) {
       robocop.className = '';
-      robocop.classList.add('robocopStand')
+      robocop.classList.add('cowboyStand')
     } else if (space) {
       robocop.className = '';
       robocop.classList.add('robocopShooter')
