@@ -45,108 +45,93 @@ html,body {
   box-shadow:10px 10px 45px RGBA(0,0,0, 0.85) inset;
 }
 
-/* Animación para mover cielo y mar */
-@keyframes movebg {
-  0% { background-position:550px } 
-  100% { background-position:0 }
-}
-@keyframes roboWalkLeft {
+
+@keyframes cowboyWalkLeft {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position: 0px}
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
   100% { background-position:-800px}
 }
-@keyframes roboStand {
+
+
+@keyframes enemyMovement {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position-x:  0px }
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position-x:-385px }
+  100% { background-position-x:-192px }
 }
-@keyframes roboWalkRight {
- /* Partimos de la primera viñeta del sprite sheet */
- 0% { background-position-x: 0px }
- /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
- 100% { background-position-x:1902px}
-}
-@keyframes shoot {
+
+
+@keyframes cowboyJumpAnimation {
   /* Partimos de la primera viñeta del sprite sheet */
-  0% { background-position-x: 0px;}
+  0% { background-position-x:  0px }
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position-x: -167px;}
+  100% { background-position-x:-200px }
 }
-/* OPCIONAL: Guybrush */
-#gb {
-  width:54px;
-  height:100px;
-  background:url(images/mario-sprite.png) no-repeat;
-  animation:walk 0.8s steps(2) infinite;
-  position:absolute;
-  top:50px;
-  /* Ojo, muy costoso en rendimiento */
-  /* filter:drop-shadow(5px 5px 5px #000); */
+
+
+@keyframes cowboyDead{
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position-x:  0px }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position-x: -1012px }
 }
-.robocopLeft{
-  
-  width:60px;
-  height:84px;
-  background:url(images/RoboWalkLeft.png) no-repeat;
-  animation: roboWalkLeft 1.2s steps(10) infinite;
-  margin:auto;
-  position:absolute;
-  bottom:5px;
-  z-index:5;
-  /* Ojo, muy costoso en rendimiento */
-  /* filter:drop-shadow(5px 5px 5px #000); */
-}
+
+
+
+
+/*        PERSONAJE         */
+
+
 .cowboyStand{
   
-  width:80px;
+  width: 100px;
   height:100px;
   background:url(images/cowboy/CowBoyWalkingBig.png) no-repeat;
-  animation: roboWalkLeft  0.9s steps(8) infinite;
-  left:500px;
+  animation: cowboyWalkLeft  0.8s steps(8) infinite;
+  left: 300px;
   margin:auto;
   position:absolute;
-  bottom: 250px;
+  bottom: 150px;
   z-index:5;
-  /* Ojo, muy costoso en rendimiento */
-  /* filter:drop-shadow(5px 5px 5px #000); */
 }
 
-.robocopRight{
-   
-  width:48px;
-  height:48px;
-  background:url(images/cowboy/CowBoyWalking.png) no-repeat;
-  animation: roboWalkLeft  0.9s steps(8) infinite;
-  left:500px;
-  animation-direction: reverse;
-  margin:auto;
-  position:absolute;
-  bottom:5px;
-  z-index:5;
-  /* Ojo, muy costoso en rendimiento */
-  /* filter:drop-shadow(5px 5px 5px #000); */
-}
-.robocopShooter {
-  
-  width:83px;
-  height:92px;
-  background:url(images/robocopShooter.png) no-repeat;
-  animation:shoot 0.2s steps(2) infinite;
-  margin:auto;
-  position:absolute;
-  top:25px;
-  /* Ojo, muy costoso en rendimiento */
-  /* filter:drop-shadow(5px 5px 5px #000); */
+
+.cowboyDead{
+  position: absolute;
+  bottom: 150px;
+  left: 300px;
+  z-index: 5;
+  margin: auto;
+  width: 126px;
+  height: 96px;
+  background:url(images/cowboy/CowBoyDie.png) no-repeat;
+  animation: cowboyDead 1s steps(8) ; 
 }
 
-@keyframes gbwalk {
-  0% { background-position:0 }
-  100% { background-position:-624px }
+
+.cowboyJump{
+  position: absolute;
+  bottom: 150px;
+  left: 300px;
+  z-index: 5;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background:url(images/cowboy/CowBoyJump.png) no-repeat;
+  animation: cowboyJumpAnimation 1s steps(2) infinite; 
+  animation: cowboyJump 1s linear;
 }
-/* 
-el backk */
+
+@keyframes cowboyJump {
+  0% {bottom: 150px; }
+  45%, 55%{ bottom: 200px; }
+}
+
+
+
+
+/*        FONDO         */
 
 *{ box-sizing: border-box; }
 html, body, #container { width: 100%; height: 100%; }
@@ -163,10 +148,9 @@ body { margin: 0; }
 
 #mountains {
   background: url(images/cowboy/backgroundMedio.png) repeat-x 0 bottom;
-  animation: loop 12s linear infinite;
+  animation: loop 9s linear infinite;
   z-index: 4;
 }
-
 #ground {
   background: url(images/cowboy/backgroundSuelo.png) repeat-x 0 bottom;
   animation: loop 9s linear infinite;
@@ -186,7 +170,10 @@ body { margin: 0; }
 }
 
 
-/* NUBESSSSSSSSSSSSSSSSS */
+
+
+
+/*        NUBES          */
 
 #cloud1{
   position: absolute;
@@ -199,16 +186,97 @@ body { margin: 0; }
   position: absolute;
   top: 300px;
   right: 0px;
-  z-index: 15;
+  z-index: 16;
   animation: movement 22s linear ;
 }
 
+#sun{
+  position: absolute;
+  top: 15%;
+  right: 10px;
+  z-index: 12;
+}
+
+/*        ENEMYS          */
+
+#enemy{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 15;
+  animation: movement 15s linear;
+}
+
+#enemyWlaking{
+  width:48px;
+  height:48px;
+  background: url(images/cowboy/Snake_walk.png) repeat-x 0 bottom;
+  animation: enemyMovement  0.8s steps(4) infinite;
+  right: 10px;
+  margin:auto;
+  position:absolute;
+  bottom: 150px;
+  z-index:20;
+}
+
+#enemyFlying{
+  width:48px;
+  height:48px;
+  background: url(images/cowboy/Vulture_walk.png) repeat-x 0 bottom;
+  animation: enemyMovement  0.8s steps(4) infinite;
+  right: 10px;
+  margin:auto;
+  position:absolute;
+  bottom: 200px;
+  z-index:20;
+}
+
+
 
 @keyframes movement {
-  0% {
-      right: 0%;
-    }
-  100%{
-    right: 100%;
-  }
+  0% { right: 0%;}
+  100% { right: 100%; }
 }
+
+
+
+/* .robocopLeft{
+  
+  width:60px;
+  height:84px;
+  background:url(images/RoboWalkLeft.png) no-repeat;
+  animation: roboWalkLeft 1.2s steps(10) infinite;
+  margin:auto;
+  position:absolute;
+  bottom:5px;
+  z-index:5;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); 
+}
+.robocopRight{
+   
+  width:48px;
+  height:48px;
+  background:url(images/cowboy/CowBoyWalking.png) no-repeat;
+  animation: roboWalkLeft  0.9s steps(8) infinite;
+  left:500px;
+  animation-direction: reverse;
+  margin:auto;
+  position:absolute;
+  bottom:5px;
+  z-index:5;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); 
+}
+.robocopShooter {
+  
+  width:83px;
+  height:92px;
+  background:url(images/robocopShooter.png) no-repeat;
+  animation:shoot 0.2s steps(2) infinite;
+  margin:auto;
+  position:absolute;
+  top:25px;
+  /* Ojo, muy costoso en rendimiento */
+  /* filter:drop-shadow(5px 5px 5px #000); 
+} */

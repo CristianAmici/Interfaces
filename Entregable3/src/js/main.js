@@ -4,13 +4,107 @@ document.addEventListener("DOMContentLoaded", () => {
   var keyRight = false;
   var keyUp = false;
   var keyDown = false;
-  var robocop = document.getElementById('robocop');
+  var cowboy = document.getElementById('cowboy');
   var stand = false;
   var space = false
   var jump = false;
+  
+  window.addEventListener("keydown", (e) => {
+   
+    if (e.key == " ") {
+      space = true
+      keyDown = false;
+      keyLeft = false;
+      keyRight = false;
+      keyUp = false;
+      stand = false;
+    }
+    else if (stand) {
+      cowboy.className = '';
+      cowboy.classList.add('cowboyStand')
+    } 
+  })
+
+
+
+  window.addEventListener("keyup", (e) => {
+    cowboy.addEventListener('animationend', () => {
+      cowboy.classList.remove("cowboyJump");
+      if (jump) {
+        stand = false;
+      }
+      else {
+        stand = true;
+        keyDown = false;
+        keyLeft = false;
+        keyRight = false;
+        keyUp = false;
+        space = false;
+  
+      }
+    });
+    
+  })  
+  
+  let intervalId = setInterval(function () {
+    
+      if (space) {
+        cowboy.className = '';
+        cowboy.classList.add("cowboyJump");
+        
+      }
+      else if (stand) {
+        cowboy.className = '';
+        cowboy.classList.add('cowboyStand')
+      }
+      
+  }, 50)
+
+
+  /* 
+  K
+  window.addEventListener("keydown", (e) => {
+   
+    if (e.key == " ") {
+     cowboy.classList.add("cowboyJump");
+    }
+  });
+  
+  cowboy.addEventListener('animationend', () => {
+    cowboy.classList.remove("cowboyJump");
+  }); */
+
+
+
+
+
+
+/*   
+C
+let intervalId = setInterval(function () {
+    if (keyLeft) {
+      robocop.className = '';
+      robocop.classList.add('robocopLeft')
+    } else if (keyRight) {
+      robocop.className = '';
+      robocop.classList.add('robocopRight')
+    } else if (keyUp) {
+      robocop.className = '';
+      robocop.classList.add('cowboyJump')
+    } else if (keyDown) {
+      robocop.className = '';
+      robocop.classList.add('robocopDown')
+    } else if (stand) {
+      robocop.className = '';
+      robocop.classList.add('cowboyStand')
+    } else if (space) {
+      robocop.className = '';
+      robocop.classList.add('robocopShooter')
+    }
+  }, 50)
   window.addEventListener("keydown", (e) => {
     stand = false;
-    console.log(e.key);
+   
     if (e.key == "ArrowLeft") {
       keyLeft = true;
       keyRight = false;
@@ -42,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   })
+  
   window.addEventListener("keyup", (e) => {
     if (jump) {
       stand = false;
@@ -55,26 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       space = false;
 
     }
-  })
-  let intervalId = setInterval(function () {
-    if (keyLeft) {
-      robocop.className = '';
-      robocop.classList.add('robocopLeft')
-    } else if (keyRight) {
-      robocop.className = '';
-      robocop.classList.add('robocopRight')
-    } else if (keyUp) {
-      robocop.className = '';
-      robocop.classList.add('robocopUp')
-    } else if (keyDown) {
-      robocop.className = '';
-      robocop.classList.add('robocopDown')
-    } else if (stand) {
-      robocop.className = '';
-      robocop.classList.add('cowboyStand')
-    } else if (space) {
-      robocop.className = '';
-      robocop.classList.add('robocopShooter')
-    }
-  }, 50)
+  }) */
+  
+
 })
