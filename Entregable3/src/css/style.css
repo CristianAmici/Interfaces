@@ -76,6 +76,13 @@ html,body {
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
   100% { background-position-x: -1012px }
 }
+@keyframes cowboyDown{
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position-x:  0px }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position-x: -400px }
+}
+
 
 
 
@@ -96,6 +103,18 @@ html,body {
   z-index:5;
 }
 
+.cowboyDown{
+  
+  width: 100px;
+  height:100px;
+  background:url(images/cowboy/CowBoyDown.png) no-repeat;
+  animation: cowboyDown  0.8s steps(4) infinite;
+  left: 300px;
+  margin:auto;
+  position:absolute;
+  bottom: 150px;
+  z-index:5;
+}
 
 .cowboyDead{
   position: absolute;
