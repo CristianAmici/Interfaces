@@ -1,0 +1,279 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+html{
+  background-image: url(images/cowboy/FondoPantallafinal.jpg);
+  background-size: cover;
+}
+body {
+ margin:0;
+}
+.link{
+  text-decoration:none;
+  border: none;
+  width: 150px;
+  height:30px;
+  font-family: "montserrat",sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-size: 200%;
+  padding-bottom: 10px;
+  background-color: rgba(190, 40, 40, 0.651);
+}
+.plate {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(34, 34, 34);
+}
+.conteiner{
+  display: flex;
+  flex-direction: column;
+}
+.shadow {
+  color: #fff;
+  font-family: Arvo;
+  font-weight: bold;
+  text-shadow:
+    -3px -3px 0 #222,
+    3px -3px 0 #222,
+    -3px 3px 0 #222,
+    3px 3px 0 #222,
+    4px 4px 0 #fff,
+    5px 5px 0 #fff,
+    6px 6px 0 #fff,
+    7px 7px 0 #fff;
+  line-height: 0.8em;
+  letter-spacing: 0.1em;
+  transform: scaleY(0.7);
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  margin:0;
+  text-align: center;
+}
+.script {
+  font-family: "Seaweed Script";
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+}
+.script span {
+  padding: 0 0.3em;
+}
+.script::after {
+  content:"";
+  display: flex;
+  z-index:-1;
+  border-bottom: 3px solid #fff;
+}
+.text1 {
+  font-size: 60px;
+}
+.text2 {
+  font-size: 169px;
+}
+.text3 {
+  font-size: 100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+nav {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  flex-direction: column;
+}
+button {
+  width: 150px;
+  height: 50px;
+  transition: .3s;
+  color: white;
+  margin-bottom: 5px;
+  font-size: 14px;
+  background-color: black;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.712);
+}
+button::before {
+  content: '';
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  transition: .3s;
+}
+button:nth-child(1)::before {
+  content: 'JUGAR';
+}
+button:nth-child(2)::before {
+  content: 'OPCIONES';
+}
+button:nth-child(3)::before {
+  content: 'AYUDA';
+}
+
+button:hover::before {
+  transform: translateX(50px);
+}
+.mainBlock {
+  width: 100%;
+  min-width: 500px;
+  height: 270px;
+  margin-left: 347px;
+  top: 0;
+  border: 3px solid black;
+ 
+  padding: 38px 60px;
+  background: black;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+}
+.mainBlock > div > p:nth-child(2) {
+  text-align: right;
+  margin-top: 40px;
+}
+.topBlock {
+  width: 80%;
+  height: 70px;
+  left: 60px;
+  top: -70px;
+  border: 2px solid black;
+  color: black;
+  opacity: 0;
+}
+.topBlock > div {
+  width: 80%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  font-size: 16px;
+  text-align: center;
+  opacity: 0;
+}
+.bottomBlock {
+  width: 80%;
+  height: 140px;
+  left: 70px;
+  bottom: -141px;
+ 
+  border: 2px solid black;
+  background: white;
+  text-align: center;
+  color: black;
+  padding: 30px;
+}
+.bottomBlock > div {
+  width: 80%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  font-size: 16px;
+}
+
+/* Storyyyyy */
+
+.main-content {
+  overflow:hidden;
+    position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    
+    height: 100vh;
+    
+    background: linear-gradient(to right, rgba(36,31,31,1) 0%, rgba(36,31,31,1) 32%, rgba(74,71,70,1) 100%);
+    color: #fff;
+    text-align: center;
+}
+
+.vignette{
+  position:absolute;
+  z-index:-1;
+  width:100%; height:100%;
+  box-shadow:inset 0px 0px 150px 20px black;
+  mix-blend-mode: multiply;
+  -webkit-animation: vignette-anim 3s infinite; /* Safari 4+ */
+  -moz-animation:    vignette-anim 3s infinite; /* Fx 5+ */
+  -o-animation:      vignette-anim 3s infinite; /* Opera 12+ */
+  animation:         vignette-anim 3s infinite; /* IE 10+, Fx 29+ */
+}
+
+.noise {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    pointer-events: none;
+    opacity: .15;
+}
+
+.line{
+  position:absolute;
+  height:100%; width:1px;
+  opacity:0.1;
+  background-color:#000;
+}
+
+.titleCont{
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+}
+
+.main-title {
+    padding: .3em 1em .25em;    
+    font-weight: 400;
+    font-size: 40px;
+    color: white;
+    font-family: 'Bellefair', serif;
+    position:relative;
+    line-height:1.3;
+}
+
+.overTitle{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.dot{
+  width:3px;
+  height:2px;
+  background-color:white;
+  position:absolute;
+  opacity:0.3;
+}
+
+
+@-webkit-keyframes vignette-anim {
+  0%   , 100%{ opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@-moz-keyframes vignette-anim {
+  0%   , 100%{ opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@-o-keyframes vignette-anim {
+  0%   , 100%{ opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@keyframes vignette-anim {
+  0%   , 100%{ opacity: 1; }
+  50% { opacity: 0.7; }
+}

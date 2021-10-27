@@ -119,8 +119,7 @@ html,body {
   width: 100px;
   height: 100px;
   background:url(images/cowboy/CowBoyJump.png) no-repeat;
-  animation: cowboyJumpAnimation 1s steps(2) infinite; 
-  animation: cowboyJump 1s linear;
+  animation: cowboyJump 1s linear, cowboyJumpAnimation 2s steps(2);
 }
 
 @keyframes cowboyJump {
