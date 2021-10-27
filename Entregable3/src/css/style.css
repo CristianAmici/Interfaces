@@ -80,7 +80,7 @@ html,body {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position-x:  0px }
   /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position-x: -400px }
+  100% { background-position-x: -601px }
 }
 
 
@@ -108,7 +108,7 @@ html,body {
   width: 100px;
   height:100px;
   background:url(images/cowboy/CowBoyDown.png) no-repeat;
-  animation: cowboyDown  0.8s steps(4) infinite;
+  animation: cowboyDown  1.2s steps(6) infinite;
   left: 300px;
   margin:auto;
   position:absolute;

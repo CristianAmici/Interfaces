@@ -33,12 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cowboy.addEventListener('animationend', () => {
 
-  /*   if (jump) {
-      stand = false;
-    }if (keyDown) {
-      stand = false;
-    }
-    else { */
       stand = true;
       keyDown = false;
       keyLeft = false;
@@ -46,27 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
       keyUp = false;
       space = false;
 
-    
-  }); 
+    }
+  );
   window.addEventListener("keyup", (e) => {
 
     if (space) {
       if (cowboy.classList.name == "cowboyDown")
         cowboy.classList.remove("cowboyDown");
-      stand = false;
     } else if (keyDown) {
       if (cowboy.classList.name == "cowboyJump")
         cowboy.classList.remove("cowboyJump");
-      stand = false;
+        setTimeout(()=>{
+          stand = true;
+          keyDown = false;
+          keyLeft = false;
+          keyRight = false;
+          keyUp = false;
+          space = false;
+    
+        },1200)
     }
-    stand = true;
-    keyDown = false;
-    keyLeft = false;
-    keyRight = false;
-    keyUp = false;
-    space = false; 
 
-  }) 
+
+  })
 
   let intervalId = setInterval(function () {
     if (space) {
