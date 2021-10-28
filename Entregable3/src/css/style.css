@@ -94,7 +94,7 @@ html,body {
   
   width: 100px;
   height:100px;
-  background:url(images/cowboy/CowBoyWalkingBig.png) no-repeat;
+  background:url(images/cowboy/CowBoyWalkingBigBrown.png) no-repeat;
   animation: cowboyWalkLeft  0.8s steps(8) infinite;
   left: 300px;
   margin:auto;
@@ -107,7 +107,7 @@ html,body {
   
   width: 100px;
   height:100px;
-  background:url(images/cowboy/CowBoyDown.png) no-repeat;
+  background:url(images/cowboy/CowBoyDownBrown.png) no-repeat;
   animation: cowboyDown  1.2s steps(6) infinite;
   left: 300px;
   margin:auto;
@@ -137,7 +137,7 @@ html,body {
   margin: auto;
   width: 100px;
   height: 100px;
-  background:url(images/cowboy/CowBoyJump.png) no-repeat;
+  background:url(images/cowboy/CowBoyJumpBrown.png) no-repeat;
   animation: cowboyJump 1s linear, cowboyJumpAnimation 2s steps(2);
 }
 
