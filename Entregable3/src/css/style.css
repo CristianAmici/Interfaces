@@ -4,48 +4,6 @@ html,body {
   background:rgb(129, 105, 105);
 }
 
-/* Bernard Bernoulli: Animación del personaje */
-#bern {
-  /* Tamaño de la viñeta individual */
-  width:112px;
-  height:156px;
-  /* Cómo hay establecido un tamaño, centramos con margin:auto */
-  margin:auto;  
-  /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
-  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/bernard-sprite.png) repeat-x;
-  /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
-  animation:walk .8s steps(6) infinite;
-  /* Posicionamos el personaje sobre el camino de madera */
-  position:relative;
-  bottom:34px;
-}
-
-/* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
-@keyframes walk {
-  /* Partimos de la primera viñeta del sprite sheet */
-  0% { background-position:0 }
-  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
-  100% { background-position:-115px }
-}
-
-/* Animación del cielo. Efecto "Parallax", va más lento que el mar. */
-#sky {
-  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/monkey-sky.png) repeat-X;
-  animation: movebg 9s linear infinite;
-}
-
-/* Animación del mar. */
-#sea {
-  background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/monkey-sea.png) repeat-x;
-  animation: movebg 6s linear infinite;
-  /* Posicionamos el mar, para que no solape al cielo */
-  position:relative;
-  top:145px;
-  /* Pequeño degradado interior para suavizar el mar. Puede consumir muchos recursos */
-  box-shadow:10px 10px 45px RGBA(0,0,0, 0.85) inset;
-}
-
-
 @keyframes cowboyWalkLeft {
   /* Partimos de la primera viñeta del sprite sheet */
   0% { background-position: 0px}
@@ -87,7 +45,7 @@ html,body {
 
 
 
-/*        PERSONAJE         */
+/*        PERSONAJE     1    */
 
 
 .cowboyStand{
@@ -103,17 +61,29 @@ html,body {
   z-index:5;
 }
 
-.cowboyDown{
+.cowboyStandDie{
   
   width: 100px;
   height:100px;
-  background:url(images/cowboy/CowBoyDownBrown.png) no-repeat;
   animation: cowboyDown  1.2s steps(6) infinite;
+  background:url(images/cowboy/CowBoyStaticDie.png) no-repeat;
   left: 300px;
   margin:auto;
   position:absolute;
   bottom: 150px;
   z-index:5;
+}
+
+.cowboyDown{
+  position:absolute;
+  width: 100px;
+  height:100px;
+  left: 300px;
+  margin:auto;
+  bottom: 150px;
+  z-index:5;
+  background:url(images/cowboy/CowBoyDown.png) no-repeat;
+  animation: cowboyDown  1.2s steps(6) infinite;
 }
 
 .cowboyDead{
@@ -147,6 +117,76 @@ html,body {
 }
 
 
+/*        PERSONAJE     2    */
+
+
+.cowboyStandBrown{
+  
+  width: 100px;
+  height:100px;
+  background:url(images/cowboy/CowBoyWalkingBigBrown.png) no-repeat;
+  animation: cowboyWalkLeft  0.8s steps(8) infinite;
+  left: 300px;
+  margin:auto;
+  position:absolute;
+  bottom: 150px;
+  z-index:5;
+}
+
+.cowboyStandDieBrown{
+  
+  width: 100px;
+  height:100px;
+  background:url(images/cowboy/CowBoyStaticDieBrown.png) no-repeat;
+  left: 300px;
+  margin:auto;
+  position:absolute;
+  bottom: 150px;
+  z-index:5;
+}
+
+.cowboyDownBrown{
+  position:absolute;
+  width: 100px;
+  height:100px;
+ 
+  left: 300px;
+  margin:auto;
+  
+  bottom: 150px;
+  z-index:5;
+  background:url(images/cowboy/CowBoyDown.png) no-repeat;
+  animation: cowboyDown  1.2s steps(6) infinite;
+}
+
+.cowboyDeadBrown{
+  position: absolute;
+  bottom: 150px;
+  left: 300px;
+  z-index: 5;
+  margin: auto;
+  width: 126px;
+  height: 96px;
+  background:url(images/cowboy/CowBoyDieBrown.png) no-repeat;
+  animation: cowboyDead 1s steps(8) ; 
+}
+
+
+.cowboyJumpBrown{
+  position: absolute;
+  bottom: 150px;
+  left: 300px;
+  z-index: 5;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background:url(images/cowboy/CowBoyJumpBrown.png) no-repeat;
+  animation: cowboyJump 1s linear, cowboyJumpAnimation 2s steps(2);
+}
+
+
+
+
 
 
 /*        FONDO         */
@@ -158,24 +198,24 @@ body { margin: 0; }
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-#stars {
+.stars {
   background: url(images/cowboy/backgroundFondo.png) repeat-x 0 bottom;
   animation: loop 20s linear infinite;
   z-index: 1;
 }
 
-#mountains {
+.mountains {
   background: url(images/cowboy/backgroundMedio.png) repeat-x 0 bottom;
   animation: loop 9s linear infinite;
   z-index: 4;
 }
-#ground {
+.ground {
   background: url(images/cowboy/backgroundSuelo.png) repeat-x 0 bottom;
   animation: loop 9s linear infinite;
   z-index: 3;
 }
 
-#stars, #mountains, #ground{
+.stars, .mountains, .ground{
   width: 200%; height: 100%;
   background-size:30%;
   bottom: 14%;
@@ -188,6 +228,12 @@ body { margin: 0; }
 }
 
 
+.paused{
+  -webkit-animation-play-state:paused;
+  -moz-animation-play-state:paused;
+  -o-animation-play-state:paused; 
+  animation-play-state:paused;
+}
 
 
 
@@ -221,7 +267,7 @@ body { margin: 0; }
   position: absolute;
   bottom: 10px;
   right: 10px;
-  z-index: 15;
+  z-index: 5;
   animation: movement 15s linear;
 }
 
@@ -230,14 +276,22 @@ body { margin: 0; }
   height:48px;
   background: url(images/cowboy/Snake_walk.png) repeat-x 0 bottom;
   animation: enemyMovement  0.8s steps(4) infinite;
-  right: 10px;
+  right: 100px;
   margin:auto;
   position:absolute;
   bottom: 150px;
-  z-index:20;
+  z-index: 5;
 }
 
 #enemyFlying{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5;
+  animation: movement 15s linear;
+}
+
+#enemyWlaking2{
   width:48px;
   height:48px;
   background: url(images/cowboy/Vulture_walk.png) repeat-x 0 bottom;
@@ -245,8 +299,8 @@ body { margin: 0; }
   right: 10px;
   margin:auto;
   position:absolute;
-  bottom: 200px;
-  z-index:20;
+  bottom: 220px;
+  z-index: 5;
 }
 
 
