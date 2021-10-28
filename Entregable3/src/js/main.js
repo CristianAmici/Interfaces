@@ -19,14 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function checkCondition() {
-    //console.log(enemy.offsetLeft , (cowboy.offsetLeft+200)  , enemy.offsetLeft , (cowboy.offsetLeft+195));
+    console.log(enemy.offsetLeft , (cowboy.offsetLeft+200)  , enemy.offsetLeft , (cowboy.offsetLeft+195));
     if (enemy.offsetLeft <= (cowboy.offsetLeft+200)  && enemy.offsetLeft >= (cowboy.offsetLeft+190) && cowboy.offsetTop == (enemy.offsetTop - 240) //Enemigo de tierra
     ) {
+      
       endGame();
     
     }  
     if (enemyFlying.offsetLeft <= (cowboy.offsetLeft+100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft+30) && cowboy.classList != "cowboyDown"//Enemigo de tierra
     ) {
+      
       endGame();
     } 
     
@@ -102,37 +104,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function detenerFondo(){
-    stars.classList.remove('stars');
-    stars.classList.add('starsStatic');
-    mountains.classList.remove('mountains');
-    mountains.classList.add('mountainsStatic');
-    ground.classList.remove('ground');
-    ground.classList.add('groundStatic'); 
+    stars.classList.add('paused')
+    mountains.classList.add('paused');
+    ground.classList.add('paused'); 
   }
   function empezarFondo(){
-    stars.classList.remove('starsStatic');
-    stars.classList.add('stars');
-    mountains.classList.remove('mountainsStatic');
-    mountains.classList.add('mountains');
-    ground.classList.remove('groundStatic');
-    ground.classList.add('ground'); 
+    stars.classList.remove('paused');
+    mountains.classList.remove('paused');
+    ground.classList.remove('paused');
   }
 
   let intervalId = setInterval(function () {
-    
+    checkCondition();
       if (space) {
         cowboy.className = '';
         cowboy.classList.add("cowboyJump");
       } else if (keyDown) {
         cowboy.className = '';
         cowboy.classList.add('cowboyDown');
-        detenerFondo()
+        
+        detenerFondo();
       }else if(dead){
         detenerFondo();
         cowboy.classList.remove('cowboyDead');
         cowboy.classList.add('cowboyStandDie');
         clearInterval(intervalId);
-        ResetGame();
+        //ResetGame();
       } 
       else {
         cowboy.className = '';

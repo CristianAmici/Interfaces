@@ -226,27 +226,12 @@ body { margin: 0; }
   to { transform: translateX(-30%); }
 }
 
-/*       Static Parallax           */
 
-.starsStatic {
-  background: url(images/cowboy/backgroundFondo.png) repeat-x 0 bottom;
-  z-index: 1;
-}
-
-.mountainsStatic {
-  background: url(images/cowboy/backgroundMedio.png) repeat-x 0 bottom;
-  z-index: 4;
-}
-.groundStatic {
-  background: url(images/cowboy/backgroundSuelo.png) repeat-x 0 bottom;
-  z-index: 3;
-}
-
-.starsStatic, .mountainsStatic, .groundStatic{
-  width: 200%; height: 100%;
-  background-size:30%;
-  bottom: 14%;
-  position: fixed;
+.paused{
+  -webkit-animation-play-state:paused;
+  -moz-animation-play-state:paused;
+  -o-animation-play-state:paused; 
+  animation-play-state:paused;
 }
 
 
