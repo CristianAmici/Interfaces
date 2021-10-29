@@ -247,6 +247,25 @@ label{
   z-index: 15;
 }
 
+.addLife1{
+  animation: addLife1 3s normal forwards; 
+  box-shadow: 0 10px 40px -10px rgb(19, 82, 53);
+  border-radius: 100px;
+  background: rgb(19, 82, 53);
+  height: 20px;
+  width: 66%;
+  z-index: 15;
+}
+.addLife2{
+  animation: addLife2 3s normal forwards; 
+  box-shadow: 0 10px 40px -10px rgb(19, 82, 53);
+  border-radius: 100px;
+  background: rgb(19, 82, 53);
+  height: 20px;
+  width: 33%;
+  z-index: 15;
+}
+
 @keyframes lostLife1 {
   0% { width: 100%; 
     box-shadow: 0 10px 40px -10px rgb(175, 24, 24);
@@ -266,6 +285,20 @@ label{
   100% { width: 0%; }
 }
 
+
+
+@keyframes addLife1 {
+  0% { width: 66%; 
+    box-shadow: 0 10px 40px -10px rgb(172, 223, 33);
+    background: rgb(172, 223, 33)}
+  100% { width: 100%; }
+}
+@keyframes addLife2 {
+  0% { width: 33%; 
+    box-shadow: 0 10px 40px -10pxrgb(172, 223, 33);
+    background: rgb(172, 223, 33)};
+  100% { width: 66%; }
+}
 
 
 /*        FONDO         */
@@ -461,6 +494,7 @@ body { margin: 0; }
   bottom: 240px;
   z-index: 5;
 }
+
 
 
 
