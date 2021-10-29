@@ -7,39 +7,63 @@ document.addEventListener("DOMContentLoaded", () => {
   var cowboy = document.getElementById('cowboy');
   var enemy = document.getElementById('enemy');
   var enemyFlying = document.getElementById('enemyFlying');
+  var bebida = document.getElementById('bebida');
   var stars = document.getElementById('stars');
   var ground = document.getElementById('ground');
   var mountains = document.getElementById('mountains');
+  var progress = document.getElementById('progress');
   var stand = false;
   var space = false
   var dead = false;
+
+  var vidas = 3;
+
+
+
+  /* ENEMYS */
+
+
 
 
 
 
 
   function checkCondition() {
-    console.log(enemy.offsetLeft , (cowboy.offsetLeft+200)  , enemy.offsetLeft , (cowboy.offsetLeft+195));
-    if (enemy.offsetLeft <= (cowboy.offsetLeft+200)  && enemy.offsetLeft >= (cowboy.offsetLeft+190) && cowboy.offsetTop == (enemy.offsetTop - 240) //Enemigo de tierra
-    ) {
-      
+    //console.log(enemy.offsetLeft , (cowboy.offsetLeft+200)  , enemy.offsetLeft , (cowboy.offsetLeft+195));
+    if (enemy.offsetLeft <= (cowboy.offsetLeft+200)  && enemy.offsetLeft >= (cowboy.offsetLeft+190) && cowboy.offsetTop == (enemy.offsetTop - 240)) {
+      vidas = vidas-1;
       endGame();
-    
     }  
-    if (enemyFlying.offsetLeft <= (cowboy.offsetLeft+100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft+30) && cowboy.classList != "cowboyDown"//Enemigo de tierra
-    ) {
-      
+    if (enemyFlying.offsetLeft <= (cowboy.offsetLeft+100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft+30) && cowboy.classList != "cowboyDown") {
       endGame();
     } 
     
   }
+  function checkConditionColecionable() {
+    /* console.log(bebida.offsetLeft , (cowboy.offsetLeft)  );
+    
+    if (bebida.offsetLeft <= (cowboy.offsetLeft+100) && bebida.offsetLeft >= (cowboy.offsetLeft+30)) {
+     console.log("ss");
+    } 
+     */
+  }
 
   function endGame(){
-    
-    cowboy.className = '';
-    cowboy.classList.add("cowboyDead");
-    dead= true;
-    console.log("dd");
+    if(vidas == 2){
+      progress.className = '';
+      progress.classList.add("lostLife1");
+    }
+    else if(vidas == 1){
+      progress.className = '';
+      progress.classList.add("lostLife2");
+    }
+    else if(vidas == 0){
+      progress.className = '';
+      progress.classList.add("lostLife3");
+      cowboy.className = '';
+      cowboy.classList.add("cowboyDead");
+      dead= true;
+    }
   }
 
   window.addEventListener("keydown", (e) => {
@@ -116,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let intervalId = setInterval(function () {
     checkCondition();
+    checkConditionColecionable();
       if (space) {
         cowboy.className = '';
         cowboy.classList.add("cowboyJump");
@@ -129,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cowboy.classList.remove('cowboyDead');
         cowboy.classList.add('cowboyStandDie');
         clearInterval(intervalId);
-        //ResetGame();
+        //resetGame();
       } 
       else {
         cowboy.className = '';
@@ -139,8 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
   }, 50)
 
-  function resetGame(){
 
+
+  function resetGame(){
+    //deadMenu.classList.add('menudead')
   }
 
   /* 
