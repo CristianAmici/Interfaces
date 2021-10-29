@@ -9,16 +9,21 @@ body {
 }
 .link{
   text-decoration:none;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  align-self: center;
+  width: 200px;
+  height: 40px;
+  color: white;
+  background-color: black;
   border: none;
-  width: 150px;
-  height:30px;
-  font-family: 'Bellefair', serif;
-  border-radius: 6px;
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  background-size: 200%;
-  padding-bottom: 10px;
-  background-color: rgba(190, 40, 40, 0.651);
+  outline: none;
+  background: rgba(0, 0, 0, 0.712);
+}
+.link:hover, button:hover{
+ background: rgb(128, 14, 14);
+ transition: 0.5s;
 }
 .plate {
   display: flex;
@@ -108,7 +113,7 @@ button::before {
   transition: .3s;
 }
 button:nth-child(1)::before {
-  content: 'JUGAR';
+  content: 'NUEVA PARTIDA';
 }
 button:nth-child(2)::before {
   content: 'OPCIONES';
@@ -236,12 +241,11 @@ button:hover::before {
   flex-direction:column;
 }
 
-.main-title {
-    padding: .3em 1em .25em;    
+.main-title {   
     font-weight: 400;
     font-size: 40px;
     color: white;
-    font-family: 'Bellefair', serif;
+    font-family: Arvo;
     position:relative;
     line-height:1.3;
 }
@@ -276,4 +280,59 @@ button:hover::before {
 @keyframes vignette-anim {
   0%   , 100%{ opacity: 1; }
   50% { opacity: 0.7; }
+}
+
+label{
+  font-size: 10px;
+  color: white;
+}
+label, select, button, .link{
+  font-family: Arvo;
+  font-weight:600;
+	}
+ 
+.select{
+	display: inline-block;
+	cursor: pointer;
+ 	height: 40px;
+	background: #f0f0f0;
+	color: rgb(16, 15, 15);
+	border:2px solid rgba(0,0,0,0.2);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.content-select{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  color: white;
+  margin-bottom: 5px;
+  font-size: 14px;
+  padding-top: 10px;
+  background-color: black;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.712);
+}
+ 
+.content-select select:hover{
+	background: #ffffff;
+}
+ 
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: 18px;
+	width: 12px;
+	height: 12px;
+	display: block;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
 }

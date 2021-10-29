@@ -13,37 +13,34 @@ document.addEventListener("DOMContentLoaded", () => {
   var stand = false;
   var space = false
   var dead = false;
-
-
-
-
-
+  var audio = document.getElementById("audio");
+  audio.volume = 0.1;
   function checkCondition() {
-    console.log(enemy.offsetLeft , (cowboy.offsetLeft+200)  , enemy.offsetLeft , (cowboy.offsetLeft+195));
-    if (enemy.offsetLeft <= (cowboy.offsetLeft+200)  && enemy.offsetLeft >= (cowboy.offsetLeft+190) && cowboy.offsetTop == (enemy.offsetTop - 240) //Enemigo de tierra
+
+    if (enemy.offsetLeft <= (cowboy.offsetLeft + 200) && enemy.offsetLeft >= (cowboy.offsetLeft + 190) && cowboy.offsetTop == (enemy.offsetTop - 240) //Enemigo de tierra
     ) {
-      
+
       endGame();
-    
-    }  
-    if (enemyFlying.offsetLeft <= (cowboy.offsetLeft+100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft+30) && cowboy.classList != "cowboyDown"//Enemigo de tierra
+
+    }
+    if (enemyFlying.offsetLeft <= (cowboy.offsetLeft + 100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft + 30) && cowboy.classList != "cowboyDown"//Enemigo de tierra
     ) {
-      
+
       endGame();
-    } 
-    
+    }
+
   }
 
-  function endGame(){
-    
+  function endGame() {
+
     cowboy.className = '';
     cowboy.classList.add("cowboyDead");
-    dead= true;
+    dead = true;
     console.log("dd");
   }
 
   window.addEventListener("keydown", (e) => {
-    if(!dead){
+    if (!dead) {
       if (e.key == " ") {
         space = true
         keyDown = false;
@@ -63,19 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
         cowboy.classList.add('cowboyStand')
       }
     }
-    
+
   })
 
   cowboy.addEventListener('animationend', (e) => {
 
-       
-        stand = true;
-        keyDown = false;
-        keyLeft = false;
-        keyRight = false;
-        keyUp = false;
-        space = false;
-      
+
+    stand = true;
+    keyDown = false;
+    keyLeft = false;
+    keyRight = false;
+    keyUp = false;
+    space = false;
+
   });
 
   window.addEventListener("keyup", (e) => {
@@ -83,32 +80,32 @@ document.addEventListener("DOMContentLoaded", () => {
     if (space) {
       if (cowboy.classList.name == "cowboyDown")
         cowboy.classList.remove("cowboyDown");
-       
+
     } else if (keyDown) {
-     
+
       if (cowboy.classList.name == "cowboyJump")
         cowboy.classList.remove("cowboyJump");
-        
-        
-        setTimeout(()=>{
-          stand = true;
-          keyDown = false;
-          keyLeft = false;
-          keyRight = false;
-          keyUp = false;
-          space = false;
-          empezarFondo();
-        },1200)
+
+
+      setTimeout(() => {
+        stand = true;
+        keyDown = false;
+        keyLeft = false;
+        keyRight = false;
+        keyUp = false;
+        space = false;
+        empezarFondo();
+      }, 1200)
     }
   })
 
 
-  function detenerFondo(){
+  function detenerFondo() {
     stars.classList.add('paused')
     mountains.classList.add('paused');
-    ground.classList.add('paused'); 
+    ground.classList.add('paused');
   }
-  function empezarFondo(){
+  function empezarFondo() {
     stars.classList.remove('paused');
     mountains.classList.remove('paused');
     ground.classList.remove('paused');
@@ -116,30 +113,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let intervalId = setInterval(function () {
     checkCondition();
-      if (space) {
-        cowboy.className = '';
-        cowboy.classList.add("cowboyJump");
-      } else if (keyDown) {
-        cowboy.className = '';
-        cowboy.classList.add('cowboyDown');
-        
-        detenerFondo();
-      }else if(dead){
-        detenerFondo();
-        cowboy.classList.remove('cowboyDead');
-        cowboy.classList.add('cowboyStandDie');
-        clearInterval(intervalId);
-        //ResetGame();
-      } 
-      else {
-        cowboy.className = '';
-        cowboy.classList.add('cowboyStand')
-      }
-    
-    
+    if (space) {
+      cowboy.className = '';
+      cowboy.classList.add("cowboyJump");
+    } else if (keyDown) {
+      cowboy.className = '';
+      cowboy.classList.add('cowboyDown');
+
+      detenerFondo();
+    } else if (dead) {
+      detenerFondo();
+      cowboy.classList.remove('cowboyDead');
+      cowboy.classList.add('cowboyStandDie');
+      clearInterval(intervalId);
+      //ResetGame();
+    }
+    else {
+      cowboy.className = '';
+      cowboy.classList.add('cowboyStand')
+    }
+
+
   }, 50)
 
-  function resetGame(){
+  function resetGame() {
 
   }
 

@@ -17,9 +17,13 @@
         <h1 class="main-title" id="main-title"> .....Saber que podía VENGARSE..... </h1>
         <a class="link" href="juego.html">Empezar a correr</a>
     </div>
-    <audio controls="" autoplay loop>
+    <audio id="audio2" style="display:none" controls="" autoplay loop preload="auto">
         <source src="src/css/EL BUENO, EL MALO Y EL FEO.mp3" type="audio/mpeg">
         El Bueno, el Malo y el Feo.
         </source>
     </audio>
+    <script>
+        var audio2 = document.getElementById("audio2");
+        audio2.volume = 0.1;
+    </script>
 </main>

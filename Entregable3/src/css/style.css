@@ -65,7 +65,6 @@ html,body {
   
   width: 100px;
   height:100px;
-  animation: cowboyDown  1.2s steps(6) infinite;
   background:url(images/cowboy/CowBoyStaticDie.png) no-repeat;
   left: 300px;
   margin:auto;
@@ -107,7 +106,7 @@ html,body {
   margin: auto;
   width: 100px;
   height: 100px;
-  background:url(images/cowboy/CowBoyJumpBrown.png) no-repeat;
+  background:url(images/cowboy/CowBoyJump.png) no-repeat;
   animation: cowboyJump 1s linear, cowboyJumpAnimation 2s steps(2);
 }
 

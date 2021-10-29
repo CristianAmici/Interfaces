@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -7,32 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/styleMenu.css">
     <title>El VIejo Bill</title>
- 
+
 </head>
 
-<body id="inicioPag">
-    <div class="plate">
-        <p class="script"><span>Las historias del</span></p>
-        <p class="shadow text1">Viejo </p>
-        <p class="shadow text2">Bill</p>
-        <p class="shadow text3"></p>
-        <p class="script"><span>volumen 1</span></p>
-    </div>
-    <main>
-        <div class="container">
-            <nav>
-              <button id="story"></button>
-              <button></button>
-              <button></button>
-            </nav>
+<body>
+    <div id="inicioPag">
+        <div class="plate">
+            <p class="script"><span>Las historias del</span></p>
+            <p class="shadow text1">Viejo </p>
+            <p class="shadow text2">Bill</p>
+            <p class="shadow text3"></p>
+            <p class="script"><span>volumen 1</span></p>
         </div>
-        <audio controls="" autoplay loop> 
-            <source src="src/css/John Dunbar Theme - Dances with Wolves.mp3" type="audio/mpeg">
-            Solo funciona con Internet Explorer 9+, Firefox, Opera, Chrome, y Safari.
-            </source></audio>
-            
-    </main>
+        <main>
+            <div class="container">
+                <nav>
+                    <button id="story"></button>
+                    <div class="content-select">
+                        <label for="">SELECCIONE PERSONAJE</label>
+                        <select id="selectPlayer">
+                            <option value="viejo">Viejo Bill</option>
+                            <option value="Joven">Joven Bill</option>
+                        </select>
+                    </div>
+                    <button></button>
+                </nav>
+            </div>
+            <audio id="audio" style="display:none" controls="" autoplay loop preload="auto">
+                <source src="src/css/John Dunbar Theme - Dances with Wolves.mp3" type="audio/mpeg">
+                Solo funciona con Internet Explorer 9+, Firefox, Opera, Chrome, y Safari.
+                </source>
+            </audio>
 
+        </main>
+    </div>
 </body>
 <script src="src/js/jsMenuJuego.js"></script>
+
 </html>
