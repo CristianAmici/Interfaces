@@ -23,14 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
   var space = false
   var dead = false;
   var cantColeccionables = 0;
+  var scoreMensaje = document.getElementById("score");
+  var score=0;
   var audio = document.getElementById("audio");
   audio.volume = 0.1;
   var efectoAudio = document.getElementById("audioEfect")
   var vidas = 3;
   var count = 0;
 
+
   var selcEnemys = ['enemyWlaking', 'enemyWlaking2', 'enemyWlaking3'];
   var selectColeccions = ["bebidaVino", "bebidaPetaca"]
+
   function checkObject() {
     shuffle(selcEnemys);
     shuffle(selectColeccions);
@@ -143,9 +147,9 @@ function checkConditionColecionable() {
 
     count+=1;
     if(count == 1 ){
-      console.log("asassa");
-
       coleccionable.style.visibility = "hidden";
+      efectoAudio.setAttribute("src", "src/css/drink.mp3")
+      efectoAudio.play()
       cantColeccionables+=1;
 
       if(cantColeccionables==5){
@@ -163,20 +167,23 @@ function checkConditionColecionable() {
           progress.classList.add("addLife2");
         }
         cantColeccionables = 0;
-        console.log(vidas);
       }
     }
     else if (count == 14){
       count = 0;
+      console.log("sume")
+      score+=100;
     }
 
   }
 }
 
 function endGame() {
+  efectoAudio.setAttribute("src", "src/css/dolor.mp3")
+  efectoAudio.play()
   vidas = vidas - 1;
   if (vidas == 2) {
-    porcentajeVida.innerHTML="66%%";
+    porcentajeVida.innerHTML="66%";
     progress.className = '';
     progress.classList.add("lostLife1");
   }
@@ -221,7 +228,7 @@ function endGame() {
 
   })
 
-  cowboy.addEventListener('animationend', (e) => {
+  cowboy.addEventListener('animationend', () => {
 
 
     stand = true;
@@ -276,6 +283,8 @@ function endGame() {
     checkCondition();
     checkObject();
     checkConditionColecionable();
+    score++;
+    scoreMensaje.innerText=score;
     if (space) {
       cowboy.className = '';
       cowboy.classList.add("cowboyJump");
@@ -290,7 +299,7 @@ function endGame() {
       cowboy.classList.add('cowboyStandDie');
       mensaje.classList.remove("mensajeOculto");
       mensaje.classList.add("mensajeVisible");
-      setTimeout(() => { window.location.href = "index.html"; }, 5000)
+     /*  setTimeout(() => { window.location.href = "index.html"; }, 5000) */
       clearInterval(intervalId);
       //ResetGame();
     }
