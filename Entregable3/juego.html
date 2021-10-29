@@ -8,18 +8,19 @@
 </head>
 
 <body>
-  <div class="container" >
+  <div class="container">
     <div id="mensaje" class="">
       <label>Salud </label>
       <div class="progress">
-        
-        <div id="progress" class="progress-value"><p id="porcentajeVida">100%</p></div>
+        <div id="progress" class="progress-value">
+          <p id="porcentajeVida">100%</p>
+        </div>
       </div>
-      <label >Puntos </label>
-      <p id="puntaje" class="puntaje"></p>
-
+      <div id="score" class="scoreContainer">
+        Score: <span id="score">0</span>
     </div>
-    <div id="stars" class= "stars">
+    </div>
+    <div id="stars" class="stars">
       <div class="cloud1">
         <img src="src/css/images/cowboy/cloud.png" alt="">
       </div>
@@ -30,30 +31,34 @@
     <div class="sun">
       <img src="src/css/images/cowboy/sun.png" alt="">
     </div>
-    <div id="mountains" class= "mountains"></div>
-    <div id="ground" class= "ground"></div>
+    <div id="mountains" class="mountains"></div>
+    <div id="ground" class="ground"></div>
     <div id="cowboy" class="cowboyStand"></div>
     <div id="coleccionable" class="coleccionable">
       <div id="bebida" class="bebidaVino"></div>
     </div>
     <div id="enemy" class="enemy">
-      <div id="enemyWlaking"  class="enemyWlaking"></div>
+      <div id="enemyWlaking" class="enemyWlaking"></div>
     </div>
-    <div id="enemy2"  class="enemy2">
-      <div id="enemyWlaking2"  class="enemyWlaking2"></div>
+    <div id="enemy2" class="enemy2">
+      <div id="enemyWlaking2" class="enemyWlaking2"></div>
     </div>
-    <div id="enemyFlying"  class="enemyFlying">
-      <div id="enemyWlaking3"  class="enemyWlaking3"></div>
+    <div id="enemyFlying" class="enemyFlying">
+      <div id="enemyWlaking3" class="enemyWlaking3"></div>
     </div>
     <div class="mensajeOculto" id="mensajeGameOver">
       <img src="https://fontmeme.com/permalink/211029/e03e646a14edb7aad76d24dd0a0228b5.png"></img>
+    </div>
   </div>
-  </div>
-  
 </body>
+<audio id="audioEfect" style="display:none" controls="">
+  <source src="" type="audio/mpeg">
+  Efectos de Sonido.
+  </source>
+</audio>
 <audio id="audio" style="display:none" controls="" autoplay loop preload="auto">
   <source src="src/css/NEW  Neil LeVang  Ghost Riders In The Sky ᴴᴰ (Official Video).mp3" type="audio/mpeg">
-  El Bueno, el Malo y el Feo.
+  Ghost Riders
   </source>
 </audio>
 <script src="src/js/main.js"></script>

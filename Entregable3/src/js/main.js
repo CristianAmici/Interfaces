@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
   var mountains = document.getElementById('mountains');
   var mensaje = document.getElementById('mensajeGameOver');
   var progress = document.getElementById('progress');
-  var porcentajeVida= document.getElementById('porcentajeVida');
+  var porcentajeVida = document.getElementById('porcentajeVida');
   var stand = false;
   var space = false
   var dead = false;
   var audio = document.getElementById("audio");
   audio.volume = 0.1;
-
+  var efectoAudio = document.getElementById("audioEfect")
   var vidas = 4;
 
   var selcEnemys = ['enemyWlaking', 'enemyWlaking2', 'enemyWlaking3'];
@@ -77,19 +77,19 @@ document.addEventListener("DOMContentLoaded", () => {
       259 <= coleccionable.offsetTop - cowboy.offsetTop && coleccionable.offsetTop - cowboy.offsetTop <= 291
     ) {
       coleccionable.style.visibility = "hidden";
-      vidas+=1;
-      if(vidas>=3)
-      porcentajeVida.innerHTML="100%";
+      vidas += 1;
+      if (vidas >= 3)
+        progress.innerHTML = "100%";
       if (vidas == 2) {
-        porcentajeVida.innerHTML="66%";
+        progress.innerHTML = "66%";
         progress.className = '';
         progress.classList.add("lostLife1");
       }
       else if (vidas == 1) {
-        porcentajeVida.innerHTML="33%";
+        progress.innerHTML = "33%";
         progress.className = '';
         progress.classList.add("lostLife2");
-  
+
       }
     }
   }
@@ -97,28 +97,29 @@ document.addEventListener("DOMContentLoaded", () => {
   function endGame() {
     vidas = vidas - 1;
     if (vidas == 2) {
-      porcentajeVida.innerHTML="66%%";
+      porcentajeVida.innerHTML = "66%%";
       progress.className = '';
       progress.classList.add("lostLife1");
     }
     else if (vidas == 1) {
 
-      porcentajeVida.innerHTML="33%";
+      porcentajeVida.innerHTML = "33%";
       progress.className = '';
       progress.classList.add("lostLife2");
 
     }
     else if (vidas == 0) {
-      porcentajeVida.innerHTML="0%";
+      porcentajeVida.innerHTML = "0%";
       progress.className = '';
       progress.classList.add("lostLife3");
       cowboy.className = '';
       cowboy.classList.add("cowboyDead");
+      efectoAudio.setAttribute("src", "src/css/humanGruntEffect.mp3")
+      efectoAudio.play()
       dead = true;
     }
 
   }
-
   window.addEventListener("keydown", (e) => {
     if (!dead) {
       if (e.key == " ") {
@@ -160,12 +161,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (space) {
       if (cowboy.classList.name == "cowboyDown")
         cowboy.classList.remove("cowboyDown");
+        efectoAudio.setAttribute("src", "src/css/bootsJumpEffect.mp3")
+        efectoAudio.play()
 
     } else if (keyDown) {
 
       if (cowboy.classList.name == "cowboyJump")
         cowboy.classList.remove("cowboyJump");
-
+        efectoAudio.setAttribute("src", "src/css/agacharseViejo.mp3")
+        efectoAudio.play()
 
       setTimeout(() => {
         stand = true;
@@ -209,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cowboy.classList.add('cowboyStandDie');
       mensaje.classList.remove("mensajeOculto");
       mensaje.classList.add("mensajeVisible");
-     setTimeout(() => { window.location.href = "index.html"; }, 5000)
+      setTimeout(() => { window.location.href = "index.html"; }, 5000)
       clearInterval(intervalId);
       //ResetGame();
     }

@@ -182,6 +182,12 @@ html,body {
 
 /*        PROGRESS         */
 
+.scoreContainer{
+  background-color: rgba(0, 0, 0, 0.445);
+  text-align-last: center;
+  font-size: 50px;
+  margin-top: 20px;
+}
 label{
   border-radius: 100px;
   position: absolute;
