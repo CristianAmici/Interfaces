@@ -7,9 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   var cowboy = document.getElementById('cowboy');
   var enemy = document.getElementById('enemy');
   var enemyFlying = document.getElementById('enemyFlying');
+  var bebida = document.getElementById('bebida');
   var stars = document.getElementById('stars');
   var ground = document.getElementById('ground');
   var mountains = document.getElementById('mountains');
+  var progress = document.getElementById('progress');
   var stand = false;
   var space = false
   var dead = false;
@@ -29,6 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
       endGame();
     }
 
+  }
+  function checkConditionColecionable() {
+    /* console.log(bebida.offsetLeft , (cowboy.offsetLeft)  );
+    
+    if (bebida.offsetLeft <= (cowboy.offsetLeft+100) && bebida.offsetLeft >= (cowboy.offsetLeft+30)) {
+     console.log("ss");
+    } 
+     */
   }
 
   function endGame() {
@@ -136,9 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, 50)
 
-  function resetGame() {
-
-  }
 
   /* 
   K
