@@ -428,15 +428,15 @@ body { margin: 0; }
 /*        COLECIONABLE         */
 
 
-#coleccionable{
+.coleccionable{
   position: absolute;
   bottom: 10px;
-  right: 10px;
+  right: 0px;
   z-index: 5;
   animation: movement 15s infinite;
 }
 
-#bebida{
+.bebidaVino{
   width:50px;
   height:50px;
   background: url(images/cowboy/VinitoColeccionable.png) repeat-x 0 bottom;
@@ -447,7 +447,17 @@ body { margin: 0; }
   bottom: 240px;
   z-index: 5;
 }
-
+.bebidaPetaca{
+  width:50px;
+  height:50px;
+  background: url(images/cowboy/Petaca.png) repeat-x 0 bottom;
+  animation: coleccionableMovement  0.3s steps(2) infinite;
+  right: 100px;
+  margin:auto;
+  position:absolute;
+  bottom: 240px;
+  z-index: 5;
+}
 
 
 

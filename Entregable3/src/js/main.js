@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var animal2 = document.getElementById('enemyWlaking2');
   var animal3 = document.getElementById('enemyWlaking3');
   var coleccionable = document.getElementById('coleccionable');
+  var bebida = document.getElementById('bebida');
   var stars = document.getElementById('stars');
   var ground = document.getElementById('ground');
   var mountains = document.getElementById('mountains');
@@ -23,26 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
   var audio = document.getElementById("audio");
   audio.volume = 0.1;
 
-
   var vidas = 4;
 
-  var selc1  = ['enemyWlaking', 'enemyWlaking2', 'enemyWlaking3'];
- 
-  function checkEnemy() {
-    shuffle(selc1);
+  var selcEnemys= ['enemyWlaking', 'enemyWlaking2', 'enemyWlaking3'];
+  var selectColeccions= ["bebidaVino","bebidaPetaca"]
+  function checkObject() {
+    shuffle(selcEnemys);
+    shuffle(selectColeccions);
     console.log(animal.style.left);
      if (enemy.offsetLeft <= 7) {
       animal.className = '';
-        animal.classList.add(selc1[0])
+        animal.classList.add(selcEnemys[0])
     }  
     if (enemy2.offsetLeft  <= 7) {
       animal2.className = '';
-      animal2.classList.add(selc1[1])
+      animal2.classList.add(selcEnemys[1])
     } 
     if (enemyFlying.offsetLeft <= 7) {
       animal3.className = '';
-      animal3.classList.add(selc1[2])
-    } 
+      animal3.classList.add(selcEnemys[2])
+    } if (coleccionable.offsetLeft <= 7) {
+      bebida.className = '';
+      bebida.classList.add(selectColeccions[0])
+      coleccionable.style.visibility="visible";
+    }
     
   }
 
@@ -70,9 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
    if (coleccionable.offsetLeft <= (cowboy.offsetLeft+200) && coleccionable.offsetLeft >= (cowboy.offsetLeft+30) && 
         259   <= coleccionable.offsetTop - cowboy.offsetTop && coleccionable.offsetTop - cowboy.offsetTop   <=  291
     ){
-      console.log("ss");
+      coleccionable.style.visibility="hidden";
     } 
-    
   }
 
   function endGame() {
@@ -170,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let intervalId = setInterval(function () {
     checkCondition();
-    checkEnemy();
+    checkObject();
     checkConditionColecionable();
     if (space) {
       cowboy.className = '';
