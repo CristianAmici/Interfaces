@@ -6,47 +6,94 @@ document.addEventListener("DOMContentLoaded", () => {
   var keyDown = false;
   var cowboy = document.getElementById('cowboy');
   var enemy = document.getElementById('enemy');
+  var enemy2 = document.getElementById('enemy2');
   var enemyFlying = document.getElementById('enemyFlying');
-  var bebida = document.getElementById('bebida');
+  var animal = document.getElementById('enemyWlaking');
+  var animal2 = document.getElementById('enemyWlaking2');
+  var animal3 = document.getElementById('enemyWlaking3');
+  var coleccionable = document.getElementById('coleccionable');
   var stars = document.getElementById('stars');
   var ground = document.getElementById('ground');
   var mountains = document.getElementById('mountains');
+  var mensaje = document.getElementById('mensajeGameOver');
   var progress = document.getElementById('progress');
   var stand = false;
   var space = false
   var dead = false;
   var audio = document.getElementById("audio");
   audio.volume = 0.1;
-  function checkCondition() {
 
+
+  var vidas = 4;
+
+  var selc1  = ['enemyWlaking', 'enemyWlaking2', 'enemyWlaking3'];
+ 
+  function checkEnemy() {
+    shuffle(selc1);
+    console.log(animal.style.left);
+     if (enemy.offsetLeft <= 7) {
+      animal.className = '';
+        animal.classList.add(selc1[0])
+    }  
+    if (enemy2.offsetLeft  <= 7) {
+      animal2.className = '';
+      animal2.classList.add(selc1[1])
+    } 
+    if (enemyFlying.offsetLeft <= 7) {
+      animal3.className = '';
+      animal3.classList.add(selc1[2])
+    } 
+    
+  }
+
+  function checkCondition() {
+    //console.log("1:  "+enemyFlying.offsetLeft <= (cowboy.offsetLeft + 100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft + 30) )  ;
     if (enemy.offsetLeft <= (cowboy.offsetLeft + 200) && enemy.offsetLeft >= (cowboy.offsetLeft + 190) && cowboy.offsetTop == (enemy.offsetTop - 240) //Enemigo de tierra
     ) {
-
+      
       endGame();
 
-    }
+    } 
+    if (enemy2.offsetLeft <= (cowboy.offsetLeft + 200) && enemy2.offsetLeft >= (cowboy.offsetLeft + 190) && cowboy.offsetTop == (enemy2.offsetTop - 240) //Enemigo de tierra
+    ) {
+      endGame();
+
+    } 
     if (enemyFlying.offsetLeft <= (cowboy.offsetLeft + 100) && enemyFlying.offsetLeft >= (cowboy.offsetLeft + 30) && cowboy.classList != "cowboyDown"//Enemigo de tierra
     ) {
-
       endGame();
-    }
-
+    } 
+ 
   }
   function checkConditionColecionable() {
-    /* console.log(bebida.offsetLeft , (cowboy.offsetLeft)  );
-    
-    if (bebida.offsetLeft <= (cowboy.offsetLeft+100) && bebida.offsetLeft >= (cowboy.offsetLeft+30)) {
-     console.log("ss");
+  //console.log(coleccionable.offsetLeft <= (cowboy.offsetLeft+200) , coleccionable.offsetLeft >= (cowboy.offsetLeft+30) )
+   if (coleccionable.offsetLeft <= (cowboy.offsetLeft+200) && coleccionable.offsetLeft >= (cowboy.offsetLeft+30) && 
+        259   <= coleccionable.offsetTop - cowboy.offsetTop && coleccionable.offsetTop - cowboy.offsetTop   <=  291
+    ){
+      console.log("ss");
     } 
-     */
+    
   }
 
   function endGame() {
-
-    cowboy.className = '';
-    cowboy.classList.add("cowboyDead");
-    dead = true;
-    console.log("dd");
+    vidas = vidas - 1;
+    if(vidas == 2){
+      progress.className = '';
+      progress.classList.add("lostLife1");
+    }
+    else if(vidas == 1){
+      progress.className = '';
+      progress.classList.add("lostLife2");
+      
+    }
+    else if(vidas == 0){
+      progress.className = '';
+      progress.classList.add("lostLife3");
+      cowboy.className = '';
+      cowboy.classList.add("cowboyDead");
+      dead = true;
+    }
+   
   }
 
   window.addEventListener("keydown", (e) => {
@@ -123,6 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let intervalId = setInterval(function () {
     checkCondition();
+    checkEnemy();
+    checkConditionColecionable();
     if (space) {
       cowboy.className = '';
       cowboy.classList.add("cowboyJump");
@@ -135,6 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
       detenerFondo();
       cowboy.classList.remove('cowboyDead');
       cowboy.classList.add('cowboyStandDie');
+      mensaje.classList.remove("mensajeOculto");
+      mensaje.classList.add("mensajeVisible"); 
       clearInterval(intervalId);
       //ResetGame();
     }
@@ -145,6 +196,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   }, 50)
+
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    while (0 !== currentIndex) {
+  
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
   /* 

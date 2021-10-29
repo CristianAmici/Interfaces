@@ -241,7 +241,7 @@ label{
   border-radius: 100px;
   background: rgb(19, 82, 53);
   height: 20px;
-  width: 100%;
+  width: 33%;
   z-index: 15;
 }
 
@@ -270,14 +270,24 @@ label{
 
 
 
-.menudead{
- /* "https://fontmeme.com/permalink/211028/028a9c9e5340f6fc8e440e739344e035.png"*/
-  background-image: url( "https://fontmeme.com/permalink/211028/ba4240dac8f41b4240ed22c44b830caa.png" ) no-repeat;
- position: fixed;
-  z-index: 50;
+.mensajeOculto{
+  display:none;
+  visibility: hidden;
 }
 
+.mensajeVisible{
 
+  position:absolute;
+  display:flex;
+  top:300px;
+  left:400px;
+  width: 700px;
+  height: 700px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+ z-index: 40;
+}
 
 
 *{ box-sizing: border-box; }
@@ -333,14 +343,14 @@ body { margin: 0; }
   top: 500px;
   right: 0px;
   z-index: 15;
-  animation: movement 15s linear;
+  animation: movement 15s infinite;
 }
 #cloud2{
   position: absolute;
   top: 300px;
   right: 0px;
   z-index: 16;
-  animation: movement 22s linear ;
+  animation: movement 22s infinite ;
 }
 
 #sun{
@@ -352,40 +362,60 @@ body { margin: 0; }
 
 /*        ENEMYS          */
 
-#enemy{
+.enemy{
   position: absolute;
   bottom: 10px;
   right: 10px;
   z-index: 5;
-  animation: movement 15s linear;
+  animation: movement 15s infinite;
 }
 
-#enemyWlaking{
+.enemyWlaking{
   width:48px;
   height:48px;
   background: url(images/cowboy/Snake_walk.png) repeat-x 0 bottom;
   animation: enemyMovement  0.8s steps(4) infinite;
-  right: 100px;
+  right: 0px;
   margin:auto;
   position:absolute;
   bottom: 150px;
   z-index: 5;
 }
 
-#enemyFlying{
+.enemy2{
   position: absolute;
   bottom: 10px;
   right: 10px;
   z-index: 5;
-  animation: movement 15s linear;
+  animation: movement 20s infinite;
 }
 
-#enemyWlaking2{
+.enemyWlaking2{
+  width:48px;
+  height:48px;
+  background: url(images/cowboy/Scorpio_walk.png) repeat-x 0 bottom;
+  animation: enemyMovement  0.8s steps(4) infinite;
+  right: 0px;
+  margin:auto;
+  position:absolute;
+  bottom: 150px;
+  z-index: 5;
+}
+
+.enemyFlying{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5;
+  animation: movement 10s infinite;
+}
+
+.enemyWlaking3{
   width:48px;
   height:48px;
   background: url(images/cowboy/Vulture_walk.png) repeat-x 0 bottom;
   animation: enemyMovement  0.8s steps(4) infinite;
-  right: 10px;
+  right: 0px;
   margin:auto;
   position:absolute;
   bottom: 220px;
@@ -403,7 +433,7 @@ body { margin: 0; }
   bottom: 10px;
   right: 10px;
   z-index: 5;
-  animation: movement 15s linear;
+  animation: movement 15s infinite;
 }
 
 #bebida{
@@ -414,9 +444,10 @@ body { margin: 0; }
   right: 100px;
   margin:auto;
   position:absolute;
-  bottom: 150px;
+  bottom: 240px;
   z-index: 5;
 }
+
 
 
 
