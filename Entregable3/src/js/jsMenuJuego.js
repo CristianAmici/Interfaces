@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ayuda1.innerHTML = "- El juego consiste en intentar sobrevivir la mayor cantidad de tiempo posible al infierno del desierto.  " +
         "Para lograr eso, hay que evitar que los animales te toquen, si lo logran perderas un porcentaje de tu vida. " +
         "Los enemigos posibles son los que te mostramos a continuacion"
-    ayuda2.innerHTML = '- Podras sobrevivir y sumar mas puntos si juntas las botellas voladordas, sisi voladoras... que Bill desea tomar, claramente son producto de su imaginación. </br>' +
+    ayuda2.innerHTML = '- Podras sobrevivir y sumar mas puntos si juntas las botellas voladoras, sisi voladoras... que Bill desea tomar, claramente son producto de su imaginación. </br>' +
     '- Los controles son:</br> '+
     'BARRA ESPACIADORA para saltar</br>'+
     'FLECHA ABAJO para agacharce (El viejo Bill lo hace despacio) </br>' +

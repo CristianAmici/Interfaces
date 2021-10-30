@@ -104,38 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
-/* 
-  if (enemy.offsetLeft <= (cowboy.offsetLeft + 100) && enemy.offsetLeft >= (cowboy.offsetLeft + 95) && cowboy.offsetTop == (enemy.offsetTop - 240) && cowboy.className != "cowboyJump" //Enemigo de tierra
-  ) {
-    console.log("1: "+ (cowboy.offsetLeft + 100) , enemy.offsetLeft , (cowboy.offsetLeft + 95) , cowboy.offsetTop , (enemy.offsetTop ),enemy.classList);
-    endGame();
-  }
-  else if (enemy.offsetLeft <= (cowboy.offsetLeft + 100) && enemy.offsetLeft >= (cowboy.offsetLeft + 95) && cowboy.className != "cowboyDown"//Enemigo de tierra
-  ) {
-    console.log("2: "+(cowboy.offsetLeft + 100) , enemy.offsetLeft , (cowboy.offsetLeft + 95) , cowboy.offsetTop , (enemy.offsetTop ));
-    //console.log(coleccionable.offsetLeft , (cowboy.offsetLeft+200) , coleccionable.offsetLeft , (cowboy.offsetLeft+30) );
-    endGame();
-  } */
-
-
-/* 
-  if (enemy2.offsetLeft <= (cowboy.offsetLeft + 200) && enemy2.offsetLeft >= (cowboy.offsetLeft + 190) && cowboy.offsetTop == (enemy2.offsetTop - 240) //Enemigo de tierra
-  ) {
-    endGame();
-  }
-  else if (enemy2.offsetLeft <= (cowboy.offsetLeft + 200) && enemy2.offsetLeft >= (cowboy.offsetLeft + 190) && cowboy.offsetTop == (enemy2.offsetTop - 240) //Enemigo de tierra
-  ) {
-    endGame();
-  }
-  else if (enemy2.offsetLeft <= (cowboy.offsetLeft + 100) && enemy2.offsetLeft >= (cowboy.offsetLeft + 95) && cowboy.classList != "cowboyDown"//Enemigo de tierra
-  ) {
-    console.log(coleccionable.offsetLeft , (cowboy.offsetLeft+200) , coleccionable.offsetLeft , (cowboy.offsetLeft+30) );
-    endGame();
-  }
-*/
-
-
 }
 function checkConditionColecionable() {
   //console.log(coleccionable.offsetLeft <= (cowboy.offsetLeft+200) , coleccionable.offsetLeft >= (cowboy.offsetLeft+30) )
@@ -178,9 +146,33 @@ function checkConditionColecionable() {
   }
 }
 
+
+
+
+var playPromise ;
+
+
+
+
+
+
 function endGame() {
-  efectoAudio.setAttribute("src", "src/css/dolor.mp3")
-  efectoAudio.play()
+  efectoAudio.setAttribute("src", "src/css/dolor.mp3");
+
+
+  playPromise = efectoAudio.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      
+    })
+    .catch(error => {
+      
+    });
+  }
+
+
+
   vidas = vidas - 1;
   if (vidas == 2) {
     porcentajeVida.innerHTML="66%";
@@ -193,14 +185,38 @@ function endGame() {
     progress.classList.add("lostLife2");
   }
   else if (vidas == 0) {
-    porcentajeVida.innerHTML="0%";
-    progress.className = '';
-    progress.classList.add("lostLife3");
-    cowboy.className = '';
-    cowboy.classList.add("cowboyDead");
+      porcentajeVida.innerHTML="0%";
+      progress.className = '';
+      progress.classList.add("lostLife3");
+      cowboy.className = '';
+      cowboy.classList.add("cowboyDead");
       efectoAudio.setAttribute("src", "src/css/humanGruntEffect.mp3")
-      efectoAudio.play()
-      dead = true;
+
+
+
+      playPromise = efectoAudio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+        
+        })
+        .catch(error => {
+
+        });
+      }
+      clearInterval(intervalId);
+      detenerFondo();
+      cowboy.onanimationend = function() {
+        mensaje.classList.remove("mensajeOculto");
+        mensaje.classList.add("mensajeVisible");
+        cowboy.classList.remove('cowboyDead');
+        cowboy.classList.add('cowboyStandDie');
+      };
+
+
+      
+     
+       setTimeout(() => { window.location.href = "index.html"; }, 5000) 
     }
 
   }
@@ -294,20 +310,16 @@ function endGame() {
 
       detenerFondo();
     } else if (dead) {
-      detenerFondo();
-      cowboy.classList.remove('cowboyDead');
-      cowboy.classList.add('cowboyStandDie');
-      mensaje.classList.remove("mensajeOculto");
-      mensaje.classList.add("mensajeVisible");
-     /*  setTimeout(() => { window.location.href = "index.html"; }, 5000) */
-      clearInterval(intervalId);
-      //ResetGame();
+    
     }
     else {
       cowboy.className = '';
       cowboy.classList.add('cowboyStand')
     }
-
+    if(progress.className == 'lostLife3' ){
+      vidas = 1;
+      endGame();
+    }
 
   }, 50)
 
