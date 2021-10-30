@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   var mensaje = document.getElementById('mensajeGameOver');
   var progress = document.getElementById('progress');
   var porcentajeVida = document.getElementById('porcentajeVida');
+  var mensajeWin = document.getElementById('mensajeWin');
+  var cowboywin = document.getElementById('cowboywin');
+  
   var stand = false;
   var space = false
   var dead = false;
@@ -38,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function checkObject() {
     shuffle(selcEnemys);
     shuffle(selectColeccions);
-    console.log(animal.style.left);
     if (enemy.offsetLeft <= 7) {
       animal.className = '';
       animal.classList.add(selcEnemys[0])
@@ -213,12 +215,28 @@ function endGame() {
         cowboy.classList.add('cowboyStandDie');
       };
 
-
+      setTimeout(() => { window.location.href = "index.html"; 
+    }, 5000) 
       
-     
-       setTimeout(() => { window.location.href = "index.html"; }, 5000) 
+      
+
+       
     }
 
+  }
+
+
+  function checkWin() {
+    if(score == 3000){
+      clearInterval(intervalId);
+      detenerFondo();
+      mensajeWin.classList.remove("mensajeOculto");
+      mensajeWin.classList.add("mensajeVisible");
+      cowboywin.className = '';
+      cowboywin.classList.add('cowboyWin');
+      setTimeout(() => { window.location.href = "index.html"; 
+    }, 8000) 
+    }
   }
   window.addEventListener("keydown", (e) => {
     if (!dead) {
@@ -295,12 +313,15 @@ function endGame() {
     ground.classList.remove('paused');
   }
 
+
   let intervalId = setInterval(function () {
     checkCondition();
     checkObject();
     checkConditionColecionable();
+   
     score++;
     scoreMensaje.innerText=score;
+    checkWin();
     if (space) {
       cowboy.className = '';
       cowboy.classList.add("cowboyJump");

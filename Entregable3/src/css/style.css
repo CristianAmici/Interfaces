@@ -323,7 +323,13 @@ label{
 
 /*        FONDO         */
 
-
+.conteo{
+  font-family: Arvo;
+  font-weight: bold;
+font-size: 40px;
+color: rgb(85, 40, 15);
+text-align: center;
+}
 
 .mensajeOculto{
   display:none;
@@ -417,6 +423,21 @@ body { margin: 0; }
 }
 
 /*        ENEMYS          */
+
+.cowboyWin{
+  position: absolute;
+  bottom: 10px;
+  left: 0x;
+  z-index: 5;
+  animation: win 11s infinite;
+}
+
+
+@keyframes win {
+  0% { left: 300px;}
+  100% { left: 100%; }
+}
+
 
 .enemy{
   position: absolute;
