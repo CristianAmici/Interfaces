@@ -90,6 +90,13 @@ html,body {
   animation: cowboyDead 1s steps(8) ; 
 }
 
+.cowboyWin{
+  position: absolute;
+  bottom: 10px;
+  left: 300px;
+  z-index: 5;
+  animation: win 10s;
+}
 
 .cowboyJump{
   position: absolute;
@@ -424,17 +431,11 @@ body { margin: 0; }
 
 /*        ENEMYS          */
 
-.cowboyWin{
-  position: absolute;
-  bottom: 10px;
-  left: 0x;
-  z-index: 5;
-  animation: win 11s infinite;
-}
+
 
 
 @keyframes win {
-  0% { left: 300px;}
+  0% { left: 0%;}
   100% { left: 100%; }
 }
 

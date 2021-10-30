@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     }
     function ayuda() {
-        ayuda1.innerHTML = "- El juego consiste en intentar llegar a 3000 puntos o sobrevivir la mayor cantidad de tiempo posible al infierno del desierto.  " +
+        ayuda1.innerHTML = "- El juego consiste en intentar llegar a 2500 puntos o sobrevivir la mayor cantidad de tiempo posible al infierno del desierto.  " +
         "Para lograr eso, hay que evitar que los animales te toquen, si lo logran perderas un porcentaje de tu vida y de tu puntaje. " +
         "Los enemigos posibles son los que te mostramos a continuacion"
     ayuda2.innerHTML = '- Podras sobrevivir y sumar mas puntos si juntas las botellas voladoras, sisi voladoras... que Bill desea tomar, claramente son producto de su imaginación. </br>' +

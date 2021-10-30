@@ -227,15 +227,17 @@ function endGame() {
 
 
   function checkWin() {
-    if(score == 3000){
+    if(score == 2500){
       clearInterval(intervalId);
       detenerFondo();
       mensajeWin.classList.remove("mensajeOculto");
       mensajeWin.classList.add("mensajeVisible");
+      cowboy.className = '';
+      cowboy.classList.add('cowboyStand');
       cowboywin.className = '';
       cowboywin.classList.add('cowboyWin');
       setTimeout(() => { window.location.href = "index.html"; 
-    }, 8000) 
+    }, 6000) 
     }
   }
   window.addEventListener("keydown", (e) => {
