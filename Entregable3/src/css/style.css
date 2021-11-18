@@ -90,6 +90,13 @@ html,body {
   animation: cowboyDead 1s steps(8) ; 
 }
 
+.cowboyWin{
+  position: absolute;
+  bottom: 10px;
+  left: 300px;
+  z-index: 5;
+  animation: win 10s;
+}
 
 .cowboyJump{
   position: absolute;
@@ -323,7 +330,13 @@ label{
 
 /*        FONDO         */
 
-
+.conteo{
+  font-family: Arvo;
+  font-weight: bold;
+font-size: 40px;
+color: rgb(85, 40, 15);
+text-align: center;
+}
 
 .mensajeOculto{
   display:none;
@@ -417,6 +430,15 @@ body { margin: 0; }
 }
 
 /*        ENEMYS          */
+
+
+
+
+@keyframes win {
+  0% { left: 0%;}
+  100% { left: 100%; }
+}
+
 
 .enemy{
   position: absolute;
