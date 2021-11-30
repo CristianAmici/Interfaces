@@ -1,0 +1,128 @@
+body{
+    margin: 0%;
+    font-family:Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #E9D5ED;
+}
+header{
+        display:flex;
+        flex-direction: row;
+}
+.nav {
+    background-color: #B254BB;
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    padding-bottom: 1px;
+    justify-content: space-between;
+    width:450px;
+}
+.navbar{
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: #B254BB;
+    width: 100%;
+}
+.logo{ 
+    padding-left: 20px;
+    width:124px ;
+    height: 120px;
+}
+.buttonMenu:hover {
+    color: #151414;
+}
+.busqueda{
+    position:relative;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+  
+}
+.icon{
+    position: absolute;
+    margin-left: 10px;
+    z-index: 1;
+    color: #4f5b66;
+  }
+input{
+    height:35px;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+.sinDecoracion{
+    padding-bottom: 1px;
+}
+.textoInput{
+    text-align: center;
+}
+.buttonMenu{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+/* Animacion header */
+button, a {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+    button:after,a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: rgb(3, 3, 3);
+    transition: left .5s;
+    }
+    button:hover:after,a:hover:after {
+    left: 0;
+    }
+.inPage{
+    bottom: 0;
+    left: 0;
+    height: 5px;
+
+}
+
+/* MAIN */
+    main{
+        display: flex;
+        flex-direction: row;
+        border: 1px black;
+        justify-content:space-between;
+    }
+
+    .asidePerfil{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 6%;
+        
+        
+    }
+    figure{
+        margin: 0%;
+    }
+    article{   
+        background-color: #F1E6F3;
+        border: solid black;
+    }
+    aside{
+        background-color: #F1E6F3;
+        margin: 15px;
+        padding-left: 1%;
+        border: solid black;
+        display:flex;
+        flex-direction:column;
+        border-top-left-radius: 35px;
+        border-bottom-left-radius: 35px;
+        border-top-right-radius: 35px;
+        border-bottom-right-radius: 35px;
+    }

@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/css.css'>
-   <!--  <script src='main.js'></script> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/css.css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <script src='src/js/main.js'></script>
 </head>
+
 <body>
     <header class="navbar">
-        <img class="logo" src="/Entregable5/css/images/descarga.png" alt="">
+        <img class="logo" src="src/css/images/logo.png" alt="">
         <div class="nav">
-            <button class="sinDecoracion buttonMenu" id="Inicio"><img src="/Entregable5/css/images/Home.png"></button>
-            <button class="sinDecoracion buttonMenu" id="Notificaciones"><img src="/Entregable5/css/images/Notificación.png"></button>
-            <button class="sinDecoracion buttonMenu" id="Perfil"><img src="/Entregable5/css/images/Usuario.png"></button>
-            <button class="sinDecoracion buttonMenu" id="Mensajes"><img src="/Entregable5/css/images/Chat.png"></button>
+            <a class="sinDecoracion buttonMenu" href="index.html" id="inicio"><img src="src/css/images/Home.png"></a>
+            <button class=" buttonMenu" id="notificaciones"><img src="src/css/images/Notificación.png"></button>
+            <button class=" buttonMenu" id="perfil"><img src="src/css/images/perfil.png"></button>
+            <button class=" buttonMenu" id="mensajes"><img src="src/css/images/Chat.png"></button>
         </div>
-  </header>
-  
+        <div class="busqueda">
+            <i class="fa fa-search icon"></i>
+            <input class="textoInput" type="text" placeholder="Buscar en Vetegram">
+        </div>
+    </header>
+    <main id="inicioPag">
+        <aside>
+            <div class="asidePerfil">
+                <figure ><img src="src/css/images/perfil.png" alt="">
+                </figure>
+                <h3>Mi perfil</h3>
+
+            </div>
+            <h3>Sugerencias de amistad:</h3>
+        </aside>
+        <article>
+
+        </article>
+        <aside>
+
+        </aside>
+    </main>
+
 </body>
+
 </html>
