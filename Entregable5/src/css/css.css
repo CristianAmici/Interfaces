@@ -256,9 +256,7 @@ button, a {
 
     /************************************ CHAT CHAT CHAT ****************************************/
 /********** Side Izquierdo ****************/
-.separacionChatBorde{
-   /*SEPARACION CHAT*/
-}
+
 .chatPersona{
     display:flex;
     flex-direction: row;
@@ -271,6 +269,8 @@ button, a {
     border-bottom-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;
+    margin: 4px;
+    padding-right:30px;
 }
 .chatPersona:hover{
     background-color: lavender;
@@ -294,10 +294,11 @@ button, a {
 /********** CHAT DEL MEDIO ****************/
 
 .chatAbierto{
-    width:  60%;
+    width:  55%;
 }
-.videollamada{
 
+
+.videollamada{
     height: 40px;
     width: 50px;
     position: absolute;
@@ -310,10 +311,72 @@ button, a {
     align-items: center;
     position: relative;
     padding-right:30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
+
+
+
+
 .mensajesAbiertos{
-    height: 100%;
     background-color: #F1E6F3;
+    display:flex;
+    flex-direction: column;
 }
+.mensajeContacto{
+    background-color: #E9CBEF;
+    border-radius: 21px;
+    margin: 9px;
+    width: 60%;
+}
+.mensajeMio{
+    background-color: #D580E7;
+    border-radius: 21px;
+    margin: 9px;
+    width: 60%;
+    float:right;
+}
+
+
+
+
+
 .mandarMensaje{
+    display:flex;
+    flex-direction: row;
+    background-color: #E9CBEF;
+    align-items: center;
+    position: relative;
+    padding-right: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: space-around;
+}
+.escribirMensaje{
+    position: relative;
+    width: 80%;
+}
+.enviar{
+    position: absolute;
+    right: 10%;
+}
+.mandarMensajeIconos{
+    height: 25px;
+    width: 25px;
+    margin: 9px;
+}
+
+/********** Side Derecho ****************/
+
+.infoContacto{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.infoCentrada{
+    margin: 12px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
 }
