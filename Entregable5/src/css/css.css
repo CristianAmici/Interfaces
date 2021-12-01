@@ -46,15 +46,56 @@ header{
     color: #4f5b66;
   }
   /* Publicacion */
-.imgPublicacion{
+  .meGustas{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .figurePublicacion{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 3px;
+  }
+  .usuario, .hora{
+      margin: 0px;
+  }
+  .usuario{
+    font-weight: bold;
+    font-size:21;
+  }
+  .hora{
+    font-size:18;
+  }
+  .textoPublicacion{
+    align-self: flex-start;
+  }
+  .inputPublicacion{
+      width: 450px;
+  }
+  .imgPublicacion{
+      width: 350px;
+      height: auto;
+  }
+.imgPerfilPublicacion{
     width:36px;
     height:36px;
+    padding-right: 10px
+}
+.contenido{
+    position:relative;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
 }
 .publicar{
     display:flex;
     flex-direction: row;
     align-items: center;
-    padding: 3px;
+    padding: 0% 2% 0% 2%;
+    padding-top: 10px;
 }
 .publicacion{
     background-color: #b398b6;
@@ -62,7 +103,11 @@ header{
     border-bottom-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;
-    width: 450px;
+}
+.itemPublicacion{
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
 }
 input{
     height:35px;
@@ -86,7 +131,9 @@ input{
     display: flex;
     flex-direction: row;
 }
-/* Fin Nav*/
+
+/* Galeria de imagenes */
+
 
 /* Animacion header */
 button, a {
@@ -202,6 +249,9 @@ button, a {
     aside{
     background-color: #b398b6;
     }
+    section{
+        margin:5px;
+    }
 
 
     /************************************ CHAT CHAT CHAT ****************************************/
@@ -216,9 +266,15 @@ button, a {
     position: relative;
     margin: 9px;
     padding-right:30px;
+    cursor:pointer;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
 }
 .chatPersona:hover{
     background-color: lavender;
+    transition:0.5s;
 }
 .imagenChat{
     height: 56px;
