@@ -51,10 +51,19 @@ header{
     width:36px;
     height:36px;
 }
-.publicacion{
+.publicar{
     display:flex;
     flex-direction: row;
     align-items: center;
+    padding: 3px;
+}
+.publicacion{
+    background-color: #b398b6;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    width: 450px;
 }
 input{
     height:35px;
@@ -149,6 +158,7 @@ button, a {
         width: 24px;
         position: absolute;
         right:3px;
+        cursor: pointer;
     }
     figure{
         margin: 0%;
@@ -174,8 +184,10 @@ button, a {
         transition:0.5s;
     }
 
-    aside,article{
-        background-color: #b398b6;
+    article{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    aside, article{
         margin: 15px;
         padding-left: 1%;
         padding-right: 1%;
@@ -185,4 +197,7 @@ button, a {
         border-bottom-left-radius: 35px;
         border-top-right-radius: 35px;
         border-bottom-right-radius: 35px;
+    }
+    aside{
+    background-color: #b398b6;
     }
