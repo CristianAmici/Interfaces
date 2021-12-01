@@ -1,7 +1,7 @@
 body{
     margin: 0%;
     font-family:Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #E9D5ED;
+    background-color: #837186;
 }
 /* Nav*/
 header{
@@ -46,6 +46,16 @@ header{
     z-index: 1;
     color: #4f5b66;
   }
+  /* Publicacion */
+.imgPublicacion{
+    width:36px;
+    height:36px;
+}
+.publicacion{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
 input{
     height:35px;
     border-top-left-radius: 35px;
@@ -63,6 +73,8 @@ input{
     background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
 }
 /* Fin Nav*/
 
@@ -132,9 +144,11 @@ button, a {
         border-radius: 50%;
         margin: 4px;
     }
-    .Agregar{
+    .agregar{
         height: 24px;
         width: 24px;
+        position: absolute;
+        right:3px;
     }
     figure{
         margin: 0%;
@@ -143,37 +157,28 @@ button, a {
         display:flex;
         flex-direction: row;
         align-items: center;
+        position: relative;
         background-color: rgba(108, 144, 197, 0.775);
         border-top-left-radius: 35px;
         border-bottom-left-radius: 35px;
         border-top-right-radius: 35px;
         border-bottom-right-radius: 35px;
-        width: 97%;
         margin: 4px;
+        padding-right:30px;
+    }
+    .h3Margen{
+        padding-left: 2%;
+    }
+    .sugerenciasAmigoAgregado{
+        background-color: rgba(124, 184, 132, 0.775);
+        transition:0.5s;
     }
 
-
-
-
-    article{   
-        background-color: #F1E6F3;
-        border: solid black;
-    }
-
-
-
-
-
-
-
-
-
-
-    aside{
-        background-color: #F1E6F3;
+    aside,article{
+        background-color: #b398b6;
         margin: 15px;
         padding-left: 1%;
-        border: solid black;
+        padding-right: 1%;
         display:flex;
         flex-direction:column;
         border-top-left-radius: 35px;

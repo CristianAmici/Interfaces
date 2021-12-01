@@ -1,12 +1,11 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
 
-    let btinicio = document.getElementById("inicio");
+/*     let btinicio = document.getElementById("inicio");
     btinicio.addEventListener("click", async () => {
         document.getElementById("inicioPag").innerHTML = "Cargando...";
         borrarBarra();
         btinicio.classList.add("inPage");
-        /* setTimeout(function () ) */
         try {
             let response = await fetch("perfil.html");
             if (response.ok) {
@@ -21,14 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("inicioPag").innerHTML = "error";
         }
     });
-   
-   
+
+
     let btnotificaciones = document.getElementById("notificaciones");
     btnotificaciones.addEventListener("click", async () => {
         document.getElementById("inicioPag").innerHTML = "Cargando...";
         borrarBarra();
         btnotificaciones.classList.add("inPage");
-        /* setTimeout(function () ) */
         try {
             let response = await fetch("perfil.html");
             if (response.ok) {
@@ -49,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("inicioPag").innerHTML = "Cargando...";
         borrarBarra();
         btperfil.classList.add("inPage");
-        /* setTimeout(function () ) */
         try {
             let response = await fetch("perfil.html");
             if (response.ok) {
@@ -70,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("inicioPag").innerHTML = "Cargando...";
         borrarBarra();
         btmensajes.classList.add("inPage");
-        /* setTimeout(function () ) */
         try {
             let response = await fetch("mensajes.html");
             if (response.ok) {
@@ -84,10 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             document.getElementById("inicioPag").innerHTML = "error";
         }
-    });
+    }); */
 
 
-    function borrarBarra(){
+    function borrarBarra() {
         btinicio.className = '';
         btinicio.classList.add("buttonMenu");
         btperfil.className = '';
@@ -98,6 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
         btnotificaciones.classList.add("buttonMenu");
     }
 
+    let solicitudes= document.getElementsByName("solicitudes");
+    
+    solicitudes.forEach(element => {
+        
+        
+        element.addEventListener("click", () => {
+            document.getElementById("solicitudes-"+element.id).classList.add("sugerenciasAmigoAgregado");
+            element.src="src/css/images/agregado.png";
+            
+    
+        });
+    });
 
 
 
