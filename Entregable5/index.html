@@ -15,7 +15,7 @@
         }
 
         .parallax {
-            background: url('src/css/images/FondoBienvenida.png') repeat fixed 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/css/images/FondoBienvenida.png') repeat fixed 100%;
             background-size: cover;
             color: black;
         }
@@ -34,23 +34,44 @@
 
         .parallax-inner {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             padding-bottom: 20%;
         }
 
-        h3 {
+        .h3Login {
             margin-left: 50px;
             margin-right: 50px;
             margin-top: 50px;
             margin-bottom: 50px;
         }
-        h1 {
+
+        .h1Login {
+            margin-top: 30px;
             font-size: 100px;
         }
-        .registro{
+
+        .registro {
             color: rgb(47, 47, 158);
-            font-style:italic;
+            font-style: italic;
+        }
+
+        .label {
+            padding-left: 3px;
+        }
+
+        .textPresentacion {
+            background-color: rgba(240, 248, 255, 0.678);
+            text-align: center;
+            margin-bottom: 0%;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
         }
     </style>
 </head>
@@ -59,45 +80,47 @@
     <section class="1">
         <section class="parallax">
             <div class="parallax-inner">
-                <aside>
-                    <h1 class="textPresentacion">Bienvenidos a Vetegram</h1>
-                    <h2 class="textPresentacion">La mejor red social para veterinarios</h2>
-                </aside>
-                <aside class="login">
-                    <h2>Ingresar</h2>
-                    <label id="infoErrorUsuario">Usuario o Correo electrónico</label>
-                    <input type="text" placeholder="Usuario o Correo electronico">
-                    <label id="infoErrorContrasena">Contraseña</label>
-                    <input type="text" placeholder="Contraseña">
-                    <button class="BotonAzul">Iniciar sesión</button>
-                    <div class="login">
-                        <label id="NoTineCuenta">¿No tienes Cuenta?</label> <a class="registro" href="#registro">Registrate</a>
-                    </div>
-                </aside>
+                <h1 class="h1Login textPresentacion">Bienvenidos a Vetegram</h1>
+                <div class="row">
+                    <aside>
+                        <img src="src/css/images/logo.png" alt="">
+                    </aside>
+                    <aside class="login">
+                        <h2 style="text-align: center;">Ingresar</h2>
+                        <label class="label" id="infoErrorUsuario">Correo electrónico</label>
+                        <input type="text" placeholder="Correo electronico">
+                        <label class="label" id="infoErrorContrasena">Contraseña</label>
+                        <input type="text" placeholder="Contraseña">
+                        <button class=" BotonAzul"> <a style="text-decoration:none; color: aliceblue;"
+                            href="publicaciones.html">Iniciar sesión</a></button>
+                        <label class="label" id="NoTineCuenta">¿No tienes cuenta? <a class="registro"
+                                href="#registro">Registrate</a></label>
+                    </aside>
+                </div>
             </div>
         </section>
-        <h3>Vas a encontrar a los veterinarios mas destacados de tu lugar de residencia</h3>
-        <h3>Podras comunicarte con ellos para recibir consejos y realizar consultas muy especificas</h3>
         <section class="parallax-1">
-            <div id="registro" class="parallax-inner">
+            <div  class="parallax-inner">
+                <h1 class="h1Login textPresentacion">La mejor red social para veterinarios</h1>
                 <aside>
-                
+
                 </aside>
                 <aside class="login">
-                    <h2>Registrarte</h2>
-                    <label >Nombre</label>
-                    <input  class="textoInput" type="text" placeholder="Nombre">
-                    <label >Apellido</label>
-                    <input  class="textoInput" type="text" placeholder="Apellido">
-                    <label >Usuario o Correo Electrónico</label>
-                    <input  class="textoInput" type="text" placeholder="uUsuario o Correo Electrónico">
-                    <label >contraseña</label>
-                    <input class="textoInput" type="text" placeholder="Contraseña">
-                    <label >Fecha de nacimiento</label>
-                    <input class="textoInput" type="date">
-                    <label >Genero</label>
-                    <input class="textoInput" type="text" placeholder="Genero">
-                    <button class="BotonAzul"><a style="text-decoration:none;" href="publicaciones.html">Registrarte</a></button>
+                    <h2 style="text-align: center;">Registrarte</h2>
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Nombre">
+                    <label>Apellido</label>
+                    <input type="text" placeholder="Apellido">
+                    <label>Usuario o Correo Electrónico</label>
+                    <input type="text" placeholder="Usuario o Correo Electrónico">
+                    <label>contraseña</label>
+                    <input type="text" placeholder="Contraseña">
+                    <label>Fecha de nacimiento</label>
+                    <input type="date">
+                    <label>Genero</label>
+                    <input type="text" placeholder="Genero">
+                    <button id="registro" class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"
+                            href="publicaciones.html">Registrarte</a></button>
                 </aside>
             </div>
         </section>
