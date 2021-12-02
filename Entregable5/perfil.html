@@ -19,7 +19,7 @@
                     src="src/css/images/Home.png"></a>
             <button class=" buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
             <a class="buttonMenu inPage" href="perfil.html"><img src="src/css/images/perfil.png"></a>
-                <a class="buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
+            <a class="buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
         </div>
         <div class="busqueda">
             <i class="fa fa-search icon"></i>
@@ -28,44 +28,33 @@
     </header>
     <main id="inicioPag">
         <aside>
-            <a class="buttonMenu" href="perfil.html">
-                <div class="asidePerfil">
-                    <figure><img src="src/css/images/perfil.png" alt="">
-                    </figure>
-                    <h3>Mi perfil</h3>
-            </a>
-            </div>
-            <h3 class="h3Margen">Sugerencias de amistad:</h3>
-            <div id="solicitudes-agregar1" class=" sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar1.png">
-                <h5>Pepito Mocoreta</h5>
-                <img id="agregar1" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar2" class=" sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar2.png">
-                <h5>Juan Carlos Gomez</h5>
-                <img id="agregar2" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar3" class="sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar3.png">
-                <h5>Cristiano Messi</h5>
-                <img id="agregar3" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar4" class="sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar1.png">
-                <h5>Carla Miranda</h5>
-                <img id="agregar4" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-
         </aside>
+
         <article>
-            <section>
-             <h1>completar</h1>
+            <section class="contenedorPerfil">
+                <img class="imagenPerfil" src="src/css/images/miperfilGrande.png" alt="">
+                <div style="display: flex;flex-direction: column;">
+                    <h1 class="miNombrePerfil">Emma Lopez</h1>
+                    <h5 class="misAmigosPerfil">328 amigos</h5>
+                </div>
             </section>
+            <header class="navbarPerfil">
+                <div class="navPerfil">
+                    <a class="sinDecoracion buttonMenu inPage" href="perfil.html" id="publicaciones"> Publicaciones</a>
+                    <button class="buttonMenu" id="fotos"> Fotos</button>
+                    <button class="buttonMenu" id="informacion"> Información</button>
+                </div>
+            </header>
+            <article  id="renderPerfil">
+               
+            </article>
         </article>
-        <aside>
+        
 
+        <aside>
         </aside>
+
+
     </main>
 
 </body>

@@ -1,97 +1,54 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
-
-/*     let btinicio = document.getElementById("inicio");
-    btinicio.addEventListener("click", async () => {
-        document.getElementById("inicioPag").innerHTML = "Cargando...";
+    
+    let btnpublicaciones = document.getElementById("publicaciones");
+    
+    let btninformacion = document.getElementById("informacion");
+    btninformacion.addEventListener("click", async () => {
+        document.getElementById("renderPerfil").innerHTML = "Cargando...";
         borrarBarra();
-        btinicio.classList.add("inPage");
+        btninformacion.classList.add("inPage");
         try {
-            let response = await fetch("perfil.html");
+            let response = await fetch("info.html");
             if (response.ok) {
                 let html = await response.text();
-                let div = document.getElementById("inicioPag");
+                let div = document.getElementById("renderPerfil");
                 div.innerHTML = html;
-
-
             }
 
         } catch (error) {
-            document.getElementById("inicioPag").innerHTML = "error";
+            document.getElementById("renderPerfil").innerHTML = "error";
         }
     });
 
-
-    let btnotificaciones = document.getElementById("notificaciones");
-    btnotificaciones.addEventListener("click", async () => {
-        document.getElementById("inicioPag").innerHTML = "Cargando...";
+    let btnfotos = document.getElementById("fotos");
+    btnfotos.addEventListener("click", async () => {
+        document.getElementById("renderPerfil").innerHTML = "Cargando...";
         borrarBarra();
-        btnotificaciones.classList.add("inPage");
+        btnfotos.classList.add("inPage");
         try {
-            let response = await fetch("perfil.html");
+            let response = await fetch("fotos.html");
             if (response.ok) {
                 let html = await response.text();
-                let div = document.getElementById("inicioPag");
+                let div = document.getElementById("renderPerfil");
                 div.innerHTML = html;
 
 
             }
 
         } catch (error) {
-            document.getElementById("inicioPag").innerHTML = "error";
+            document.getElementById("renderPerfil").innerHTML = "error";
         }
     });
-
-    let btperfil = document.getElementById("perfil");
-    btperfil.addEventListener("click", async () => {
-        document.getElementById("inicioPag").innerHTML = "Cargando...";
-        borrarBarra();
-        btperfil.classList.add("inPage");
-        try {
-            let response = await fetch("perfil.html");
-            if (response.ok) {
-                let html = await response.text();
-                let div = document.getElementById("inicioPag");
-                div.innerHTML = html;
-
-
-            }
-
-        } catch (error) {
-            document.getElementById("inicioPag").innerHTML = "error";
-        }
-    });
-
-    let btmensajes = document.getElementById("mensajes");
-    btmensajes.addEventListener("click", async () => {
-        document.getElementById("inicioPag").innerHTML = "Cargando...";
-        borrarBarra();
-        btmensajes.classList.add("inPage");
-        try {
-            let response = await fetch("mensajes.html");
-            if (response.ok) {
-                let html = await response.text();
-                let div = document.getElementById("inicioPag");
-                div.innerHTML = html;
-
-
-            }
-
-        } catch (error) {
-            document.getElementById("inicioPag").innerHTML = "error";
-        }
-    }); */
 
 
     function borrarBarra() {
-        btinicio.className = '';
-        btinicio.classList.add("buttonMenu");
-        btperfil.className = '';
-        btperfil.classList.add("buttonMenu");
-        btmensajes.className = '';
-        btmensajes.classList.add("buttonMenu");
-        btnotificaciones.className = '';
-        btnotificaciones.classList.add("buttonMenu");
+        btnpublicaciones.className = '';
+        btnpublicaciones.classList.add("buttonMenu");
+        btnfotos.className = '';
+        btnfotos.classList.add("buttonMenu");
+        btninformacion.className = '';
+        btninformacion.classList.add("buttonMenu");
     }
 
     let solicitudes= document.getElementsByName("solicitudes");
