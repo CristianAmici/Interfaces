@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body{
-    margin: 0%;
+    margin-top: 0%;
     font-family: 'Roboto', sans-serif;
     background-color: #837186;
 }
@@ -9,7 +9,37 @@ body{
 header{
         display:flex;
         flex-direction: row;
+        position: fixed;
+        z-index: 1000;
 }
+article{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: center;
+}
+aside, article{
+    margin: 15px;
+    padding-left: 1%;
+    padding-right: 1%;
+    display:flex;
+    flex-direction:column;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.asideLeft{
+background-color: #b398b6;
+position: fixed;
+top: 50px;
+left: 0px;
+}
+.asideRight{
+    background-color: #b398b6;
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    }
 .sinPadding{
     margin: 1px;
 }
@@ -141,7 +171,7 @@ header{
 .itemPublicacion{
     display: flex;
     justify-content: space-around;
-    padding: 2%;
+    padding: 1%;
 }
 .lineaBaja{
     border-bottom: solid rgba(59, 58, 58, 0.822);
@@ -236,7 +266,8 @@ a:hover:after {
         display: flex;
         flex-direction: row;
         border: 1px black;
-        justify-content:space-between;
+        justify-content:center;
+        top: 100px;
     }
 
     .asidePerfil{
@@ -286,23 +317,6 @@ a:hover:after {
         transition:0.5s;
     }
 
-    article{
-        background-color: rgba(255, 255, 255, 0);
-    }
-    aside, article{
-        margin: 15px;
-        padding-left: 1%;
-        padding-right: 1%;
-        display:flex;
-        flex-direction:column;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-    aside{
-    background-color: #b398b6;
-    }
     .publicacionEspacio{
         margin:5px;
     }
