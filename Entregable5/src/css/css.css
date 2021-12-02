@@ -331,7 +331,6 @@ a:hover:after {
     align-items: center;
     position: relative;
     margin: 9px;
-    padding-right:30px;
     cursor:pointer;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -448,3 +447,65 @@ a:hover:after {
     align-items: center;
 
 }
+
+
+
+
+    /************************************ PERFIL ****************************************/
+
+.imagenPerfil{
+    height: 200px;
+    width: 200px;
+}
+.contenedorPerfil{
+    background-color: #F1E6F3;
+    border-radius: 10px;
+    width: 962px;
+    height: 236px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.misAmigosPerfil{
+    margin: 3px;;
+    color: #2E2E2E;
+}
+.miNombrePerfil{
+    color: #000000;
+    margin: 3px;
+    font-size: 30px;
+}
+.imagenPerfil{
+    margin: 25px;
+    border-radius: 100%;
+}
+
+
+
+/****** BARRA BARRA BARRA ******************/
+
+.navbarPerfil{
+    background-color: #F1E6F3;
+    border-radius: 10px;
+    width: 962px;
+    height: 34px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 14px;
+    justify-items: center;
+    text-decoration: none;
+    justify-content: space-between;
+    width: 100%;
+}
+.navPerfil{
+    display:flex;
+    flex-direction: row;
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+    align-items:center;
+    padding-bottom: 1px;
+    justify-content: space-between;
+    width:450px;
+}
+/****** Fotos ******************/
