@@ -3,274 +3,135 @@
 
 <head>
     <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Vetegram</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='src/css/css.css'>
+    <meta name="encoding" content="ISO-8859-1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="src/css/css.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <script src='src/js/main.js'></script>
+    <title>Vetegram</title>
+    <style type="text/css">
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .parallax {
+            background: url('src/css/images/FondoBienvenida.png') repeat fixed 100%;
+            background-size: cover;
+            color: black;
+        }
+
+        .parallax-1 {
+            background: url('https://images.pexels.com/photos/1835712/pexels-photo-1835712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') repeat fixed 100%;
+            background-size: cover;
+            color: black;
+        }
+
+        .parallax-2 {
+            background: url('https://images.pexels.com/photos/4275885/pexels-photo-4275885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') repeat fixed 100%;
+            background-size: cover;
+            color: black;
+        }
+
+        .parallax-inner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-bottom: 20%;
+        }
+
+        h3 {
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 100px;
+        }
+        .registro{
+            color: rgb(47, 47, 158);
+            font-style:italic;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <img class="logo" src="src/css/images/logo.png" alt="">
-        <div class="nav">
-            <a class="sinDecoracion buttonMenu inPage" href="index.html" id="inicio"><img
-                    src="src/css/images/Home.png"></a>
-            <button class=" buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
-            <a class="buttonMenu" href="perfil.html"><img src="src/css/images/perfil.png"></a>
-            <a class="buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
-        </div>
-        <div class="busqueda">
-            <i class="fa fa-search icon"></i>
-            <input class="textoInput" type="text" placeholder="Buscar en Vetegram">
-        </div>
-    </header>
-    <main class="main">
-        <aside class="asideLeft">
-            <a class="buttonMenu" href="perfil.html">
-                <div class="asidePerfil">
-                    <figure><img src="src/css/images/perfil.png" alt="">
-                    </figure>
-                    <h3>Mi perfil</h3>
-            </a>
-            </div>
-            <h3 class="h3Margen">Sugerencias de amistad:</h3>
-            <div id="solicitudes-agregar1" class=" sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar1.png">
-                <h5>Pepito Mocoreta</h5>
-                <img id="agregar1" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar2" class=" sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar2.png">
-                <h5>Juan Carlos Gomez</h5>
-                <img id="agregar2" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar3" class="sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar3.png">
-                <h5>Cristiano Messi</h5>
-                <img id="agregar3" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-            <div id="solicitudes-agregar4" class="sugereciasAmigos">
-                <img class="avatar" src="src/css/images/avatar1.png">
-                <h5>Carla Miranda</h5>
-                <img id="agregar4" name="solicitudes" class="agregar" src="src/css/images/agregar.png">
-            </div>
-
-        </aside>
-        <article>
-            <section class="publicacion publicacionEspacio">
-                <div class="publicar">
-                    <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
-                    <input type="text" class="inputPublicacion" placeholder="¿Que estas pensando?">
-                </div>
-                <div class="itemPublicacion">
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/ganchito.png">
-
-                            <figcaption>Archivo</figcaption>
-
-                        </figure>
-                    </button>
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/foto.png">
-
-                            <figcaption>Fotos/video</figcaption>
-
-                        </figure>
-                    </button>
-                </div>
-            </section>
-            <section class="publicacion publicacionEspacio">
-                <div class="publicar">
-
-                    <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
-                    <div>
-                        <p class="usuario">Emma Lopez</p>
-                        <p class="hora"><i>20:30</i></p>
+    <section class="1">
+        <section class="parallax">
+            <div class="parallax-inner">
+                <aside>
+                    <h1 class="textPresentacion">Bienvenidos a Vetegram</h1>
+                    <h2 class="textPresentacion">La mejor red social para veterinarios</h2>
+                </aside>
+                <aside class="login">
+                    <h2>Ingresar</h2>
+                    <label id="infoErrorUsuario">Usuario o Correo electrónico</label>
+                    <input type="text" placeholder="Usuario o Correo electronico">
+                    <label id="infoErrorContrasena">Contraseña</label>
+                    <input type="text" placeholder="Contraseña">
+                    <button class="BotonAzul">Iniciar sesión</button>
+                    <div class="login">
+                        <label id="NoTineCuenta">¿No tienes Cuenta?</label> <a class="registro" href="#registro">Registrate</a>
                     </div>
-
-                </div>
-                <div class="contenido">
-                    <p class="textoPublicacion">Hoy le toca operación a este animalito.</p>
-                    <img class="imgPublicacion" src="src/css/images/perroOperado.png" alt="">
-                </div>
-                </div>
-                <div class="meGustas lineaBaja">
-                    <img src="src/css/images/manoArriba.png" alt="">
-                    <p><i>24</i></p>
-                </div>
-                <div class="itemPublicacion lineaBaja">
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/manoArriba.png">
-
-                            <figcaption>Me gusta</figcaption>
-
-                        </figure>
-                    </button>
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/manoAbajo.png">
-
-                            <figcaption>No me interesa</figcaption>
-
-                        </figure>
-                    </button>
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/compartir.png">
-
-                            <figcaption>compartir</figcaption>
-
-                        </figure>
-                    </button>
-                </div>
-                <button class="buttonMenu subrrayado">
-                    <p class="cantidadComentario">5 comentarios</p>
-                </button>
-                <div class="publicar">
-
-                    <img class="imgComentario" src="src/css/images/fotoPublicar.png">
-                    <div class="comentarioPublicacion">
-                        <p class="usuarioComentario sinPadding">Emma Lopez</p>
-                        <p class="sinPadding">Espero se recupere pronto, es mi mejor y unico amigo desde que volvi de
-                            Gryffindor</p>
-                    </div>
-                </div>
-                <div class="publicar">
-
-                    <img class="imgComentario" src="src/css/images/avatar2.png">
-                    <div class="comentarioPublicacion">
-                        <p class="usuarioComentario sinPadding">Juan Carlos Gomez</p>
-                        <p class="sinPadding">Y Harry como anda?</p>
-                    </div>
-                </div>
-                <div class="publicar">
-                    <img class="imgComentario" src="src/css/images/fotoPublicar.png">
-                    <input type="text" class="inputPublicacion" placeholder="Escribe un comentario">
-                </div>
-            </section>
-            <section class="publicacion publicacionEspacio">
-                <div class="publicar">
-
-                    <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
-                    <div>
-                        <p class="usuario">Emma Lopez</p>
-                        <p class="hora"><i>20:30</i></p>
-                    </div>
-
-                </div>
-                <div class="contenido">
-                    <p class="textoPublicacion">En la consulta del veterinario, suena el teléfono: <br>
-                        - Oiga, doctor, mañana le enviaré a mi vieja perra con mi esposa.<br>
-                        - Dele un potente veneno para que no sufra demasiado.<br>
-                        - De acuerdo, pero ¿sabrá después volver sola la perra a su casa?</p>
-                </div>
-                </div>
-                <div class="meGustas lineaBaja">
-                    <img src="src/css/images/manoArriba.png" alt="">
-                    <p><i>24345</i></p>
-                </div>
-                <div class="itemPublicacion lineaBaja">
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/manoArriba.png">
-
-                            <figcaption>Me gusta</figcaption>
-
-                        </figure>
-                    </button>
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/manoAbajo.png">
-
-                            <figcaption>No me interesa</figcaption>
-
-                        </figure>
-                    </button>
-                    <button class="buttonMenu botonPublicacion">
-                        <figure class="figurePublicacion">
-
-                            <img src="src/css/images/compartir.png">
-
-                            <figcaption>compartir</figcaption>
-
-                        </figure>
-                    </button>
-                </div>
-                <button class="buttonMenu subrrayado">
-                    <p class="cantidadComentario">1 comentarios</p>
-                </button>
-                <div class="publicar">
-
-                    <img class="imgComentario" src="src/css/images/fotoPublicar.png">
-                    <div class="comentarioPublicacion">
-                        <p class="usuarioComentario sinPadding">Emma Lopez</p>
-                        <p class="sinPadding">Este tipo de chistes deberian censurarlos!</p>
-                    </div>
-                </div>
-                <div class="publicar">
-
-                    <img class="imgComentario" src="src/css/images/avatar2.png">
-                    <div class="comentarioPublicacion">
-                        <p class="usuarioComentario sinPadding">Juan Carlos Gomez</p>
-                        <p class="sinPadding">Vuelve sola seguramente! jaja</p>
-                    </div>
-                </div>
-                <div class="publicar">
-                    <img class="imgComentario" src="src/css/images/fotoPublicar.png">
-                    <input type="text" class="inputPublicacion" placeholder="Escribe un comentario">
-                </div>
-            </section>
-        </article>
-        <aside class="asideRight">
-            <h3>Contactos en linea</h3>
-            <div id="chat1" class="chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar1.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Pepito Mocoreta</h5>
+                </aside>
             </div>
-            <div id="chat2" class=" chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar2.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Juan Carlos Gomez</h5>
-
+        </section>
+        <h3>Vas a encontrar a los veterinarios mas destacados de tu lugar de residencia</h3>
+        <h3>Podras comunicarte con ellos para recibir consejos y realizar consultas muy especificas</h3>
+        <section class="parallax-1">
+            <div id="registro" class="parallax-inner">
+                <aside>
+                
+                </aside>
+                <aside class="login">
+                    <h2>Registrarte</h2>
+                    <label >Nombre</label>
+                    <input  class="textoInput" type="text" placeholder="Nombre">
+                    <label >Apellido</label>
+                    <input  class="textoInput" type="text" placeholder="Apellido">
+                    <label >Usuario o Correo Electrónico</label>
+                    <input  class="textoInput" type="text" placeholder="uUsuario o Correo Electrónico">
+                    <label >contraseña</label>
+                    <input class="textoInput" type="text" placeholder="Contraseña">
+                    <label >Fecha de nacimiento</label>
+                    <input class="textoInput" type="date">
+                    <label >Genero</label>
+                    <input class="textoInput" type="text" placeholder="Genero">
+                    <button class="BotonAzul"><a style="text-decoration:none;" href="publicaciones.html">Registrarte</a></button>
+                </aside>
             </div>
-            <div id="chat3" class="chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar3.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Cristiano Messi</h5>
+        </section>
+    </section>
+
+    <section class="2">
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis minima fuga debitis quasi eius aliquid
+            sapiente? Cumque blanditiis quibusdam, ex totam aliquam provident alias culpa, sit illo, eum doloribus
+            doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi reprehenderit voluptatum
+            aperiam pariatur numquam praesentium recusandae, ipsa at iusto eveniet, distinctio sunt dolore nemo veniam
+            maiores vitae deserunt cum ducimus.</h3>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis minima fuga debitis quasi eius aliquid
+            sapiente? Cumque blanditiis quibusdam, ex totam aliquam provident alias culpa, sit illo, eum doloribus
+            doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi reprehenderit voluptatum
+            aperiam pariatur numquam praesentium recusandae, ipsa at iusto eveniet, distinctio sunt dolore nemo veniam
+            maiores vitae deserunt cum ducimus.</h3>
+        <section class="parallax-2">
+            <div class="parallax-inner">
+                <br>
+                <h1 id="montañas">Mountains</h1>
+                <br>
             </div>
-            <div id="chat4" class="chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar1.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Carla Miranda</h5>
-            </div>
-            <div id="chat5" class=" chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar2.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Juan Carlos Gomez</h5>
-
-            </div>
-            <div id="chat6" class="chatPersona">
-                <img class="imagenChat" src="src/css/images/avatar3.png">
-                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat"> Cristiano Messi</h5>
-
-
-        </aside>
-    </main>
-
+        </section>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis minima fuga debitis quasi eius aliquid
+            sapiente? Cumque blanditiis quibusdam, ex totam aliquam provident alias culpa, sit illo, eum doloribus
+            doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi reprehenderit voluptatum
+            aperiam pariatur numquam praesentium recusandae, ipsa at iusto eveniet, distinctio sunt dolore nemo veniam
+            maiores vitae deserunt cum ducimus.</h3>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis minima fuga debitis quasi eius aliquid
+            sapiente? Cumque blanditiis quibusdam, ex totam aliquam provident alias culpa, sit illo, eum doloribus
+            doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi reprehenderit voluptatum
+            aperiam pariatur numquam praesentium recusandae, ipsa at iusto eveniet, distinctio sunt dolore nemo veniam
+            maiores vitae deserunt cum ducimus.</h3>
+    </section>
 </body>
 
 </html>

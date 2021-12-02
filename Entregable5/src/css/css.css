@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
+
 body{
     margin: 0%;
     font-family: 'Roboto', sans-serif;
@@ -182,6 +183,8 @@ left: 0px;
     margin-right: 10px;
 }
 input{
+    padding-left: 10px;
+    font-style: italic;
     height:35px;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -317,6 +320,38 @@ a:hover:after {
     .publicacionEspacio{
         margin:5px;
     }
+      /************************************ HOME LOGIN ****************************************/
+.login{
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #C379BA;
+    font-style: italic;
+}
+.BotonAzul{
+    color:aliceblue;
+    width: 155px;
+    height: 38px;
+    text-decoration: none;
+    border: none;
+    background-color: #4F6ACF;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+.textPresentacion{
+    background-color: rgba(240, 248, 255, 0.678);
+    text-align: center;
+    margin-bottom: 0%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 
 
     /************************************ CHAT CHAT CHAT ****************************************/
@@ -361,7 +396,6 @@ a:hover:after {
     width:  55%;
 }
 
-
 .videollamada{
     height: 40px;
     width: 50px;
@@ -378,9 +412,6 @@ a:hover:after {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-
-
-
 
 .mensajesAbiertos{
     background-color: #F1E6F3;
@@ -404,10 +435,6 @@ a:hover:after {
     width: 60%;
     float:right;
 }
-
-
-
-
 
 .mandarMensaje{
     display:flex;
@@ -483,7 +510,7 @@ a:hover:after {
 
 
 
-/****** BARRA BARRA BARRA ******************/
+/************* BARRA DEL PERFIL ******************/
 
 .navbarPerfil{
     background-color: #F1E6F3;
