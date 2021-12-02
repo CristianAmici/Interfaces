@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body{
-    margin-top: 0%;
+    margin: 0%;
     font-family: 'Roboto', sans-serif;
     background-color: #837186;
 }
@@ -13,12 +13,17 @@ header{
         z-index: 1000;
 }
 article{
-    position: relative;
     background-color: rgba(255, 255, 255, 0);
     align-items: center;
 }
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
 aside, article{
     margin: 15px;
+    margin-top: 75px;
     padding-left: 1%;
     padding-right: 1%;
     display:flex;
@@ -31,13 +36,11 @@ aside, article{
 .asideLeft{
 background-color: #b398b6;
 position: fixed;
-top: 50px;
 left: 0px;
 }
 .asideRight{
     background-color: #b398b6;
     position: fixed;
-    top: 50px;
     right: 0px;
     }
 .sinPadding{
@@ -262,13 +265,7 @@ a:hover:after {
     border-bottom-right-radius: 10px;
 }
 /* MAIN */
-    main{
-        display: flex;
-        flex-direction: row;
-        border: 1px black;
-        justify-content:center;
-        top: 100px;
-    }
+
 
     .asidePerfil{
         display:flex;
