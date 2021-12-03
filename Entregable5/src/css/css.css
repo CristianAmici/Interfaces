@@ -373,6 +373,9 @@ input{
     .h3Margen{
         padding-left: 2%;
     }
+    .centrarAside{
+        text-align: center;
+    }
     .sugerenciasAmigoAgregado{
         background-color: rgba(124, 184, 132, 0.775);
         transition:0.5s;
@@ -825,7 +828,48 @@ input{
     text-align: center;
     position: none;
     margin-top: 5%;
-    background-color: #ebe4ed;
    
 
 }
+
+
+/********************************LOADING******************/
+
+.svg-loader{
+    display:flex;
+    position: relative;
+    align-content: space-around;
+    justify-content: center;
+    margin: 350px;
+  }
+  .loader-svg{
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    fill: none;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke: rgb(145, 47, 165);
+  }
+  .loader-svg.bg{
+    stroke-width: 8px;
+    stroke: rgb(155, 135, 163);
+  }
+  .animate{
+    stroke-dasharray: 242.6;
+    animation: fill-animation 1s cubic-bezier(1,1,1,1) 0s infinite;
+  }
+  
+  @keyframes fill-animation{
+    0%{
+      stroke-dasharray: 40 242.6;
+      stroke-dashoffset: 0;
+    }
+    50%{
+      stroke-dasharray: 141.3;
+      stroke-dashoffset: 141.3;
+    }
+    100%{
+      stroke-dasharray: 40 242.6;
+      stroke-dashoffset: 282.6;
+    }
+  }

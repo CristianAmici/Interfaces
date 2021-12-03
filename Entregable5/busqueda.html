@@ -15,10 +15,13 @@
     <header class="navbar">
         <img class="logo" src="src/css/images/logo.png" alt="">
         <div class="nav">
-            <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img class="iconoNavBar" src="src/css/images/Home.png"></a>
-            <button class=" buttonMenu" id="notificaciones"><img class="iconoNavBar" src="src/css/images/notificación.png"></button>
+            <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img class="iconoNavBar"
+                    src="src/css/images/Home.png"></a>
+            <button class=" buttonMenu" id="notificaciones"><img class="iconoNavBar"
+                    src="src/css/images/notificación.png"></button>
             <a class="link buttonMenu" href="perfil.html"><img class="iconoNavBar" src="src/css/images/perfil.png"></a>
-            <a class="link buttonMenu inPage" href="mensajes.html"><img class="iconoNavBar" src="src/css/images/mensajes.png"></a>
+            <a class="link buttonMenu inPage" href="mensajes.html"><img class="iconoNavBar"
+                    src="src/css/images/mensajes.png"></a>
         </div>
         <div class="busqueda">
             <i class="fa fa-search icon"></i>
@@ -27,62 +30,106 @@
     </header>
 
     <main id="inicioPag">
-        <aside class="asideLeft" style="width: 20%;">
-            <h3 class="h3Margen" >Busqueda avanzada</h3>
-            <a class="iconoNombreUrl"  href="perfil.html">
-                <i class="fa fa-search icon"></i><h4 style="margin-block-end: 0%;">Buscar personas</h4>
-            </a>
-            <a class="iconoNombreUrl" style="display: flex;flex-direction: row;" href="perfil.html">
-                <i class="fa fa-search icon" ></i><h4 style="margin-block-end: 0%;">Buscar publicaciones</h4>
+        <aside class="asideLeft ">
+            <h3 class="h3Margen centrarAside">Busqueda avanzada</h3>
+            <a class="iconoNombreUrl" href="busquedaPublicaciones.html">
+                <h4 style="margin-block-end: 0%;">Buscar publicaciones</h4>
             </a>
 
             <div class="busquedaInputs">
 
-                <label class="label" >Especialidad</label>
-                <input class="textoInput" style="padding: 0%;"  type="text" placeholder="Especialidad">
+                <label class="label">Especialidad</label>
+                <input class="textoInput" style="padding: 0%;" type="text" placeholder="Especialidad">
                 <label class="label">Localidad</label>
-                <input class="textoInput" style="padding: 0%;"  type="text" placeholder="Localidad">
+                <input class="textoInput" style="padding: 0%;" type="text" placeholder="Localidad">
                 <label class="label">Fecha de nacimiento</label>
-                <input class="textoInput"  type="date">
+                <input class="textoInput" type="date">
                 <label class="label">Lugar de trabajo</label>
-                <input class="textoInput" style="padding: 0%;"  type="text" placeholder="Lugar de trabajo">
-                <button class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"href="publicaciones.html">Buscar</a></button>
+                <input class="textoInput" style="padding: 0%;" type="text" placeholder="Lugar de trabajo">
+                <button class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"
+                        href="busqueda.html">Buscar</a></button>
 
-             </div>           
+            </div>
 
-
+            <img class="publicidadCanina" src="src/css/images/Publicidad Canina 3.png" alt="">
+            <img class="publicidadCanina2" src="src/css/images/Publicidad Canina2 2.png" alt="">
         </aside>
 
-        <article  >
+        <article>
 
 
             <section class="contenedorBusqueda">
-                
-                <h3 class="h3fotos" >Resultados de la busqueda</h3> 
+
+                <h3 class="h3fotos">Resultados de la busqueda</h3>
             </section>
 
 
-            <div class="busquedaResultados"> 
-                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
-                <h5>Pepito Mocoreta</h5>
+            <div class="busquedaResultados">
+                <img class="avatarBusqueda" src="src/css/images/fotoPublicar.png">
+                <h5>Emma Lopez</h5>
                 <img id="agregar1" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
             </div>
 
-            <div class="busquedaResultados"> 
-                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
-                <h5>Pepito Mocoreta</h5>
+            <div class="busquedaResultados">
+                <img class="avatarBusqueda" src="src/css/images/fotoPublicar.png">
+                <h5>Emma Lopez</h5>
                 <img id="agregar2" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
             </div>
 
-            <div class="busquedaResultados"> 
-                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
-                <h5>Pepito Mocoreta</h5>
+            <div class="busquedaResultados">
+                <img class="avatarBusqueda" src="src/css/images/fotoPublicar.png">
+                <h5>Emma Lopez</h5>
                 <img id="agregar3" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
             </div>
 
-        
+
 
         </article>
+        <aside class="asideRight">
+            <h3 style="margin-block-end: 10px;">Contactos en linea</h3>
+            <div id="chat1" class="chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar1.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Pepito Mocoreta </a></h5>
+            </div>
+            <div id="chat2" class=" chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar2.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"><a class="linkAMensaje" href="mensajes.html">Juan Carlos Gomez</a></h5>
+
+            </div>
+            <div id="chat3" class="chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar3.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Cristiano Messi </a></h5>
+            </div>
+            <div id="chat4" class="chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar1.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"><a class="linkAMensaje" href="mensajes.html">Carla Miranda </a></h5>
+            </div>
+            <div id="chat5" class=" chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar2.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Juan Carlos Gomez </a></h5>
+
+            </div>
+            <div id="chat6" class="chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar3.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html"> Cristiano Messi </a></h5>
+
+
+            </div>
+            <div id="chat6" class="chatPersona">
+                <img class="imagenChat" src="src/css/images/avatar2.png">
+                <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html"> Javier Milei </a></h5>
+
+
+            </div>
+            <img class="publicidadCanina2" src="src/css/images/Publicidad Canina3 1.png" alt="">
+        </aside>
 
     </main>
 

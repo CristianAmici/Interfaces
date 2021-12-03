@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let btninformacion = document.getElementById("informacion");
     btninformacion.addEventListener("click", async () => {
-        document.getElementById("renderPerfil").innerHTML = "Cargando...";
+        document.getElementById("renderPerfil").innerHTML = "<div class='svg-loader'><svg class='svg-container' height='100' width='100' viewBox='0 0 100 100'>"+
+        "<circle class='loader-svg bg' cx='50' cy='50' r='45'></circle>"+
+        "<circle class='loader-svg animate' cx='50' cy='50' r='45'></circle>"+
+    "</svg></div>" ;
         borrarBarra();
         btninformacion.classList.add("inPage");
         try {
@@ -22,7 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let btnfotos = document.getElementById("fotos");
     btnfotos.addEventListener("click", async () => {
-        document.getElementById("renderPerfil").innerHTML = "Cargando...";
+        document.getElementById("renderPerfil").innerHTML ="<div class='svg-loader'><svg class='svg-container' height='100' width='100' viewBox='0 0 100 100'>"+
+        "<circle class='loader-svg bg' cx='50' cy='50' r='45'></circle>"+
+        "<circle class='loader-svg animate' cx='50' cy='50' r='45'></circle>"+
+    "</svg></div>" ;
         borrarBarra();
         btnfotos.classList.add("inPage");
         try {
@@ -44,7 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     btnbusqueda.addEventListener('', busqueda (Event));
     async function  busqueda(Event){
         if (Event.key === 'Enter') {
-            document.getElementById("renderPerfil").innerHTML = "Cargando...";
+            document.getElementById("renderPerfil").innerHTML = "<div class='svg-loader'><svg class='svg-container' height='100' width='100' viewBox='0 0 100 100'>"+
+                "<circle class='loader-svg bg' cx='50' cy='50' r='45'></circle>"+
+                "<circle class='loader-svg animate' cx='50' cy='50' r='45'></circle>"+
+            "</svg></div>" ;
             try {
                 let response = await fetch("busqueda.html");
                 if (response.ok) {
