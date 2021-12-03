@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-    
+
     function borrarBarra() {
         btnpublicaciones.className = '';
         btnpublicaciones.classList.add("buttonMenu");
