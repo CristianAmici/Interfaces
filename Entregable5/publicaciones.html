@@ -15,27 +15,25 @@
     <header class="navbar">
         <img class="logo" src="src/css/images/logo.png" alt="">
         <div class="nav">
-            <a class=" link sinDecoracion buttonMenu inPage" href="publicaciones.html" id="inicio"><img
+            <a class=" link sinDecoracion buttonMenu inPage" href="publicaciones.html" id="inicio"><img class="iconoNavBar"
                     src="src/css/images/Home.png"></a>
-            <button class=" link buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
-            <a class="link buttonMenu" href="perfil.html"><img src="src/css/images/perfil.png"></a>
-            <a class="link buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
+            <button class=" buttonMenu" id="notificaciones"><img class="iconoNavBar" src="src/css/images/notificación.png"></button>
+            <a class="link buttonMenu" href="perfil.html"><img class="iconoNavBar" src="src/css/images/perfil.png"></a>
+            <a class="link buttonMenu" href="mensajes.html"><img class="iconoNavBar" src="src/css/images/mensajes.png"></a>
         </div>
-        <div class="busqueda">
+        <div class="busqueda" id="busqueda">
             <i class="fa fa-search icon"></i>
             <input class="textoInput" type="text" placeholder="Buscar en Vetegram">
         </div>
     </header>
     <main class="main">
         <aside class="asideLeft">
-            <a class="sinDecoracion"  href="perfil.html">
-                <div class="asidePerfil">
-                   <img src="src/css/images/perfil.png" alt="">
-                    
-                    <h3>Mi perfil</h3>
-                </div>
-            </a>
-            <h3 class="h3Margen">Sugerencias de amistad:</h3>
+            <div class="asidePerfil">
+                <figure class="iconoConNombre" ><img style="height: 40px; width: 40px;" src="src/css/images/perfil.png" alt=""></figure> 
+                <a class="iconoNombreUrl" href="perfil.html"><h4>Mi perfil</h4></a>
+           </div>
+            </div>
+            <h3 class="h3Margen" style="margin-block-end: 10px; margin-top: 10px;">Sugerencias de amistad</h3>
             <div id="solicitudes-agregar1" class=" sugereciasAmigos">
                 <img class="avatar" src="src/css/images/avatar1.png">
                 <h5>Pepito Mocoreta</h5>
@@ -59,10 +57,29 @@
 
         </aside>
         <article>
-            <section class="publicacion publicacionEspacio">
+
+
+
+
+             <section class="publicacion publicacionEspacio">
                 <div class="publicar">
                     <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
-                    <input type="text" class="inputPublicacion" placeholder="¿Que estas pensando?">
+                    <input  type="text" class="inputPublicacion" placeholder="¿Que estas pensando?">
+                    
+                    
+                   
+                    
+                    <button id="nuevaPublicacion">s</button>
+
+                    <div class="mensajeOculto" id=mensajeAyuda>
+                        <p class="ayudaTxt" id="ayuda1">
+                        </p>
+                            <img id="ImgAyuda1" src="src/css/images/turno.png"></img>
+                        <p class="ayudaTxt" id="ayuda2"></p>
+                            <img id="ImgAyuda2" src="src/css/images/DepositarFicha.png"></img>
+                            <button class="botonEstiloCerrar" id="cerrar">X</button>
+                    </div>
+
                 </div>
                 <div class="itemPublicacion">
                     <button class="buttonMenu botonPublicacion">
@@ -85,7 +102,12 @@
                     </button>
                 </div>
             </section>
+
+
+
+
             <section class="publicacion publicacionEspacio">
+
                 <div class="publicar">
 
                     <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
@@ -234,7 +256,7 @@
             </section>
         </article>
         <aside class="asideRight">
-            <h3>Contactos en linea</h3>
+            <h3 style="margin-block-end: 10px;">Contactos en linea</h3>
             <div id="chat1" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar1.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
