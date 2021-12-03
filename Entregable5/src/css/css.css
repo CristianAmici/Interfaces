@@ -322,6 +322,7 @@ input{
     }
       /************************************ HOME LOGIN ****************************************/
 .login{
+    text-align: center;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -332,6 +333,10 @@ input{
 }
 .ingresar{
     height: 300px;
+    width:300px;
+}
+.registrar{
+    height: 100%;
     width:300px;
 }
 .BotonAzul{

@@ -44,10 +44,12 @@
             margin-top: 50px;
             margin-bottom: 50px;
         }
-        .subtitulo{
-            margin-top:0px;
+
+        .subtitulo {
+            margin-top: 0px;
             font-size: 50px;
         }
+
         .h1Login {
             margin-top: 0%;
             font-size: 100px;
@@ -67,12 +69,16 @@
             background-color: rgba(240, 248, 255, 0.678);
             text-align: center;
             margin-bottom: 0%;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
         }
-        .row{
+
+        .textRegistro {
+            border-top-left-radius: 35px;
+            border-bottom-left-radius: 35px;
+            border-top-right-radius: 35px;
+            border-bottom-right-radius: 35px;
+        }
+
+        .row {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -88,16 +94,16 @@
                 <h1 class="h1Login textPresentacion">Bienvenidos a Vetegram</h1>
                 <div class="row">
                     <aside>
-                        <img src="src/css/images/logo.png" alt="">
+                        <img src="src/css/images/logoIngreso.png" alt="">
                     </aside>
                     <aside class="login ingresar">
                         <h2 style="text-align: center;">Ingresar</h2>
                         <label class="label" id="infoErrorUsuario">Correo electrónico</label>
-                        <input type="text" placeholder="Correo electronico">
+                        <input class="textoInput" type="text" placeholder="Correo electronico">
                         <label class="label" id="infoErrorContrasena">Contraseña</label>
-                        <input type="text" placeholder="Contraseña">
+                        <input class="textoInput" type="text" placeholder="Contraseña">
                         <button class=" BotonAzul"> <a style="text-decoration:none; color: aliceblue;"
-                            href="publicaciones.html">Iniciar sesión</a></button>
+                                href="publicaciones.html">Iniciar sesión</a></button>
                         <label class="label" id="NoTineCuenta">¿No tienes cuenta? <a class="registro"
                                 href="#registro">Registrate</a></label>
                     </aside>
@@ -105,30 +111,32 @@
             </div>
         </section>
         <section class="parallax-1">
-            <div  class="parallax-inner">
-                <h1 id="registro"  class=" subtitulo textPresentacion">La mejor red social de veterinaria</h1>
-                <aside>
-
-                </aside>
-                <aside class="login">
-                    <h2 style="text-align: center;">Registrarte</h2>
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Nombre">
-                    <label>Apellido</label>
-                    <input type="text" placeholder="Apellido">
-                    <label>Usuario o Correo Electrónico</label>
-                    <input type="text" placeholder="Usuario o Correo Electrónico">
-                    <label>contraseña</label>
-                    <input type="text" placeholder="Contraseña">
-                    <label>Fecha de nacimiento</label>
-                    <input type="date">
-                    <label>Genero</label>
-                    <input type="text" placeholder="Genero">
-                    <button  class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"
-                            href="publicaciones.html">Registrarte</a></button>
-                </aside>
-            </div>
+            <div class="parallax-inner">
+                <h1 id="registro" class=" subtitulo textPresentacion">La mejor red social de veterinaria</h1>
+                <div class="row">
+                    <aside>
+                        <img src="src/css/images/logoIngreso.png" alt="">
+                    </aside>
+                    <aside class="login registrar">
+                        <h2 style="text-align: center;">Registrarte</h2>
+                        <label>Nombre</label>
+                        <input class="textoInput" type="text" placeholder="Nombre">
+                        <label>Apellido</label>
+                        <input class="textoInput" type="text" placeholder="Apellido">
+                        <label>Usuario o Correo Electrónico</label>
+                        <input class="textoInput" type="text" placeholder="Usuario o Correo Electrónico">
+                        <label>contraseña</label>
+                        <input class="textoInput" type="text" placeholder="Contraseña">
+                        <label>Fecha de nacimiento</label>
+                        <input class="textoInput" type="date">
+                        <label>Genero</label>
+                        <input class="textoInput" type="text" placeholder="Genero">
+                        <button class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"
+                                href="publicaciones.html">Registrarte</a></button>
+                    </aside>
+                </div>
         </section>
+        <h1 id="registro" class=" subtitulo textPresentacion">Únete a Vetegram</h1>
     </section>
 </body>
 
