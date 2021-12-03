@@ -9,6 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='src/css/css.css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <script src='src/js/main.js'></script>
+    <script src='src/js/render.js'></script>
 </head>
 
 <body>
@@ -17,13 +18,13 @@
         <div class="nav">
             <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img
                 src="src/css/images/Home.png"></a>
-        <button class=" buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
+        <button class=" link buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
         <a class="link buttonMenu inPage" href="perfil.html"><img src="src/css/images/perfil.png"></a>
         <a class="link buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
         </div>
         <div class="busqueda">
             <i class="fa fa-search icon"></i>
-            <input type="text" placeholder="Buscar en Vetegram">
+            <input class="textoInput" type="text" placeholder="Buscar en Vetegram">
         </div>
     </header>
     <main id="inicioPag">
@@ -40,9 +41,9 @@
             </section>
             <div class="navbarPerfil">
                 <div class="navPerfil">
-                    <a class="sinDecoracion buttonMenu inPage" href="perfil.html" id="publicaciones"> Publicaciones</a>
-                    <button class="buttonMenu" id="fotos"> Fotos</button>
-                    <button class="buttonMenu" id="informacion"> Información</button>
+                    <a style="text-decoration:none; color:black;" class="link buttonMenu inPage" href="perfil.html" id="publicaciones"> Publicaciones</a>
+                    <button style="font-size:16px;" class="buttonMenu" id="fotos"> Fotos</button>
+                    <button style="font-size:16px;" class="buttonMenu" id="informacion"> Información</button>
                 </div>
             </div>
             <article  id="renderPerfil">
