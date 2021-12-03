@@ -4,7 +4,7 @@
 body{
     margin: 0%;
     font-family: 'Roboto', sans-serif;
-    background-color: #837186;
+    background-color: #e2d2e6;
 }
 /* Nav*/
 header{
@@ -35,12 +35,12 @@ aside, article{
     border-bottom-right-radius: 15px;
 }
 .asideLeft{
-background-color: #b398b6;
+background-color: #d4afd8;
 position: fixed;
 left: 0px;
 }
 .asideRight{
-    background-color: #b398b6;
+    background-color: #d4afd8;
     position: fixed;
     right: 0px;
     }
@@ -166,7 +166,7 @@ left: 0px;
 }
 .publicacion{
     padding-bottom: 10px;
-    background-color: #b398b6;
+    background-color: #d4afd8;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -373,6 +373,7 @@ input{
 .chatPersona:hover{
     background-color: lavender;
     transition:0.5s;
+    
 }
 .imagenChat{
     height: 56px;
@@ -523,7 +524,6 @@ input{
     justify-items: center;
     text-decoration: none;
     justify-content: space-between;
-    width: 100%;
 }
 .navPerfil{
     display:flex;
@@ -538,5 +538,22 @@ input{
 /****** Fotos ******************/
 
 
-
-/***********************  ***********************/
+.fotosPerfil{
+    width: 150px;
+    margin: 1%;
+}
+.fotos{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    
+    justify-content: space-between;
+}
+.contenedorPerfilFotos{
+    background-color: #F1E6F3;
+    border-radius: 10px;
+    width: 962px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
