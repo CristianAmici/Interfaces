@@ -24,6 +24,32 @@ main{
     flex-direction: row;
     justify-content:center;
 }
+.publicidadCaninaChat{
+    padding-top: 125px;
+    margin:auto;
+    width:200px;
+    height:100px;
+}
+.publicidadCanina{
+    padding-top: 25px;
+    margin:auto;
+    width:200px;
+    height:100px;
+}
+.publicidadCanina2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin:auto;
+    width:200px;
+    height:200px;
+}
+.publicidadCanina3{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin:auto;
+    width:200px;
+    height:200px;
+}
 aside, article{
     margin: 15px;
     margin-top: 75px;
@@ -58,6 +84,7 @@ left: 0px;
     padding-bottom: 1px;
     justify-content: space-between;
     width:450px;
+    padding-left: 100px;
 }
 .navbar{
     text-decoration: none;
