@@ -119,6 +119,9 @@ left: 0px;
   }
   /* Publicacion */
 
+  .oculto{
+      display:none;
+  }
   .publicacionDestacada{
       margin-top:0;
       font-style: italic;
@@ -483,6 +486,11 @@ input{
 
     /************************************ CHAT CHAT CHAT ****************************************/
 /********** Side Izquierdo ****************/
+.linkAMensaje{
+    
+    text-decoration: none;
+    color: #000;
+}
 
 .chatPersona{
     display:flex;

@@ -25,7 +25,7 @@
         </div>
         <div class="busqueda" id="busqueda">
             <i class="fa fa-search icon"></i>
-            <input  class="textoInput inputBusqueda" type="text" placeholder="Buscar en Vetegram">
+            <input class="textoInput inputBusqueda" type="text" placeholder="Buscar en Vetegram">
         </div>
     </header>
     <main class="main">
@@ -88,14 +88,67 @@
 
                         </figure>
                     </button>
-                    <button class="BotonAzul botonPublicar">Publicar</button>
+                    <button id="publicar" class="BotonAzul botonPublicar">Publicar</button>
                 </div>
+            </section>
+            <section id="mostrarPublicacion" class=" oculto publicacion publicacionEspacio">
+                <div class="publicar">
+
+                    <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
+                    <div>
+                        <p class="usuario">Emma Lopez</p>
+                        <p class="hora"><i>19:30</i></p>
+                    </div>
+
+                </div>
+                <div class="contenido">
+                    <p class="textoPublicacion">Estoy en pleno examen!!!!</p>
+                </div>
+                </div>
+                <div class="meGustas lineaBaja">
+                    <img src="src/css/images/manoArriba.png" alt="">
+                    <p style="font-size: 15px;"><i>0</i></p>
+                </div>
+                <div class="itemPublicacion lineaBaja">
+                    <button class="buttonMenu botonPublicacion">
+                        <figure class="figurePublicacion">
+
+                            <img src="src/css/images/manoArriba.png">
+
+                            <figcaption>Me gusta</figcaption>
+
+                        </figure>
+                    </button>
+                    <button class="buttonMenu botonPublicacion">
+                        <figure class="figurePublicacion">
+
+                            <img src="src/css/images/manoAbajo.png">
+
+                            <figcaption>No me interesa</figcaption>
+
+                        </figure>
+                    </button>
+                    <button class="buttonMenu botonPublicacion">
+                        <figure class="figurePublicacion">
+
+                            <img src="src/css/images/compartir.png">
+
+                            <figcaption>compartir</figcaption>
+
+                        </figure>
+                    </button>
+                </div>
+                <div class="publicar">
+                    <img class="imgComentario" src="src/css/images/fotoPublicar.png">
+                    <input type="text" class="inputPublicacion" placeholder="Escribe un comentario">
+                </div>
+
             </section>
 
 
 
-
-            <section style="background-color:#c379bab0" class="publicacion publicacionEspacio">
+            <section style="background-color:#c379bab0; border: solid rgb(0, 0, 0);"
+                class="publicacion publicacionEspacio">
 
                 <div class="publicar">
 
@@ -105,7 +158,7 @@
                         <p class="hora"><i>20:30</i></p>
                     </div>
                     <p class="publicacionDestacada"> Publicación destacada</p>
-                    
+
                 </div>
                 <div class="contenido">
                     <p class="textoPublicacion">Hoy le toca operación a este animalito.</p>
@@ -114,10 +167,10 @@
                 </div>
                 <div class="meGustas lineaBaja">
                     <img src="src/css/images/manoArriba.png" alt="">
-                    <p style="font-size: 15px;"><i>24</i></p>
+                    <p id=cantidadMeGusta style="font-size: 15px;" value=24>24</p>
                 </div>
                 <div class="itemPublicacion lineaBaja">
-                    <button class="buttonMenu botonPublicacion">
+                    <button id="meGusta" class="buttonMenu botonPublicacion">
                         <figure class="figurePublicacion">
 
                             <img src="src/css/images/manoArriba.png">
@@ -250,43 +303,43 @@
             <div id="chat1" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar1.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Pepito Mocoreta</h5>
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Pepito Mocoreta </a></h5>
             </div>
             <div id="chat2" class=" chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar2.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Juan Carlos Gomez</h5>
+                <h5 class="nombreChat"><a class="linkAMensaje" href="mensajes.html">Juan Carlos Gomez</a></h5>
 
             </div>
             <div id="chat3" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar3.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Cristiano Messi</h5>
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Cristiano Messi </a></h5>
             </div>
             <div id="chat4" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar1.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Carla Miranda</h5>
+                <h5 class="nombreChat"><a class="linkAMensaje" href="mensajes.html">Carla Miranda </a></h5>
             </div>
             <div id="chat5" class=" chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar2.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat">Juan Carlos Gomez</h5>
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html">Juan Carlos Gomez </a></h5>
 
             </div>
             <div id="chat6" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar3.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat"> Cristiano Messi</h5>
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html"> Cristiano Messi </a></h5>
 
-                
+
             </div>
             <div id="chat6" class="chatPersona">
                 <img class="imagenChat" src="src/css/images/avatar2.png">
                 <img id="conectado1" name="chat" class="conectado" src="src/css/images/En linea contacto 3.png">
-                <h5 class="nombreChat"> Javier Milei</h5>
+                <h5 class="nombreChat"> <a class="linkAMensaje" href="mensajes.html"> Javier Milei </a></h5>
 
-                
+
             </div>
             <img class="publicidadCanina2" src="src/css/images/Publicidad Canina3 1.png" alt="">
         </aside>

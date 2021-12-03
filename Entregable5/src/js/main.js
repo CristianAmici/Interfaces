@@ -1,6 +1,11 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
     
+    document.getElementById("publicar").addEventListener("click", ()=>{
+
+        document.getElementById("mostrarPublicacion").classList.remove("oculto");
+
+    })
     let btnbusqueda = document.getElementById("busqueda");
     btnbusqueda.addEventListener('', busqueda (Event));
     async function  busqueda(Event){
@@ -12,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let html = await response.text();
                     let div = document.getElementById("renderPerfil");
                     div.innerHTML = html;
-    
-    
+
                 }
     
             } catch (error) {
@@ -21,6 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+/*     document.getElementById("meGusta").addEventListener("click", ()=>{
+
+       let cantidadMegusta=  parseInt(document.getElementById("cantidadMeGusta").value);
+
+       document.getElementById("cantidadMeGusta").innerHTML=cantidadMegusta+1;
+    }) */
     
     function borrarBarra() {
         btnpublicaciones.className = '';
