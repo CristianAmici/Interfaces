@@ -44,7 +44,7 @@ main{
     height:200px;
 }
 .publicidadCanina3{
-    padding-top: 25px;
+    padding-top: 10px;
     padding-bottom: 10px;
     margin:auto;
     width:200px;
@@ -209,7 +209,6 @@ left: 0px;
     align-items: center;
     padding: 0% 2% 0% 2%;
     padding-top: 10px;
-    position: relative;
 }
 .publicacion{
     padding-bottom: 10px;
@@ -230,6 +229,7 @@ left: 0px;
     margin-right: 10px;
 }
 input{
+    padding-left: 30px;
     font-style: italic;
     height:35px;
     border-top-left-radius: 35px;
@@ -246,9 +246,6 @@ input{
 }
 .textoInput{
     text-align: center;
-}
-.inputBusqueda{
-    padding-left: 10px;
 }
 .buttonMenu{
     background-color: transparent;
@@ -420,14 +417,7 @@ input{
     margin-bottom: 2px;
     font-size: 16px;
 }
-.botonPublicar{
-    cursor:pointer;
-    margin: 0px;
-    width: 90px;
-    height: 25px;
-    font-size: 13px;
 
-}
 .logoLogin{
     background-color: #c379bab0;
     border-top-left-radius: 10px;
@@ -603,7 +593,6 @@ input{
     justify-content: space-around;
 }
 .escribirMensaje{
-    padding-left: 10px;
     margin: 6px;
     position: relative;
     width: 80%;
@@ -681,6 +670,7 @@ input{
     justify-items: center;
     text-decoration: none;
     justify-content: space-between;
+    
 }
 .navPerfil{
     display:flex;
@@ -691,6 +681,7 @@ input{
     padding-bottom: 1px;
     justify-content: space-between;
     width:450px;
+    padding-left: 200px;
 }
 /****** Fotos ******************/
 
@@ -703,8 +694,8 @@ input{
     display:flex;
     flex-direction: row;
     align-items: center;
-
-    justify-content: space-between;
+    margin: 1%;
+    margin-top: 0%;
 }
 .contenedorPerfilFotos{
     background-color: #e2d2e6;
@@ -712,7 +703,7 @@ input{
     width: 850px;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 #renderPerfil{
     margin-top: 14px;
@@ -728,8 +719,9 @@ input{
     width: 500px;
     display:flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    align-self: center;
 }
 
 /**************************** PUBLICACIONES PERFIL***********************************/
@@ -770,4 +762,61 @@ input{
 }
 .contenedoresInfoPublicaciones{
     margin-left: 20px;
+}
+
+/****************************  BUSQUEDA    **************************************/
+
+.contenedorBusqueda{
+    background-color: #e2d2e6;
+    border-radius: 10px;
+    width: 600px;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    
+    margin: 12px;
+    margin-top: 0%;
+  
+}  
+.busquedaResultados{
+    background-color: #e2d2e6;
+    border-radius: 10px;
+    width: 600px;
+    display:flex;
+    flex-direction: row;
+    position: relative;
+    text-align: center;
+    margin-top: 12px;
+    
+}
+
+
+/*resulttados*/
+
+.agregarBusqueda{
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    right:3px;
+    cursor: pointer;
+    margin-top: 15.5px;
+}
+.avatarBusqueda {
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+    height: 55px;
+    width: 55px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: 6px;
+}
+.busquedaInputs{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    position: none;
+    margin-top: 5%;
+    background-color: #ebe4ed;
+   
+
 }
