@@ -209,6 +209,7 @@ left: 0px;
     align-items: center;
     padding: 0% 2% 0% 2%;
     padding-top: 10px;
+    position: relative;
 }
 .publicacion{
     padding-bottom: 10px;
@@ -416,6 +417,14 @@ input{
     margin-right:auto;
     margin-bottom: 2px;
     font-size: 16px;
+}
+.botonPublicar{
+    cursor:pointer;
+    margin: 0px;
+    width: 90px;
+    height: 25px;
+    font-size: 13px;
+
 }
 
 .logoLogin{
