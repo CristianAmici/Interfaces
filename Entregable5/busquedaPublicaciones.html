@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/css.css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <script src='src/js/main.js'></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <img class="logo" src="src/css/images/logo.png" alt="">
+        <div class="nav">
+            <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img class="iconoNavBar" src="src/css/images/Home.png"></a>
+            <button class=" buttonMenu" id="notificaciones"><img class="iconoNavBar" src="src/css/images/notificación.png"></button>
+            <a class="link buttonMenu" href="perfil.html"><img class="iconoNavBar" src="src/css/images/perfil.png"></a>
+            <a class="link buttonMenu inPage" href="mensajes.html"><img class="iconoNavBar" src="src/css/images/mensajes.png"></a>
+        </div>
+        <div class="busqueda">
+            <i class="fa fa-search icon"></i>
+            <input type="text" placeholder="Buscar en Vetegram">
+        </div>
+    </header>
+
+    <main id="inicioPag">
+        <aside class="asideLeft">
+            <h3 class="h3Margen" >Busqueda avanzada</h3>
+            <a class="iconoNombreUrl"  href="perfil.html">
+                <h4 style="margin-block-end: 0%;">Buscar personas</h4>
+            </a>
+            <a class="iconoNombreUrl" href="perfil.html">
+                <h4 style="margin-block-end: 0%;">Buscar publicaciones</h4>
+            </a>
+
+            <div class="busquedaInputs">
+
+                <label class="label" >Especialidad</label>
+                <input class="textoInput" type="text" placeholder="Especialidad">
+                <label class="label">Localidad</label>
+                <input class="textoInput" type="text" placeholder="Localidad">
+                <label class="label">Fecha de nacimiento</label>
+                <input class="textoInput" type="date">
+                <label class="label">Lugar de trabajo</label>
+                <input class="textoInput" type="text" placeholder="Lugar de trabajo">
+                <button class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"href="publicaciones.html">Buscar</a></button>
+
+             </div>           
+
+
+        </aside>
+
+        <article  >
+
+
+            <section class="contenedorBusqueda">
+                
+                <h3 class="h3fotos" >Resultados de la busqueda</h3> 
+            </section>
+
+
+            <div class="busquedaResultados"> 
+                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
+                <h5>Pepito Mocoreta</h5>
+                <img id="agregar1" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
+            </div>
+
+            <div class="busquedaResultados"> 
+                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
+                <h5>Pepito Mocoreta</h5>
+                <img id="agregar2" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
+            </div>
+
+            <div class="busquedaResultados"> 
+                <img class="avatarBusqueda" src="src/css/images/avatar1.png">
+                <h5>Pepito Mocoreta</h5>
+                <img id="agregar3" name="solicitudes" class="agregarBusqueda" src="src/css/images/agregar.png">
+            </div>
+
+        
+
+        </article>
+
+    </main>
+
+</body>
+
+</html>
