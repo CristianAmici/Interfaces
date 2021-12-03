@@ -52,7 +52,7 @@
 
         .h1Login {
             margin-top: 0%;
-            font-size: 100px;
+            font-size: 60px;
         }
 
         .registro {
@@ -66,7 +66,7 @@
         }
 
         .textPresentacion {
-            background-color: rgba(240, 248, 255, 0.678);
+            background-color: #c379bab0;
             text-align: center;
             margin-bottom: 0%;
         }
@@ -83,6 +83,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-around;
+            margin-bottom: 150px;
         }
     </style>
 </head>
@@ -94,7 +95,7 @@
                 <h1 class="h1Login textPresentacion">Bienvenidos a Vetegram</h1>
                 <div class="row">
                     <aside>
-                        <img src="src/css/images/logoIngreso.png" alt="">
+                        <img class="logoLogin" src="src/css/images/logoIngreso.png" alt="">
                     </aside>
                     <aside class="login ingresar">
                         <h2 style="text-align: center;">Ingresar</h2>
@@ -108,28 +109,30 @@
                                 href="#registro">Registrate</a></label>
                     </aside>
                 </div>
+                <div class="mouse"></div>
             </div>
         </section>
         <section class="parallax-1">
             <div class="parallax-inner">
                 <h1 id="registro" class=" subtitulo textPresentacion">La mejor red social de veterinaria</h1>
-                <div class="row">
+                
+                <div style="margin-bottom: 0px;" class="row">
                     <aside>
-                        <img src="src/css/images/logoIngreso.png" alt="">
+                        <img class="logoLogin" src="src/css/images/logoIngreso.png" alt="">
                     </aside>
                     <aside class="login registrar">
                         <h2 style="text-align: center;">Registrarte</h2>
-                        <label>Nombre</label>
+                        <label class="label">Nombre</label>
                         <input class="textoInput" type="text" placeholder="Nombre">
-                        <label>Apellido</label>
+                        <label class="label">Apellido</label>
                         <input class="textoInput" type="text" placeholder="Apellido">
-                        <label>Usuario o Correo Electrónico</label>
+                        <label class="label">Usuario o Correo Electrónico</label>
                         <input class="textoInput" type="text" placeholder="Usuario o Correo Electrónico">
-                        <label>contraseña</label>
+                        <label class="label">contraseña</label>
                         <input class="textoInput" type="text" placeholder="Contraseña">
-                        <label>Fecha de nacimiento</label>
+                        <label class="label">Fecha de nacimiento</label>
                         <input class="textoInput" type="date">
-                        <label>Genero</label>
+                        <label class="label">Genero</label>
                         <input class="textoInput" type="text" placeholder="Genero">
                         <button class="BotonAzul"><a style="text-decoration:none; color: aliceblue;"
                                 href="publicaciones.html">Registrarte</a></button>
