@@ -15,13 +15,13 @@
     <header class="navbar">
         <img class="logo" src="src/css/images/logo.png" alt="">
         <div class="nav">
-            <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img
+            <a class="link sinDecoracion buttonMenu" href="publicaciones.html" id="inicio"><img class="iconoNavBar"
                 src="src/css/images/Home.png"></a>
-        <button class=" buttonMenu" id="notificaciones"><img src="src/css/images/notificación.png"></button>
-        <a class="link buttonMenu inPage" href="perfil.html"><img src="src/css/images/perfil.png"></a>
-        <a class="link buttonMenu" href="mensajes.html"><img src="src/css/images/mensajes.png"></a>
+            <button class=" buttonMenu" id="notificaciones"><img class="iconoNavBar" src="src/css/images/notificación.png"></button>
+            <a class="link buttonMenu inPage" href="perfil.html"><img class="iconoNavBar" src="src/css/images/perfil.png"></a>
+            <a class="link buttonMenu" href="mensajes.html"><img class="iconoNavBar" src="src/css/images/mensajes.png"></a>
         </div>
-        <div class="busqueda">
+        <div class="busqueda" id="busqueda">
             <i class="fa fa-search icon"></i>
             <input type="text" placeholder="Buscar en Vetegram">
         </div>
@@ -45,16 +45,241 @@
                     <button class="buttonMenu" id="informacion"> Información</button>
                 </div>
             </div>
-            <article  id="renderPerfil">
-               
+
+            
+            <article  id="renderPerfil" >
+                
+                <section class="publicacionPerfilContenedor">
+
+                    <section class="publicacionPerfil"> 
+
+                        <section class="publicacion publicacionEspacioPublicarPerfil ">
+                            <div class="publicar">
+                                <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
+                                <input type="text" class="inputPublicacion" placeholder="¿Que estas pensando?">
+                            </div>
+                            <div class="itemPublicacion">
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/ganchito.png">
+
+                                        <figcaption>Archivo</figcaption>
+
+                                    </figure>
+                                </button>
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/foto.png">
+
+                                        <figcaption>Fotos/video</figcaption>
+
+                                    </figure>
+                                </button>
+                            </div>
+                        </section>
+                        <section class="publicacion publicacionEspacioPublicarPerfil ">
+                            <div class="publicar">
+
+                            <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
+                            <div>
+                                <p class="usuario">Emma Lopez</p>
+                                <p class="hora"><i>20:30</i></p>
+                            </div>
+
+                            </div>
+                            <div class="contenido">
+                                <p class="textoPublicacion">Hoy le toca operación a este animalito.</p>
+                                <img class="imgPublicacion" src="src/css/images/perroOperado.png" alt="">
+                            </div>
+                            </div>
+                            <div class="meGustas lineaBaja">
+                                <img src="src/css/images/manoArriba.png" alt="">
+                                <p><i>24</i></p>
+                            </div>
+                            <div class="itemPublicacion lineaBaja">
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/manoArriba.png">
+
+                                        <figcaption>Me gusta</figcaption>
+
+                                    </figure>
+                                </button>
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/manoAbajo.png">
+
+                                        <figcaption>No me interesa</figcaption>
+
+                                    </figure>
+                                </button>
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/compartir.png">
+
+                                        <figcaption>compartir</figcaption>
+
+                                    </figure>
+                                </button>
+                            </div>
+                            <button class="buttonMenu subrrayado">
+                                <p class="cantidadComentario">5 comentarios</p>
+                            </button>
+                            <div class="publicar">
+
+                                <img class="imgComentario" src="src/css/images/fotoPublicar.png">
+                                <div class="comentarioPublicacion">
+                                    <p class="usuarioComentario sinPadding">Emma Lopez</p>
+                                    <p class="sinPadding">Espero se recupere pronto, es mi mejor y unico amigo desde que volvi de
+                                        Gryffindor</p>
+                                </div>
+                            </div>
+                            <div class="publicar">
+
+                                <img class="imgComentario" src="src/css/images/avatar2.png">
+                                <div class="comentarioPublicacion">
+                                    <p class="usuarioComentario sinPadding">Juan Carlos Gomez</p>
+                                    <p class="sinPadding">Y Harry como anda?</p>
+                                </div>
+                            </div>
+                            <div class="publicar">
+                                <img class="imgComentario" src="src/css/images/fotoPublicar.png">
+                                <input type="text" class="inputPublicacion" placeholder="Escribe un comentario">
+                            </div>
+                        </section>
+                        <section class="publicacion publicacionEspacioPublicarPerfil ">
+                            <div class="publicar">
+
+                                <img class="imgPerfilPublicacion" src="src/css/images/fotoPublicar.png">
+                                <div>
+                                    <p class="usuario">Emma Lopez</p>
+                                    <p class="hora"><i>20:30</i></p>
+                                </div>
+
+                            </div>
+                            <div class="contenido">
+                                <p class="textoPublicacion">En la consulta del veterinario, suena el teléfono: <br>
+                                    - Oiga, doctor, mañana le enviaré a mi vieja perra con mi esposa.<br>
+                                    - Dele un potente veneno para que no sufra demasiado.<br>
+                                    - De acuerdo, pero ¿sabrá después volver sola la perra a su casa?</p>
+                            </div>
+                            </div>
+                            <div class="meGustas lineaBaja">
+                                <img src="src/css/images/manoArriba.png" alt="">
+                                <p><i>24345</i></p>
+                            </div>
+                            <div class="itemPublicacion lineaBaja">
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/manoArriba.png">
+
+                                        <figcaption>Me gusta</figcaption>
+
+                                    </figure>
+                                </button>
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/manoAbajo.png">
+
+                                        <figcaption>No me interesa</figcaption>
+
+                                    </figure>
+                                </button>
+                                <button class="buttonMenu botonPublicacion">
+                                    <figure class="figurePublicacion">
+
+                                        <img src="src/css/images/compartir.png">
+
+                                        <figcaption>compartir</figcaption>
+
+                                    </figure>
+                                </button>
+                            </div>
+                            <button class="buttonMenu subrrayado">
+                                <p class="cantidadComentario">1 comentarios</p>
+                            </button>
+                            <div class="publicar">
+
+                                <img class="imgComentario" src="src/css/images/fotoPublicar.png">
+                                <div class="comentarioPublicacion">
+                                    <p class="usuarioComentario sinPadding">Emma Lopez</p>
+                                    <p class="sinPadding">Este tipo de chistes deberian censurarlos!</p>
+                                </div>
+                            </div>
+                            <div class="publicar">
+
+                                <img class="imgComentario" src="src/css/images/avatar2.png">
+                                <div class="comentarioPublicacion">
+                                    <p class="usuarioComentario sinPadding">Juan Carlos Gomez</p>
+                                    <p class="sinPadding">Vuelve sola seguramente! jaja</p>
+                                </div>
+                            </div>
+                            <div class="publicar">
+                                <img class="imgComentario" src="src/css/images/fotoPublicar.png">
+                                <input type="text" class="inputPublicacion" placeholder="Escribe un comentario">
+                            </div>
+                        </section>
+
+                    </section>
+
+                    <section class="publicacionPerfil" style="text-align: left;">
+                        
+                        <section class="contenedorPerfilInfoPublicaciones publicacionesInfo" style=" margin-top: 0px;">
+                            <div style=" margin-block-end: 0px;" class="asidePerfil contenedoresInfoPublicaciones" >
+                                <figure class="iconoConNombre" ><img src="src/css/images/amigos.png" alt=""></figure> 
+                                <a class="iconoNombreUrl" href="amigos.html"><h4>Amigos</h4></a>
+                           </div>
+                                <div id="chat1" class="chatPersona " style=" margin-left: 10px;">
+                                    <img class="imagenChat" src="src/css/images/avatar1.png">
+                                    <h5 class="nombreChat">Pepito Mocoreta</h5>
+                                </div>
+                                <div id="chat2" class=" chatPersona " style=" margin-left: 10px;">
+                                    <img class="imagenChat" src="src/css/images/avatar2.png">
+                                    <h5 class="nombreChat">Juan Carlos Gomez</h5>
+
+                                </div>
+                                <div id="chat3" class="chatPersona" style=" margin-left: 10px;">
+                                    <img class="imagenChat" src="src/css/images/avatar3.png">
+                                    <h5 class="nombreChat">Cristiano Messi</h5>
+                                </div>
+                        </section>
+                        <section class="contenedorPerfilInfoPublicaciones publicacionesInfo">
+                            <h3 style=" margin-left: 20px;">Detalles de ti</h3>
+                            <div class="infoContenedorPublicaciones">
+                                <div class="info">
+                                    <section class="infoContacto " style=" margin-left: 10px;">
+                                        <img class="mandarMensajeIconos" src="src/css/images/trabajo 2.png">
+                                        <p>Veterinaria San Pichicho</p>
+                                    </section>
+                                    <section class="infoContacto" style=" margin-left: 10px;">
+                                        <img class="mandarMensajeIconos" src="src/css/images/cumpleaños 2.png">
+                                        <p>9 de agosto 1996</p>
+                                    </section>
+                                    <section class="infoContacto" style=" margin-left: 10px;">
+                                        <img class="mandarMensajeIconos" src="src/css/images/Especialista 2.png">
+                                        <p>Caballos</p>
+                                    </section>
+                                    <section class="infoContacto" style=" margin-left: 10px;">
+                                        <img class="mandarMensajeIconos" src="src/css/images/amigos.png">
+                                        <p>228 amigos</p>
+                                    </section>
+                                </div>
+                        </section>
+
+
+                    </section>
+                </section>
+
             </article>
         </article>
-            <section class="contenedorPerfilFotos">
-
-
-
-                
-            </section>
+        
 
         <aside>
         </aside>

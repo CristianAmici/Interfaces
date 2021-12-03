@@ -4,13 +4,15 @@
 body{
     margin: 0%;
     font-family: 'Roboto', sans-serif;
-    background-color: #e2d2e6;
+    background-color: #f1e8f3;
 }
 /* Nav*/
 header{
         display:flex;
         flex-direction: row;
         position: fixed;
+        
+    justify-content:center;
         z-index: 1000;
 }
 article{
@@ -35,12 +37,12 @@ aside, article{
     border-bottom-right-radius: 15px;
 }
 .asideLeft{
-background-color: #d4afd8;
+background-color: #e2d2e6;
 position: fixed;
 left: 0px;
 }
 .asideRight{
-    background-color: #d4afd8;
+    background-color: #e2d2e6;
     position: fixed;
     right: 0px;
     }
@@ -68,6 +70,10 @@ left: 0px;
     padding-left: 20px;
     width: 62px ;
     height: 60px;
+}
+.iconoNavBar{
+    height: 40px; 
+    width: 40px;
 }
 .buttonMenu:hover {
     color: #151414;
@@ -166,7 +172,7 @@ left: 0px;
 }
 .publicacion{
     padding-bottom: 10px;
-    background-color: #d4afd8;
+    background-color: #d4bbda;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -183,14 +189,14 @@ left: 0px;
     margin-right: 10px;
 }
 input{
-    padding-left: 10px;
+    padding-left: 30px;
     font-style: italic;
     height:35px;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;
-    background-color: #f1e6f3;
+    background-color: #e2d2e6;
     border-style: solid;
 }
 .sinDecoracion{
@@ -274,7 +280,19 @@ input{
         display:flex;
         flex-direction: row;
         align-items: center;
-        padding-bottom: 6%;
+        margin: 10px;
+    }
+    .iconoNombreUrl{
+        margin-left: 17px;
+        text-decoration: none;
+        color: black;
+    }
+    .iconoNombreUrl:hover{
+        text-decoration: underline;
+    }
+    .iconoConNombre{
+        height: 40px;
+        width: 38px;
     }
     .avatar {
         /* cambia estos dos valores para definir el tamaño de tu círculo */
@@ -366,7 +384,6 @@ input{
     flex-direction: row;
     align-items: center;
     position: relative;
-    margin: 9px;
     cursor:pointer;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -378,11 +395,12 @@ input{
 .chatPersona:hover{
     background-color: lavender;
     transition:0.5s;
-    
+   
 }
 .imagenChat{
-    height: 56px;
-    width: 56px;
+    margin: 4px;
+    height: 54px;
+    width: 54px;
 }
 .conectado{
     position:absolute;
@@ -392,13 +410,14 @@ input{
     width: 14px;
 }
 .nombreChat{
-    padding-left: 12px;
+    padding-left: 6px;
 }
 
 /********** CHAT DEL MEDIO ****************/
 
 .chatAbierto{
     width:  55%;
+   
 }
 
 .videollamada{
@@ -410,7 +429,7 @@ input{
 .contacto{
     display:flex;
     flex-direction: row;
-    background-color: #E9CBEF;
+    background-color: #c29acc;
     align-items: center;
     position: relative;
     padding-right:30px;
@@ -422,29 +441,47 @@ input{
     background-color: #F1E6F3;
     display:flex;
     flex-direction: column;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 600px;
+    margin: 4px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #847b87;
 }
 .mensajeContacto{
     background-color: #E9CBEF;
     border-radius: 21px;
-    margin: 9px;
-    width: 60%;
+    margin: 5px;
+    width: 65%;
+}
+
+.mensajeContacto p{
+    margin-left: 15px;
+}
+.fotoChatMensajeria{
+    width: 50px;
+    height: 50px;
+    margin-left: 7px;
+    
 }
 .mensajeMio{
     background-color: #D580E7;
     border-radius: 21px;
-    margin: 9px;
-    width: 60%;
+    margin: 5px;
+    width: 65%;
     float:right;
+}
+.mensajeMio p{
+    margin-left: 15px;
 }
 
 .mandarMensaje{
     display:flex;
     flex-direction: row;
-    background-color: #E9CBEF;
+    background-color: #c29acc;
     align-items: center;
     position: relative;
     padding-right: 30px;
@@ -453,6 +490,7 @@ input{
     justify-content: space-around;
 }
 .escribirMensaje{
+    margin: 6px;
     position: relative;
     width: 80%;
 }
@@ -474,7 +512,7 @@ input{
     align-items: center;
 }
 .infoCentrada{
-    margin: 12px;
+    margin: 10px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -491,9 +529,9 @@ input{
     width: 200px;
 }
 .contenedorPerfil{
-    background-color: #F1E6F3;
+    background-color: #e2d2e6;
     border-radius: 10px;
-    width: 962px;
+    width: 850px;
     height: 236px;
     display:flex;
     flex-direction: row;
@@ -518,9 +556,9 @@ input{
 /************* BARRA DEL PERFIL ******************/
 
 .navbarPerfil{
-    background-color: #F1E6F3;
+    background-color: #e2d2e6;
     border-radius: 10px;
-    width: 962px;
+    width: 850px;
     height: 34px;
     display:flex;
     flex-direction: row;
@@ -551,14 +589,71 @@ input{
     display:flex;
     flex-direction: row;
     align-items: center;
-    
+
     justify-content: space-between;
 }
 .contenedorPerfilFotos{
-    background-color: #F1E6F3;
+    background-color: #e2d2e6;
     border-radius: 10px;
-    width: 962px;
+    width: 850px;
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+#renderPerfil{
+    margin-top: 14px;
+}
+/**************************** Info ***********************************/
+
+.info{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.infoContenedor{
+    width: 500px;
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+/**************************** PUBLICACIONES PERFIL***********************************/
+
+.publicacionPerfilContenedor{
+    width: 850px;
+    display:flex;
+    flex-direction: row;
+    
+} 
+.publicacionPerfil{
+    display:flex;
+    flex-direction: column;
+    margin-top: 0px;
+} 
+.contenedorPublicacionFotos{
+    background-color: #e2d2e6;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.publicacionesInfo{
+    width: 309px;
+    margin-top: 5px;
+}
+.publicacionEspacioPublicarPerfil{
+    margin: 5px;
+    margin-top:0;
+    margin-left: 0px;
+}
+.contenedorPerfilInfoPublicaciones{
+    background-color: #e2d2e6;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+}
+.contenedoresInfoPublicaciones{
+    margin-left: 20px;
 }

@@ -41,6 +41,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    let btnbusqueda = document.getElementById("busqueda");
+    btnbusqueda.addEventListener('keyup', busqueda (e));
+    async function  busqueda(e){
+        if (e.key === 'Enter') {
+            document.getElementById("renderPerfil").innerHTML = "Cargando...";
+            try {
+                let response = await fetch("busqueda.html");
+                if (response.ok) {
+                    let html = await response.text();
+                    let div = document.getElementById("renderPerfil");
+                    div.innerHTML = html;
+    
+    
+                }
+    
+            } catch (error) {
+                document.getElementById("renderPerfil").innerHTML = "error";
+            }
+        }
+    }
+
+    nuevaPublicacion
 
     function borrarBarra() {
         btnpublicaciones.className = '';
